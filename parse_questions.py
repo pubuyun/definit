@@ -1,11 +1,11 @@
 import re
 from dataclasses import dataclass
 import pdfplumber
-import os
+from enum import StrEnum
 from typing import List, Optional, Tuple
-from itertools import combinations
 
 import pprint
+
 
 @dataclass(frozen=True)
 class MarkScheme:
@@ -25,7 +25,11 @@ class MarkScheme:
 @dataclass
 class SubSubQuestion:
     def __init__(
-        self, number: str, text: str, marks: int, answer: Optional[MarkScheme] = None
+        self,
+        number: str,
+        text: str,
+        marks: int = 0,
+        answer: Optional[MarkScheme] = None,
     ):
         self.number = number
         self.text = text
@@ -33,18 +37,17 @@ class SubSubQuestion:
         self.answer = answer
 
     def __str__(self):
-        return f"Q{self.number}: {self.text} [{self.marks}]"
+        return self.text
 
 
 @dataclass
 class SubQuestion:
-
     def __init__(
         self,
         number: str,
         text: str,
         subsubquestions: Optional[List[SubSubQuestion]],
-        marks: int,
+        marks: int = 0,
         answer: Optional[MarkScheme] = None,
     ):
         self.number = number
@@ -54,7 +57,7 @@ class SubQuestion:
         self.marks = marks
 
     def __str__(self):
-        return f"Q{self.number}: {self.text} [{self.marks}]"
+        return self.text + (f"\n{self.subsubquestions}")
 
 
 @dataclass
@@ -64,8 +67,8 @@ class Question:
         number: int,
         text: str,
         subquestions: List[SubQuestion],
-        marks: int,
-        answer: Optional[MarkScheme],
+        marks: int = 0,
+        answer: Optional[MarkScheme] = None,
     ):
         self.number = number
         self.text = text
@@ -74,7 +77,8 @@ class Question:
         self.answer = answer
 
     def __str__(self):
-        return f"Q{self.number}: {self.text} [{self.marks}]"
+        return f"({self.number}): {self.text}" + (f"\n{self.subquestions}")
+
 
 class ParserError(Exception):
     pass
@@ -83,58 +87,204 @@ class ParserError(Exception):
 class QuestionPaperParser:
     QUESTION_START_X = 49.6063
     SUBQUESTION_START_X = 72
-    SUBSUBQUESTION_I_START_X = 96
-    SUBSUBQUESTION_II_START_X = 93
-    SUBSUBQUESTION_III_START_X = 90
-    SUBSUBQUESTION_IV_START_X = 90
-    SUBSUBQUESTION_V_START_X = 93
+    SUBSUBQUESTION_STARTS = [
+        ("i", 96),
+        ("ii", 93),
+        ("iii", 90),
+        ("iv", 90),
+        ("v", 93),
+        ("vi", 90),
+    ]
     IGNORE_PAGE_FOOTER_Y = 35
     PAGE_NUMBER_Y = 790.4778
-    
+    LAST_PAGE_COPYRIGHT_Y = 134
+
     def __init__(self, pdf: pdfplumber.PDF):
         self.pdf = pdf
-        
+
+    def parse_question_paper(self):
+        self.chars = self.read_texts()
+        questions = []
+        question_starts = self.find_question_starts()
+        for i, question_start in enumerate(question_starts):
+            if i == len(question_starts) - 1:
+                question_end = len(self.chars)
+            else:
+                question_end = question_starts[i + 1]
+            question = self.parse_question(question_start, question_end, i + 1)
+            questions.append(question)
+        return questions
+
     def read_texts(self):
         chars = []
-        for page in self.pdf.pages[1:]:
+        for i, page in enumerate(self.pdf.pages[1:]):
+            if re.search(r"BLANK PAGE", page.extract_text()):
+                continue
             page_chars = page.chars
-            page_chars = list(filter(lambda x: x["y0"] > self.IGNORE_PAGE_FOOTER_Y and x["y0"] != self.PAGE_NUMBER_Y, page_chars))
-            chars.extend(page_chars)
-            
-        return texts
+            page_chars = list(
+                filter(
+                    lambda x: x["y0"]
+                    > (
+                        self.IGNORE_PAGE_FOOTER_Y
+                        if (i != len(self.pdf.pages) - 2)
+                        else self.LAST_PAGE_COPYRIGHT_Y
+                    )
+                    and x["y0"] != self.PAGE_NUMBER_Y,
+                    page_chars,
+                )
+            )
+            chars.extend(
+                [(char["x0"], char["y0"], char["text"]) for char in page_chars]
+            )
+        return chars
 
-            
+    def find_question_starts(self):
+        question_starts = []
+        current_number = 1
+        for i, (x, _, _) in enumerate(self.chars):
+            if x == self.QUESTION_START_X:
+                text = "".join(char[2] for char in self.chars[i : i + 3])
+                if re.match(
+                    f"{current_number}",
+                    text,
+                ):
+                    question_starts.append(i)
+                    current_number += 1
 
-    
+        return question_starts
 
-    
+    def parse_question(self, start_index: int, end_index: int, number: int):
+        subquestion_starts = self.find_subquestion_starts(start_index, end_index)
+        if subquestion_starts:
+            subquestions = []
+            question_text = "".join(
+                char[2] for char in self.chars[start_index : subquestion_starts[0]]
+            )
+            for i, subquestion_start in enumerate(subquestion_starts):
+                if i == len(subquestion_starts) - 1:
+                    subquestion_end = end_index
+                else:
+                    subquestion_end = subquestion_starts[i + 1]
+                subquestions.append(
+                    self.parse_subquestion(
+                        subquestion_start,
+                        subquestion_end,
+                        chr(ord("a") + i),
+                    )
+                )
+        else:
+            subquestions = None
+            question_text = "".join(
+                char[2] for char in self.chars[start_index:end_index]
+            )
+        return Question(
+            number=number,
+            text=question_text,
+            subquestions=subquestions,
+        )
+
+    def parse_subquestion(self, start_index: int, end_index: int, number: str):
+        subsubquestion_starts = self.find_subsubquestion_starts(start_index, end_index)
+        if subsubquestion_starts:
+            subsubquestions = []
+            subquestion_text = "".join(
+                char[2] for char in self.chars[start_index : subsubquestion_starts[0]]
+            )
+            for i, subsubquestion_start in enumerate(subsubquestion_starts):
+                if i == len(subsubquestion_starts) - 1:
+                    subsubquestion_end = end_index
+                else:
+                    subsubquestion_end = subsubquestion_starts[i + 1]
+                subsubquestions.append(
+                    self.parse_subsubquestion(
+                        subsubquestion_start,
+                        subsubquestion_end,
+                        self.SUBSUBQUESTION_STARTS[i][0],
+                    )
+                )
+        else:
+            subsubquestions = None
+            subquestion_text = "".join(
+                char[2] for char in self.chars[start_index:end_index]
+            )
+        return SubQuestion(
+            number=number,
+            text=subquestion_text,
+            subsubquestions=subsubquestions,
+        )
+
+    def parse_subsubquestion(self, start_index: int, end_index: int, number: str):
+        subsubquestion_text = "".join(
+            char[2] for char in self.chars[start_index:end_index]
+        )
+        return SubSubQuestion(number=number, text=subsubquestion_text)
+
+    def find_subquestion_starts(self, start_index: int, end_index: int):
+        subquestion_starts = []
+        current_question_alpha = "a"
+        for i in range(start_index, end_index):
+            x, _, _ = self.chars[i]
+            if round(x) == self.SUBQUESTION_START_X:
+                text = "".join(char[2] for char in self.chars[i : i + 5])
+                if re.match(r"\(" + current_question_alpha + r"\)", text):
+                    current_question_alpha = chr(ord(current_question_alpha) + 1)
+                    subquestion_starts.append(i)
+        return subquestion_starts
+
+    def find_subsubquestion_starts(self, start_index: int, end_index: int):
+        subsubquestion_starts = []
+        current_subsubquestion_roman_index = 0
+        for i in range(start_index, end_index):
+            x, _, _ = self.chars[i]
+            if (
+                round(x)
+                == self.SUBSUBQUESTION_STARTS[current_subsubquestion_roman_index][1]
+            ):
+                text = "".join(char[2] for char in self.chars[i : i + 5])
+                if re.match(
+                    r"\("
+                    + self.SUBSUBQUESTION_STARTS[current_subsubquestion_roman_index][0]
+                    + r"\)",
+                    text,
+                ):
+                    current_subsubquestion_roman_index += 1
+                    subsubquestion_starts.append(i)
+
+        return subsubquestion_starts
+
+
+def format_question_hierarchy(questions):
+    output = ""
+    for q in questions:
+        output += f"\n{q.number}:\n"
+        if q.subquestions:
+            for sub_q in q.subquestions:
+                text = sub_q.text.strip()
+                output += f"\n    {text}\n"
+                if sub_q.subsubquestions:
+                    for subsub_q in sub_q.subsubquestions:
+                        text = subsub_q.text.strip()
+                        output += f"\n        {text}\n"
+        output += "\n" + "-" * 80 + "\n"
+    return output.strip()
+
+
+class MarkSchemeParser:
+    def __init__(self, pdf: pdfplumber.PDF):
+        self.pdf = pdf
 
 
 def main():
     qp_path = "papers/igcse-biology-0610/0610_w22_qp_42.pdf"
     ms_path = "papers/igcse-biology-0610/0610_w22_ms_42.pdf"
 
-
-    with open("output.py", "w", encoding="utf-8") as f:
+    with open("output.txt", "w", encoding="utf-8") as f:
         with pdfplumber.open(qp_path) as qp_pdf:
             qp_parser = QuestionPaperParser(qp_pdf)
-            qp_texts = qp_parser.read_texts()
-        f.write(pprint.pformat(qp_texts))
+            qp_questions = qp_parser.parse_question_paper()
+            formatted_output = format_question_hierarchy(qp_questions)
+            f.write(formatted_output)
 
- 
+
 if __name__ == "__main__":
     main()
-'''
-  
-def clean_text(text: str) -> str:
-    text = re.sub(r"\[Turn over", "", text)
-    # remove ...
-    text = re.sub(r"\.\.+", "", text)
-    # remove UCLES copyright
-    text = re.sub(r\d+\d+/\d+/.+/.+/.+© UCLES 20\d+", "", text)
-
-    # remove Permission  to  reproduce  items  where  third‑party...
-    text = re.sub(
-        r"Permission  to  reproduce  items  .*", "", text
-    )
-'''
