@@ -106,9 +106,29 @@ class QuestionPaperParser:
 
     def __init__(self, pdf: pdfplumber.PDF):
         self.pdf = pdf
+        self.chars = self.read_texts()
+        self.find_position_constants()
+
+    def find_position_constants(self):
+        bold_chars = [char for char in self.chars if char[3]]
+        bold_strings = "".join(char[2] for char in bold_chars)
+        # find the first 1
+        first_one_index = bold_strings.index("1")
+        first_one_char = bold_chars[first_one_index]
+        self.QUESTION_START_X = first_one_char[0]
+        try:
+            # find the first (a)
+            first_a_index = bold_strings.index("(a)")
+            first_a_char = bold_chars[first_a_index]
+            self.SUBQUESTION_START_X = first_a_char[0]
+            # find the first (i)
+            first_i_index = bold_strings.index("(i)")
+            first_i_char = bold_chars[first_i_index]
+            self.SUBSUBQUESTION_STARTS = (first_i_char[0] - 5, first_i_char[0] + 5)
+        except:
+            pass
 
     def parse_question_paper(self):
-        self.chars = self.read_texts()
         questions = []
         question_starts = self.find_question_starts()
         for i, question_start in enumerate(question_starts):
@@ -134,13 +154,23 @@ class QuestionPaperParser:
                         if (i != len(self.pdf.pages) - 2)
                         else self.LAST_PAGE_COPYRIGHT_Y
                     )
-                    and x["y0"] != self.PAGE_NUMBER_Y,
+                    and x["y0"] != self.PAGE_NUMBER_Y
+                    and len(x["text"]) == 1,
                     page_chars,
                 )
             )
             chars.extend(
-                [(char["x0"], char["y0"], char["text"]) for char in page_chars]
+                [
+                    (
+                        char["x0"],
+                        char["y0"],
+                        char["text"],
+                        char,
+                    )
+                    for char in page_chars
+                ]
             )
+        pprint.pprint(chars)
         return chars
 
     def find_question_starts(self):
@@ -286,15 +316,16 @@ class MarkSchemeParser:
 
 
 def main():
-    qp_path = "papers/igcse-history-0470/0470_w24_qp_41.pdf"
+    qp_path = "papers/igcse-biology-0610/0610_w24_qp_42.pdf"
     ms_path = "papers/igcse-biology-0610/0610_w22_ms_42.pdf"
 
     with open("output.txt", "w", encoding="utf-8") as f:
         with pdfplumber.open(qp_path) as qp_pdf:
             qp_parser = QuestionPaperParser(qp_pdf)
             qp_questions = qp_parser.parse_question_paper()
+            qp_texts = qp_parser.read_texts()
             formatted_output = format_question_hierarchy(qp_questions)
-            f.write(formatted_output)
+            f.write(pprint.pformat(qp_texts))
         # with pdfplumber.open(ms_path) as ms_pdf:
         #     ms_parser = MarkSchemeParser(ms_pdf)
         #     lines = ms_parser.extract_lines()
