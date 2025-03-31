@@ -3,11 +3,11 @@ from dataclasses import dataclass
 import pdfplumber
 from enum import StrEnum
 from typing import List, Optional, Tuple
-
+import turtle
 import pprint
 
 
-@dataclass(frozen=True)
+@dataclass
 class MarkScheme:
     def __init__(self, answers: List[Tuple[List[str], int]], guidance: Optional[str]):
         self.answers = answers
@@ -147,7 +147,7 @@ class QuestionPaperParser:
         question_starts = []
         current_number = 1
         for i, (x, _, _) in enumerate(self.chars):
-            if x == self.QUESTION_START_X:
+            if abs(x - self.QUESTION_START_X) <= 2:
                 text = "".join(char[2] for char in self.chars[i : i + 3])
                 if re.match(
                     f"{current_number}",
@@ -229,7 +229,7 @@ class QuestionPaperParser:
         current_question_alpha = "a"
         for i in range(start_index, end_index):
             x, _, _ = self.chars[i]
-            if round(x) == self.SUBQUESTION_START_X:
+            if abs(x - self.SUBQUESTION_START_X) <= 2:
                 text = "".join(char[2] for char in self.chars[i : i + 5])
                 if re.match(r"\(" + current_question_alpha + r"\)", text):
                     current_question_alpha = chr(ord(current_question_alpha) + 1)
@@ -277,9 +277,16 @@ class MarkSchemeParser:
     def __init__(self, pdf: pdfplumber.PDF):
         self.pdf = pdf
 
+    def extract_lines(self):
+        lines = []
+        for page in self.pdf.pages[5:]:
+            page_lines = [(rect["x0"], rect["y0"]) for rect in page.rects]
+            lines.append(page_lines)
+        return lines
+
 
 def main():
-    qp_path = "papers/igcse-biology-0610/0610_w22_qp_42.pdf"
+    qp_path = "papers/igcse-history-0470/0470_w24_qp_41.pdf"
     ms_path = "papers/igcse-biology-0610/0610_w22_ms_42.pdf"
 
     with open("output.txt", "w", encoding="utf-8") as f:
@@ -288,6 +295,10 @@ def main():
             qp_questions = qp_parser.parse_question_paper()
             formatted_output = format_question_hierarchy(qp_questions)
             f.write(formatted_output)
+        # with pdfplumber.open(ms_path) as ms_pdf:
+        #     ms_parser = MarkSchemeParser(ms_pdf)
+        #     lines = ms_parser.extract_lines()
+        #     f.write(pprint.pformat(lines, width=80))
 
 
 if __name__ == "__main__":
