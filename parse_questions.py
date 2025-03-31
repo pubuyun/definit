@@ -85,16 +85,21 @@ class ParserError(Exception):
 
 
 class QuestionPaperParser:
+    ROMAN_NUMERALS = [
+        "i",
+        "ii",
+        "iii",
+        "iv",
+        "v",
+        "vi",
+        "vii",
+        "viii",
+        "ix",
+        "x",
+    ]
     QUESTION_START_X = 49.6063
     SUBQUESTION_START_X = 72
-    SUBSUBQUESTION_STARTS = [
-        ("i", 96),
-        ("ii", 93),
-        ("iii", 90),
-        ("iv", 90),
-        ("v", 93),
-        ("vi", 90),
-    ]
+    SUBSUBQUESTION_STARTS = (90, 100)
     IGNORE_PAGE_FOOTER_Y = 35
     PAGE_NUMBER_Y = 790.4778
     LAST_PAGE_COPYRIGHT_Y = 134
@@ -199,7 +204,7 @@ class QuestionPaperParser:
                     self.parse_subsubquestion(
                         subsubquestion_start,
                         subsubquestion_end,
-                        self.SUBSUBQUESTION_STARTS[i][0],
+                        self.ROMAN_NUMERALS[i],
                     )
                 )
         else:
@@ -233,21 +238,20 @@ class QuestionPaperParser:
 
     def find_subsubquestion_starts(self, start_index: int, end_index: int):
         subsubquestion_starts = []
-        current_subsubquestion_roman_index = 0
+        current_roman_index = 0
         for i in range(start_index, end_index):
             x, _, _ = self.chars[i]
             if (
-                round(x)
-                == self.SUBSUBQUESTION_STARTS[current_subsubquestion_roman_index][1]
+                self.SUBSUBQUESTION_STARTS[0]
+                <= round(x)
+                <= self.SUBSUBQUESTION_STARTS[1]
             ):
                 text = "".join(char[2] for char in self.chars[i : i + 5])
                 if re.match(
-                    r"\("
-                    + self.SUBSUBQUESTION_STARTS[current_subsubquestion_roman_index][0]
-                    + r"\)",
+                    r"\(" + self.ROMAN_NUMERALS[current_roman_index] + r"\)",
                     text,
                 ):
-                    current_subsubquestion_roman_index += 1
+                    current_roman_index += 1
                     subsubquestion_starts.append(i)
 
         return subsubquestion_starts
