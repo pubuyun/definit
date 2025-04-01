@@ -8,7 +8,7 @@ class Parser:
     PAGE_NUMBER_Y = 790.4778
     LAST_PAGE_COPYRIGHT_Y = 134
     DIFFERENCE = 5
-    QUESTION_START_X = 49.6063  # Will be updated in subclasses
+    QUESTION_START_X = 49.6063  # Will be updated
 
     def __init__(self, pdf: pdfplumber.PDF):
         self.pdf = pdf
