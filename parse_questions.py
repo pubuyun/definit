@@ -4,7 +4,6 @@ from PIL import Image
 import pdfplumber
 from enum import StrEnum
 from typing import List, Optional, Tuple
-import turtle
 import pprint
 
 
@@ -76,31 +75,34 @@ class Question:
         self.subquestions = subquestions
         self.marks = marks
         self.answer = answer
+        self.question_image = question_image
+        self.image = image
 
     def __str__(self):
         return f"({self.number}): {self.text}" + (f"\n{self.subquestions}")
 
 
-class ParserError(Exception):
-    pass
+@dataclass
+class MultipleChoiceQuestion:
+    def __init__(
+        self,
+        number: int,
+        text: str,
+        options: List[str],
+        answer: Optional[str] = None,
+        image=None,
+    ):
+        self.number = number
+        self.text = text
+        self.options = options
+        self.answer = answer
+        self.image = image
+
+    def __str__(self):
+        return f"({self.number}): {self.text}" + (f"\n{self.options}")
 
 
-class QuestionPaperParser:
-    ROMAN_NUMERALS = [
-        "i",
-        "ii",
-        "iii",
-        "iv",
-        "v",
-        "vi",
-        "vii",
-        "viii",
-        "ix",
-        "x",
-    ]
-    QUESTION_START_X = 49.6063
-    SUBQUESTION_START_X = 72
-    SUBSUBQUESTION_STARTS = (90, 100)
+class Parser:
     IGNORE_PAGE_FOOTER_Y = 35
     PAGE_NUMBER_Y = 790.4778
     LAST_PAGE_COPYRIGHT_Y = 134
@@ -110,44 +112,6 @@ class QuestionPaperParser:
         self.pdf = pdf
         self.chars = self.read_texts()
         self.find_position_constants()
-
-    def find_position_constants(self):
-        bold_chars = [char for char in self.chars if char["bold"]]
-        if len(bold_chars) == 0:
-            # from 2024 papers onwards, there is no font information
-            bold_chars = self.chars
-        bold_strings = "".join(char["text"] for char in bold_chars)
-        # find the first 1
-        first_one_index = bold_strings.index("1")
-        first_one_char = bold_chars[first_one_index]
-        self.QUESTION_START_X = first_one_char["x"]
-        print(self.QUESTION_START_X)
-        try:
-            # find the first (a)
-            first_a_index = bold_strings.index("(a)")
-            first_a_char = bold_chars[first_a_index]
-            self.SUBQUESTION_START_X = first_a_char["x"]
-            # find the first (i)
-            first_i_index = bold_strings.index("(i)")
-            first_i_char = bold_chars[first_i_index]
-            self.SUBSUBQUESTION_STARTS = (
-                first_i_char["x"] - 20,
-                first_i_char["x"] + 10,
-            )
-        except:
-            pass
-
-    def parse_question_paper(self):
-        questions = []
-        question_starts = self.find_question_starts()
-        for i, question_start in enumerate(question_starts):
-            if i == len(question_starts) - 1:
-                question_end = len(self.chars)
-            else:
-                question_end = question_starts[i + 1]
-            question = self.parse_question(question_start, question_end, i + 1)
-            questions.append(question)
-        return questions
 
     def read_texts(self):
         chars = []
@@ -182,6 +146,233 @@ class QuestionPaperParser:
             )
         return chars
 
+    def find_position_constants(self):
+        # This method should be overridden in subclasses
+        pass
+
+    def parse_question_paper(self):
+        questions = []
+        question_starts = self.find_question_starts()
+        for i, question_start in enumerate(question_starts):
+            if i == len(question_starts) - 1:
+                question_end = len(self.chars)
+            else:
+                question_end = question_starts[i + 1]
+            question = self.parse_question(question_start, question_end, i + 1)
+            questions.append(question)
+        return questions
+
+    def extract_question_image(
+        self,
+        start_page: int,
+        end_page: int,
+        resolution=200,
+        margin: int = 20,
+    ):
+        images = []
+        for i in range(start_page, end_page + 1):
+            page = self.pdf.pages[i]
+            # Crop the image to the question area
+            im = (
+                page.crop(
+                    (
+                        self.QUESTION_START_X - margin,
+                        margin,
+                        page.width - self.QUESTION_START_X + margin,
+                        page.height - margin,
+                    )
+                )
+                .to_image(resolution=resolution)
+                .original
+            )
+            images.append(im)
+
+        # If multiple pages, stitch images together vertically
+        if len(images) > 1:
+            stitched = Image.new(
+                "RGB", (images[0].width, sum(im.height for im in images))
+            )
+            y_offset = 0
+            for im in images:
+                stitched.paste(im, (0, y_offset))
+                y_offset += im.height
+            return stitched
+        return images[0]
+
+    def extract_image_inpage(
+        self,
+        page: pdfplumber.page,
+    ):
+        images = []
+        for image in page.images:
+            if image["x0"] < self.QUESTION_START_X:
+                continue
+            if image["x1"] > page.width - self.QUESTION_START_X:
+                continue
+            if image["top"] < self.IGNORE_PAGE_FOOTER_Y:
+                continue
+            if image["top"] > page.height - self.IGNORE_PAGE_FOOTER_Y:
+                continue
+            bbox = (
+                image["x0"],
+                image["top"],
+                image["x1"],
+                image["bottom"],
+            )
+            im = page.within_bbox(bbox).to_image()
+            images.append(im)
+        return images
+
+
+class MCQParser(Parser):
+    QUESTION_START_X = 49.6063
+    DIFFERENCE = 5
+
+    def __init__(self, pdf: pdfplumber.PDF):
+        super().__init__(pdf)
+
+    def find_position_constant(self):
+        bold_chars = [char for char in self.chars if char["bold"]]
+        if len(bold_chars) == 0:
+            # from 2024 papers onwards, there is no font information
+            bold_chars = self.chars
+        bold_strings = "".join(char["text"] for char in bold_chars)
+        # find the first 1
+        first_one_index = bold_strings.index("1")
+        first_one_char = bold_chars[first_one_index]
+        self.QUESTION_START_X = first_one_char["x"]
+        print(self.QUESTION_START_X)
+
+    def find_question_starts(self):
+        question_starts = []
+        current_number = 1
+        for i, char in enumerate(self.chars):
+            if abs(char["x"] - self.QUESTION_START_X) <= self.DIFFERENCE:
+                text = "".join(c["text"] for c in self.chars[i : i + 3])
+                if re.match(f"{current_number}", text):
+                    question_starts.append(i)
+                    current_number += 1
+        return question_starts
+
+    def find_options(self, start: int, end: int):
+        option_starts = []
+        current_alpha = "A"
+        for i in range(start, end):
+            if not self.chars[i]["bold"]:
+                continue
+            if self.chars[i]["text"] == current_alpha:
+                option_starts.append(i)
+                current_alpha = chr(ord(current_alpha) + 1)
+        return option_starts
+
+    def parse_question(self, start_index: int, end_index: int, number: int):
+        start_y = self.chars[start_index]["y"]
+        end_y = self.chars[end_index - 1]["y"]
+        page = self.chars[start_index]["page"]
+        image = self.extract_mcq_image(
+            page=page,
+            y0=start_y,
+            y1=end_y,
+            resolution=200,
+        )
+        option_starts = self.find_options(start_index, end_index)
+        if option_starts:
+            options = []
+            question_text = "".join(
+                char["text"] for char in self.chars[start_index : option_starts[0]]
+            )
+            for i, option_start in enumerate(option_starts):
+                if i == len(option_starts) - 1:
+                    option_end = end_index
+                else:
+                    option_end = option_starts[i + 1]
+                options.append(
+                    self.parse_option(
+                        option_start,
+                        option_end,
+                    )
+                )
+        else:
+            options = None
+            question_text = "".join(
+                char["text"] for char in self.chars[start_index:end_index]
+            )
+        return MultipleChoiceQuestion(
+            number=number,
+            text=question_text,
+            options=options,
+            image=image,  # whole question imag
+        )
+
+    def parse_option(self, start_index: int, end_index: int):
+        option_text = "".join(
+            char["text"] for char in self.chars[start_index:end_index]
+        )
+        return option_text
+
+    def extract_mcq_image(self, page: int, y0: int, y1: int, resolution=200):
+        page = self.pdf.pages[page]
+        # convert y0 y1 (from top) to y0 y1 (from bottom)
+        y0 = page.height - y0
+        y1 = page.height - y1
+        im = (
+            page.crop(
+                (
+                    self.QUESTION_START_X - 10,
+                    y0 - 20,
+                    page.width,
+                    y1,
+                )  # (x0, top, x1, bottom)
+            )
+            .to_image(resolution=resolution)
+            .original
+        )
+        return im
+
+
+class QuestionPaperParser(Parser):
+    ROMAN_NUMERALS = [
+        "i",
+        "ii",
+        "iii",
+        "iv",
+        "v",
+        "vi",
+        "vii",
+        "viii",
+        "ix",
+        "x",
+    ]
+    QUESTION_START_X = 49.6063
+    SUBQUESTION_START_X = 72
+    SUBSUBQUESTION_STARTS = (90, 100)
+
+    def find_position_constants(self):
+        bold_chars = [char for char in self.chars if char["bold"]]
+        if len(bold_chars) == 0:
+            # from 2024 papers onwards, there is no font information
+            bold_chars = self.chars
+        bold_strings = "".join(char["text"] for char in bold_chars)
+        # find the first 1
+        first_one_index = bold_strings.index("1")
+        first_one_char = bold_chars[first_one_index]
+        self.QUESTION_START_X = first_one_char["x"]
+        print(self.QUESTION_START_X)
+        try:
+            # find the first (a)
+            first_a_index = bold_strings.index("(a)")
+            first_a_char = bold_chars[first_a_index]
+            self.SUBQUESTION_START_X = first_a_char["x"]
+            # find the first (i)
+            first_i_index = bold_strings.index("(i)")
+            first_i_char = bold_chars[first_i_index]
+            self.SUBSUBQUESTION_STARTS = (
+                first_i_char["x"] - 20,
+                first_i_char["x"] + 10,
+            )
+        except:
+            pass
+
     def find_question_starts(self):
         question_starts = []
         current_number = 1
@@ -197,20 +388,17 @@ class QuestionPaperParser:
         return question_starts
 
     def parse_question(self, start_index: int, end_index: int, number: int):
-        question_start = (
-            int(self.chars[start_index]["page"]),
-            int(self.chars[start_index]["y"]),
-        )  # page, y
-        question_end = (
-            int(self.chars[end_index - 1]["page"]),
-            int(self.chars[end_index - 1]["y"]),
-        )
+        start_page = self.chars[start_index]["page"]
+        end_page = self.chars[end_index - 1]["page"]
         image = self.extract_question_image(
-            start_page=question_start[0],
-            end_page=question_end[0],
-            start_y=question_start[1],
-            end_y=question_end[1],
+            start_page=start_page,
+            end_page=end_page,
+            resolution=200,
         )
+        inside_images = []
+        for page in self.pdf.pages[start_page : end_page + 1]:
+            page_images = self.extract_image_inpage(page)
+            inside_images.extend(page_images)
 
         subquestion_starts = self.find_subquestion_starts(start_index, end_index)
         if subquestion_starts:
@@ -240,6 +428,7 @@ class QuestionPaperParser:
             text=question_text,
             subquestions=subquestions,
             image=image,  # whole question image
+            question_image=inside_images,  # images in the question
         )
 
     def parse_subquestion(self, start_index: int, end_index: int, number: str):
@@ -310,92 +499,46 @@ class QuestionPaperParser:
                     subsubquestion_starts.append(i)
         return subsubquestion_starts
 
-    def extract_question_image(
-        self,
-        start_page: int,
-        end_page: int,
-        start_y: int,
-        end_y: int,
-        resolution: int = 150,
-    ):
-        """Extract a section of the PDF as an image between specified pages and y-coordinates.
-
-        Args:
-            start_page: Starting page number (1-based indexing)
-            end_page: Ending page number (1-based indexing)
-            start_y: Starting y-coordinate on the first page
-            end_y: Ending y-coordinate on the last page
-            resolution: DPI resolution for the output image (default: 150)
-
-        Returns:
-            PIL Image object of the extracted region
-        """
-        margin = 20
-        resmul = 3
-        # Get page dimensions from first page
-        page = self.pdf.pages[0]
-        page_width = int(page.width)
-        image_width = page_width * resmul
-        # Adjust coordinates for margin
-        x0 = margin
-        x1 = page_width - margin
-        y0 = start_y
-        y1 = end_y
-
-        # Extract images from each page in range
-        images = []
-        heights = []
-        for page_num in range(start_page - 1, end_page):
-            page = self.pdf.pages[page_num]
-            # For first page use start_y, for last page use end_y, otherwise full height
-            if page_num == start_page - 1:
-                crop_y0 = y0
-                crop_y1 = int(page.height)
-            elif page_num == end_page - 1:
-                crop_y0 = 0
-                crop_y1 = y1
-            else:
-                crop_y0 = 0
-                crop_y1 = int(page.height)
-
-            # Crop and get image at resolution
-            cropped = page.crop((x0, crop_y0, x1, crop_y1))
-            im = cropped.to_image(resolution=resolution)
-
-            # Calculate target size
-            target_height = int((crop_y1 - crop_y0) * resolution / 72)
-            # Resize to match target dimensions
-            im = im.resize((image_width, target_height), Image.Resampling.LANCZOS)
-            images.append(im)
-            heights.append(target_height)
-
-        # If multiple pages, stitch images together vertically
-        if len(images) > 1:
-            total_height = sum(im.height for im in images)
-            combined = Image.new("RGB", (image_width, total_height))
-            y_offset = 0
-            for im in images:
-                combined.paste(im, (0, y_offset))
-                y_offset += im.height
-            return combined
-
-        return images[0]
+    def extract_subquestion_image(self, page: int, y0: int, y1: int, resolution=200):
+        page = self.pdf.pages[page]
+        y0 = page.height - y0
+        y1 = page.height - y1
+        im = (
+            page.crop(
+                (
+                    self.SUBQUESTION_START_X,
+                    y0,
+                    page.width,
+                    y1,
+                )
+            )
+            .to_image(resolution=resolution)
+            .original
+        )
+        return im
 
 
 def format_question_hierarchy(questions):
     output = ""
     for q in questions:
         output += f"{q.text}\n"
+        if isinstance(q, MultipleChoiceQuestion):
+            if q.options:
+                output += f"Options: {', '.join(q.options)}\n"
+        else:
+            if q.question_image:
+                for i, img in enumerate(q.question_image):
+                    img.save(f"question_{q.number}_image_{i}.png")
+            if q.subquestions:
+                for sub_q in q.subquestions:
+                    text = sub_q.text.strip()
+                    output += f"\n    {text}\n"
+                    if sub_q.subsubquestions:
+                        for subsub_q in sub_q.subsubquestions:
+                            text = subsub_q.text.strip()
+                            output += f"\n        {text}\n"
         if q.image:
             q.image.save(f"question_{q.number}.png")  # Save the question image
-        if q.subquestions:
-            for sub_q in q.subquestions:
-                text = sub_q.text.strip()
-                output += f"\n    {text}\n"
-                if sub_q.subsubquestions:
-                    for subsub_q in sub_q.subsubquestions:
-                        text = subsub_q.text.strip()
-                        output += f"\n        {text}\n"
         output += "\n" + "-" * 80 + "\n"
     return output.strip()
 
@@ -413,17 +556,30 @@ class MarkSchemeParser:
 
 
 def main():
-    qp_path = "papers/igcse-chemistry-0620/0620_w23_qp_63.pdf"
+    qp_path = "papers/igcse-biology-0610/0610_w23_qp_12.pdf"
     ms_path = "papers/igcse-biology-0610/0610_w23_ms_42.pdf"
+    # extract subject code, exam season, and paper type from the file name
+    match = re.search(r"(\d{4})_(\w{3})_(\d{2})", qp_path)
+    if match:
+        subject_code, exam_season, paper_type = match.groups()
+        print(f"Subject Code: {subject_code}")
+        print(f"Exam Season: {exam_season}")
+        print(f"Paper Type: {paper_type}")
 
     with open("output.txt", "w", encoding="utf-8") as f:
+        # with pdfplumber.open(qp_path) as qp_pdf:
+        #     qp_parser = QuestionPaperParser(qp_pdf)
+        #     qp_questions = qp_parser.parse_question_paper()
+        #     qp_texts = qp_parser.read_texts()
+        #     formatted_output = format_question_hierarchy(qp_questions)
+        #     f.write(formatted_output)
+
         with pdfplumber.open(qp_path) as qp_pdf:
-            qp_parser = QuestionPaperParser(qp_pdf)
+            qp_parser = MCQParser(qp_pdf)
             qp_questions = qp_parser.parse_question_paper()
-            qp_texts = qp_parser.read_texts()
             formatted_output = format_question_hierarchy(qp_questions)
-            f.write(pprint.pformat(qp_texts))
             f.write(formatted_output)
+
         # with pdfplumber.open(ms_path) as ms_pdf:
         #     ms_parser = MarkSchemeParser(ms_pdf)
         #     lines = ms_parser.extract_lines()
