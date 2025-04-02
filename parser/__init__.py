@@ -2,9 +2,9 @@ from PIL import Image
 import pdfplumber
 import re
 from typing import List
-from .parser import Parser
-from .mcqparser import MCQParser
-from .sqparser import QuestionPaperParser
+from .qp_parser import Parser
+from .mcq_parser import MCQParser
+from .sq_parser import QuestionPaperParser
 from .markscheme import MarkSchemeParser
 
 

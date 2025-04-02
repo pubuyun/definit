@@ -1,5 +1,5 @@
-from parser import Parser
-from .models.question import MultipleChoiceQuestion
+from parser.qp_parser import Parser
+from models.question import MultipleChoiceQuestion
 import re
 from PIL import Image
 
@@ -22,7 +22,6 @@ class MCQParser(Parser):
         first_one_index = bold_strings.index("1")
         first_one_char = bold_chars[first_one_index]
         self.QUESTION_START_X = first_one_char["x"]
-        print(self.QUESTION_START_X)
 
     def find_question_starts(self):
         question_starts = []
@@ -53,9 +52,6 @@ class MCQParser(Parser):
             char["y"] for char in self.chars[end_index::-1] if char["page"] == page
         )
 
-        print(
-            f"number: {number}, start_y: {self.chars[start_index]}, end_y: {self.chars[end_index - 1]}"
-        )
         image = self.extract_mcq_image(
             page=page,
             y0=start_y,
@@ -117,3 +113,36 @@ class MCQParser(Parser):
             .original
         )
         return im
+
+
+if __name__ == "__main__":
+    import re
+    import pdfplumber
+
+    def format_question_hierarchy(questions):
+        output = ""
+        for q in questions:
+            output += f"{q.text}\n"
+            if q.options:
+                output += f"Options: {', '.join(q.options)}\n"
+            if q.image:
+                q.image.save(f"question_{q.number}.png")  # Save the question image
+            output += "\n" + "-" * 80 + "\n"
+        return output.strip()
+
+    qp_path = "papers/igcse-biology-0610/0610_w23_qp_12.pdf"
+    # extract subject code, exam season, and paper type from the file name
+    match = re.search(r"(\d{4})_(\w\d{2})_\w{2}_(\d{2})\.pdf", qp_path)
+    if match:
+        subject_code, exam_season, paper_type = match.groups()
+        print(f"Subject Code: {subject_code}")
+        print(f"Exam Season: {exam_season}")
+        print(f"Paper Type: {paper_type}")
+
+    with open("output.txt", "w", encoding="utf-8") as f:
+        with pdfplumber.open(qp_path) as qp_pdf:
+            qp_parser = MCQParser(qp_pdf)
+            qp_questions = qp_parser.parse_question_paper()
+            qp_texts = qp_parser.chars
+            formatted_output = format_question_hierarchy(qp_questions)
+            f.write(formatted_output)
