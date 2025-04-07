@@ -1,5 +1,5 @@
 from parser.qp_parser import Parser
-from models.question import Question, SubQuestion, SubSubQuestion
+from parser.models.question import Question, SubQuestion, SubSubQuestion
 import re
 
 
@@ -68,10 +68,15 @@ class QuestionPaperParser(Parser):
             end_page=end_page,
             resolution=200,
         )
-        inside_images = []
+        # save image
+        image_path = f"{self.IMAGE_PATH}{self.image_prefix}_question_{number}.png"
+        image.save(image_path)
+        inside_image_paths = []
         for page in self.pdf.pages[start_page : end_page + 1]:
-            page_images = self.extract_image_inpage(page)
-            inside_images.extend(page_images)
+            page_image_paths = self.extract_image_inpage(
+                page, path_prefix=image_path[:-4]
+            )
+            inside_image_paths.extend(page_image_paths)
 
         subquestion_starts = self.find_subquestion_starts(start_index, end_index)
         if subquestion_starts:
@@ -100,8 +105,8 @@ class QuestionPaperParser(Parser):
             number=number,
             text=question_text,
             subquestions=subquestions,
-            image=image,  # whole question image
-            question_image=inside_images,  # images in the question
+            image=image_path,  # whole question image
+            question_image=inside_image_paths,  # images in the question
         )
 
     def parse_subquestion(self, start_index: int, end_index: int, number: str):
@@ -181,9 +186,6 @@ if __name__ == "__main__":
         output = ""
         for q in questions:
             output += f"{q.text}\n"
-            if q.question_image:
-                for i, img in enumerate(q.question_image):
-                    img.save(f"question_{q.number}_image_{i}.png")
             if q.subquestions:
                 for sub_q in q.subquestions:
                     text = sub_q.text.strip()
@@ -192,8 +194,6 @@ if __name__ == "__main__":
                         for subsub_q in sub_q.subsubquestions:
                             text = subsub_q.text.strip()
                             output += f"\n        {text}\n"
-            if q.image:
-                q.image.save(f"question_{q.number}.png")  # Save the question image
             output += "\n" + "-" * 80 + "\n"
         return output.strip()
 
@@ -208,7 +208,7 @@ if __name__ == "__main__":
 
     with open("output.txt", "w", encoding="utf-8") as f:
         with pdfplumber.open(qp_path) as qp_pdf:
-            qp_parser = QuestionPaperParser(qp_pdf)
+            qp_parser = QuestionPaperParser(qp_pdf, image_prefix="0610_w23_qp_42")
             qp_questions = qp_parser.parse_question_paper()
             formatted_output = format_question_hierarchy(qp_questions)
             f.write(formatted_output)

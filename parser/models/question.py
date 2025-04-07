@@ -44,6 +44,7 @@ class SubQuestion:
 
 @dataclass
 class Question:
+
     def __init__(
         self,
         number: int,
@@ -51,8 +52,8 @@ class Question:
         subquestions: List[SubQuestion],
         marks: int = 0,
         answer: Optional[MarkScheme] = None,
-        question_image: Optional[List[Image]] = None,  # images in the question
-        image: Optional[Image] = None,  # image of the whole question
+        question_image: Optional[str] = None,  # images in the question
+        image: Optional[str] = None,  # image of the whole question
     ):
         self.number = number
         self.text = text

@@ -1,5 +1,5 @@
 from parser.qp_parser import Parser
-from models.question import MultipleChoiceQuestion
+from parser.models.question import MultipleChoiceQuestion
 import re
 from PIL import Image
 
@@ -8,9 +8,6 @@ class MCQParser(Parser):
     QUESTION_START_X = 49.6063
     DIFFERENCE = 5
     IGNORE_PAGE_FOOTER_Y = 40
-
-    def __init__(self, pdf):
-        super().__init__(pdf)
 
     def find_position_constant(self):
         bold_chars = [char for char in self.chars if char["bold"]]
@@ -48,16 +45,21 @@ class MCQParser(Parser):
     def parse_question(self, start_index: int, end_index: int, number: int):
         start_y = self.chars[start_index + 1]["y"]
         page = self.chars[start_index]["page"]
-        end_y = next(
-            char["y"] for char in self.chars[end_index::-1] if char["page"] == page
+        end_y = (
+            self.chars[end_index + 1]["y"]
+            if end_index + 1 < len(self.chars)
+            and self.chars[end_index + 1]["page"] == page
+            else self.IGNORE_PAGE_FOOTER_Y
         )
-
         image = self.extract_mcq_image(
             page=page,
             y0=start_y,
             y1=end_y,
             resolution=200,
         )
+        image_path = f"{self.IMAGE_PATH}{self.image_prefix}_question_{number}.png"
+        image.save(image_path)
+
         option_starts = self.find_options(start_index, end_index)
         if option_starts:
             options = []
@@ -84,7 +86,7 @@ class MCQParser(Parser):
             number=number,
             text=question_text,
             options=options,
-            image=image,  # whole question image
+            image=image_path,  # whole question image
         )
 
     def parse_option(self, start_index: int, end_index: int):
@@ -125,8 +127,6 @@ if __name__ == "__main__":
             output += f"{q.text}\n"
             if q.options:
                 output += f"Options: {', '.join(q.options)}\n"
-            if q.image:
-                q.image.save(f"question_{q.number}.png")  # Save the question image
             output += "\n" + "-" * 80 + "\n"
         return output.strip()
 
@@ -141,7 +141,7 @@ if __name__ == "__main__":
 
     with open("output.txt", "w", encoding="utf-8") as f:
         with pdfplumber.open(qp_path) as qp_pdf:
-            qp_parser = MCQParser(qp_pdf)
+            qp_parser = MCQParser(qp_pdf, image_prefix="0610_w23_qp_12")
             qp_questions = qp_parser.parse_question_paper()
             qp_texts = qp_parser.chars
             formatted_output = format_question_hierarchy(qp_questions)

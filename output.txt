@@ -1,98 +1,160 @@
-1 
-
-    (a) Red blood cells are specialised cells that transport oxygen.  State the substance in red blood cells that combines with oxygen. ............................................................................................................................................. [1]
-
-    (b) State the name of the component of blood that promotes blood clotting. ............................................................................................................................................. [1]
-
-    (c) Some students investigated the effect of immersing red blood cells in different concentrations of salt solution.  They measured the diameters of samples of red blood cells and calculated the mean.  They then immersed each red blood cell sample in a different concentration of salt solution.  After two minutes they measured and calculated the mean of the samples again.  Table 1.1 shows the results.Table 1.1percentage concentration of the salt solutionmean initial diameter of the red blood cells / µmmean diameter of the red blood cells after two minutes / µm0.47.5cells burst0.87.58.20.97.57.51.87.56.0
-
-        (i)  Calculate the percentage increase in the mean diameter of red blood cells that were immersed in the 0.8% salt solution.   Give your answer to two significant figures.   Space for working.  ............................................................ %[3]
-
-        (ii) Explain the results for the red blood cells that were immersed in the 1.8% salt solution. ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ..................................................................................................................................... [3]
-
-        (iii) State why there was no change in the mean diameter of the red blood cells immersed in the 0.9% salt solution. ........................................................................................................................................... ........................................................................................................................................... ..................................................................................................................................... [1]
-
-    (d) State why red blood cells burst when immersed in pure water but plant cells do not. ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [1]
-
-    (e) State two uses of water in a plant.1  ................................................................................................................................................2  ................................................................................................................................................ [2] [Total: 12]
+1 Which processes are characteristics of all living organisms?  1 digestion 2 respiration 3 excretion  
+Options: A 1, 2 and 3 , B 1 only , C 2 and 3 only , D 2 only   
 
 --------------------------------------------------------------------------------
-2 Fig. 2.1 is a photograph of some leaves of a water lily, which is a hydrophyte. The water lily has adaptive features that are found in many different hydrophytes.Fig. 2.1 
-
-    (a) Describe what is meant by an adaptive feature. ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [2]
-
-    (b) Fig. 2.2 is a photomicrograph of a cross-section of a part of a water lily leaf.BACFig. 2.2
-
-        (i) State the names of the parts labelled A, B and C in Fig. 2.2.A  ........................................................................................................................................B  ........................................................................................................................................C  ........................................................................................................................................ [3]
-
-        (ii) Explain how part C in Fig. 2.2 adapts the hydrophyte for its environment.  ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ..................................................................................................................................... [3]
-
-    (c) A scientist calculated the mean number of stomata per mm2 in the upper and lower epidermis in tomato plants and water lily plants. Tomato plants are a type of terrestrial plant.  Table 2.1 shows the results.Table 2.1mean number of stomata per mm2plantin upper epidermisin lower epidermistomato 10129water lily475  0
-
-        (i) Compare and explain the differences in the mean number of stomata in a tomato plant and in a water lily plant. ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ..................................................................................................................................... [5]
-
-        (ii) State the name of the cells that control the opening and closing of stomata. ..................................................................................................................................... [1] [Total: 14]
+2 Using the binomial system, the Arctic fox is called Vulpes lagopus.  Which row is correct?   Vulpes lagopus 
+Options: A genus kingdom , B genus species , C species genus , D species kingdom   
 
 --------------------------------------------------------------------------------
-3 Fig. 3.1 is a diagram of the junction between two neurones in a healthy person. Fig. 3.2 is a diagram of the junction between the same two neurones in a person who has Parkinson’s disease. This disease affects the nervous system.Xneurotransmitterneurotransmitterreceptor proteinreceptor proteinY    Fig. 3.1 Fig. 3.2 
-
-    (a) Identify the parts labelled X and Y in Fig. 3.2.X  ...............................................................................................................................................Y ................................................................................................................................................ [2]
-
-    (b) Parkinson’s disease affects neurones in the brain that are responsible for movement.  Using the information in Fig. 3.1 and Fig. 3.2, suggest and explain the effect of Parkinson’s disease on a person’s movement. ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [5]
-
-    (c) Describe two ways nervous control differs from hormonal control.1  ................................................................................................................................................ ...................................................................................................................................................2  ................................................................................................................................................ ................................................................................................................................................... [2]
-
-    (d)
-
-        (i) The shape of the receptor proteins shown in Fig. 3.1 and Fig. 3.2 is important for their function.   Explain how the shape of the receptor proteins is determined. ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ..................................................................................................................................... [2]
-
-        (ii) Cell membranes also contain protein carriers. Describe the role of protein carriers. ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ..................................................................................................................................... [2] [Total: 13]
+3 The diagrams show four different types of arthropod.  Which organism is labelled with its correct arthropod group?  
+Options: A, B, C, Dcrustaceaninsectmyriapodarachnid   
 
 --------------------------------------------------------------------------------
-4 A scientist investigated the effect of temperature on the rate of photosynthesis in one species of plant. Photosynthesis involves enzyme-controlled reactions. Discs were cut from a leaf and kept at different temperatures. The total surface area of the discs was kept the same for each temperature. The volume of oxygen that was produced by the leaf discs was measured and used to estimate the rate of photosynthesis. The results are shown in Fig. 4.1.102025303540temperature / °Crate ofphotosynthesis/ arbitrary units455055152025303540Fig. 4.1 
-
-    (a) Identify the optimum temperature for photosynthesis in Fig. 4.1.  ..................................................... °C [1]
-
-    (b) Explain the results shown in Fig. 4.1. ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [6]
-
-    (c) Carbon dioxide was supplied in excess at each temperature during the investigation.  Explain why. ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [2]
-
-    (d) Suggest why not all of the oxygen produced by the leaf is released. ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [1]
-
-    (e) Describe the role of chlorophyll in photosynthesis.  ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [2] [Total: 12]
+4 Which features are possessed by all plant cells?   a cell wall chloroplasts  
+Options: A   key , B    = yes , C    = no , D    3   
 
 --------------------------------------------------------------------------------
-5 
-
-    (a) Describe two ways in which the circulatory system of a fish is different from the circulatory system of a mammal.1  ................................................................................................................................................ ...................................................................................................................................................2  ................................................................................................................................................ ................................................................................................................................................... [2]
-
-    (b) Explain the advantages of a double circulatory system. ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [3]
-
-    (c) Fig. 5.1 shows part of the circulatory system of a mammal.hepatic arteryArenal veinBCDEFXFig. 5.1
-
-        (i) State the letter from Fig. 5.1 that identifies where these processes occur:absorption of the products of digestion into the blood  .......................................................excretion of carbon dioxide from the body  ........................................................................formation of urine  ..............................................................................................................production of bile. . ............................................................................................................. [4]
-
-        (ii) Identify the name of the blood vessel labelled X in Fig. 5.1. ..................................................................................................................................... [1]
-
-    (d) Describe the role of the liver in excretion. ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [4] [Total: 14]
+5 The diameter of an egg is 6.5 cm. A student draws the egg. The diameter of the egg in the drawing is 19.5 cm.  What is the magnification of the drawing? 
+Options: A 0.3 , B 3.0 , C 6.5 , D 300   
 
 --------------------------------------------------------------------------------
-6 
+6 The diagram shows an experiment to investigate osmosis in living cells.  waterglass dishpotatoconcentratedsugar solution  What happens to the volumes of water and sugar solution after 12 hours?   volume of water volume of sugar solution 
+Options: A decreases increases , B increases increases , C increases remains the same , D remains the same decreases   
 
-    (a) State the names of two hormones released by the ovaries.1  ................................................................................................................................................2  ................................................................................................................................................ [2]
+--------------------------------------------------------------------------------
+7 Which process causes oxygen to pass from an alveolus in the lung into a blood capillary? 
+Options: A assimilation , B diffusion , C excretion , D osmosis   
 
-    (b) During pregnancy, antibodies are acquired by the fetus from the mother.  State the organ the antibodies cross to reach the fetus. ............................................................................................................................................. [1]
+--------------------------------------------------------------------------------
+8 Which row identifies the chemical elements in proteins?   carbon hydrogen oxygen nitrogen  
+Options: A     key , B      = present , C      = absent , D        4 
 
-    (c) A baby was breastfed for six months. The concentration of antibodies in the baby’s blood obtained from breast milk and the concentration of antibodies made by the baby itself were measured.  Fig. 6.1 shows the results.0020406080100123456age of the baby / monthsbreastfeedingstoppedconcentrationof antibodies inthe baby’s blood/ arbitrary units789101112Key:antibodies acquired by the baby from the motherantibodies produced by the babyFig. 6.1
+--------------------------------------------------------------------------------
+9 The table shows some large biological molecules and some small biological molecules.   large biological molecules small biological molecules 1 cellulose glucose 2 oil amino acids 3 glycogen glucose 4 protein ethanol  Which rows correctly pair large molecules with the smaller molecules used to make them? 
+Options: A 1 and 2 , B 1 and 3 , C 2 and 3 , D 3 and 4   
 
-        (i) Complete the sentences to describe the changes in antibody concentration in the baby.   After birth the concentration of antibodies acquired from the mother decreases   rapidly to 0 arbitrary units at ....................................... months.   Antibodies start being produced by cells called ....................................... in the baby   immediately after birth.   The total concentration of antibodies in the baby from both sources is   ....................................... arbitrary units at 4 months.   The concentration of antibodies acquired from the mother and the concentration of   antibodies produced by the baby are the same at ....................................... months. [4]
+--------------------------------------------------------------------------------
+10 Which changes could cause an enzyme to denature?  1 change in pH 2 change in temperature 3 change in substrate concentration  
+Options: A 1, 2 and 3 , B 1 and 2 only , C 1 and 3 only , D 2 and 3 only   
 
-        (ii) Describe the benefits of breastfeeding a baby for the first six months of life. ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ........................................................................................................................................... ..................................................................................................................................... [2]
+--------------------------------------------------------------------------------
+11 Which features of a leaf allow more diffusion of carbon dioxide into the palisade cells for photosynthesis?   number of stomata thickness  of the leaf 
+Options: A few thick , B few thin , C many thick , D many thin   5   
 
-        (iii) State two ways, other than breastfeeding, that a baby can acquire immunity.1  ........................................................................................................................................ ...........................................................................................................................................2  ........................................................................................................................................ ........................................................................................................................................... [2]
+--------------------------------------------------------------------------------
+12 The diagram shows a cell with groups of bacteria around its edge.  cell cytoplasmbacteriaspiral-shapedchloroplast  The bacteria have moved to areas of high oxygen concentration.  Which process in the cell causes the bacteria to form these groups? 
+Options: A digestion , B photosynthesis , C reproduction , D respiration   
 
-    (d) Explain the importance of the shape of an antibody. ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ................................................................................................................................................... ............................................................................................................................................. [3]
+--------------------------------------------------------------------------------
+13 The diagram shows the teeth in the lower jaw of a human.  Which tooth is a premolar?  
+Options: A, B, C, D   
 
-    (e) Antibodies are proteins.  State the chemical elements present in all proteins that are also found in carbohydrates and fats. ............................................................................................................................................. [1] [Total: 15]
+--------------------------------------------------------------------------------
+14 Some medicines are made into tablets which are coated in a starch-like substance.  The coating protects the medicine from the effects of gastric juice.  Which enzyme digests the coating and what is produced by this action?   enzyme products 
+Options: A amylase fatty acids and glycerol , B amylase simple reducing sugars , C lipase fatty acids and glycerol , D lipase simple reducing sugars  6 
+
+--------------------------------------------------------------------------------
+15 In which part of the alimentary canal are most nutrients absorbed into the blood? 
+Options: A colon , B oesophagus , C small intestine , D stomach   
+
+--------------------------------------------------------------------------------
+16 From which part of a leaf does most water evaporate during transpiration? 
+Options: A the cuticle , B the guard cells , C the spongy mesophyll cells , D the xylem vessels   
+
+--------------------------------------------------------------------------------
+17 The photograph shows a cross-section through a sunflower stem.  Z  What is the name and function of the tissue labelled Z?   name of tissue function of tissue 
+Options: A phloem transport of mineral ions , B phloem transport of sucrose , C xylem transport of mineral ions , D xylem transport of sucrose   7   
+
+--------------------------------------------------------------------------------
+18 What ensures the one-way flow of blood in the human circulatory system? 
+Options: A capillaries , B muscles , C valves , D ventricles   
+
+--------------------------------------------------------------------------------
+19 In which row is the component of blood correctly linked to its function?   blood component function 
+Options: A plasma transport of carbon dioxide , B platelets phagocytosis , C red blood cells antibody production , D white blood cells blood clotting   
+
+--------------------------------------------------------------------------------
+20 Which statement describes a transmissible disease? 
+Options: A a disease caused when a pathogen passes from one host to another , B a disease caused when a pathogen passes through a host’s body , C a disease caused when a pathogen passes to the host’s body only by direct contact , D a disease caused when a pathogen passes to the host’s body only by indirect contact   
+
+--------------------------------------------------------------------------------
+21 What is the composition of expired air compared with inspired air?   carbon dioxide oxygen water vapour 
+Options: A decreased increased increased , B decreased decreased increased , C increased decreased decreased , D increased decreased increased   8 
+
+--------------------------------------------------------------------------------
+22 The diagram shows the human breathing system.  123  What are the labelled structures?   1 2 3 
+Options: A bronchus bronchiole trachea , B bronchiole bronchus trachea , C trachea bronchus bronchiole , D trachea diaphragm bronchus   
+
+--------------------------------------------------------------------------------
+23 Yeast cells can convert glucose into alcohol and carbon dioxide.  Which statement about this process is correct? 
+Options: A The alcohol produced can be used to make bread rise. , B The carbon dioxide produced can be burnt as a biofuel. , C The yeast cells are using oxygen for this process. , D The yeast cells are carrying out anaerobic respiration.   9   
+
+--------------------------------------------------------------------------------
+24 In an experiment to investigate anaerobic respiration, two bottles are set up in a warm room, as shown.  balloonPQballoonyeastand watersugar, yeastand water  What would happen to each balloon after one day?  PQ
+Options: APQ, BPQ, CPQ, D   
+
+--------------------------------------------------------------------------------
+25 Which row shows an organ and the substance it excretes?   organ substance excreted 
+Options: A bladder water , B kidney ions , C lung oxygen , D urethra urea   10 
+
+--------------------------------------------------------------------------------
+26 The diagram shows a reflex arc in a human nervous system. The person’s finger has just made contact with a sharp object.  Which part is the motor neurone?  
+Options: A, B, C, D   
+
+--------------------------------------------------------------------------------
+27 Which lines on the graphs show the effects of adrenaline on pupil diameter and heart rate?  pupildiametertimeWXadrenaline is releasedheartratetimeYZadrenaline is released  
+Options: A W and Y , B W and Z , C X and Y , D X and Z   
+
+--------------------------------------------------------------------------------
+28 Which statements about tropisms in plants are correct?  1 Shoots grow towards light and away from gravity. 2 Shoots grow away from light and towards gravity. 3 Roots grow towards light and away from gravity. 4 Roots grow away from light and towards gravity.  
+Options: A 1 and 3 , B 1 and 4 , C 2 and 3 , D 2 and 4   11   
+
+--------------------------------------------------------------------------------
+29 What is defined as a substance that is taken into the body and modifies or affects chemical reactions in the body? 
+Options: A antibody , B drug , C hormone , D pathogen   
+
+--------------------------------------------------------------------------------
+30 Which row is correct for asexual reproduction?   number of parents offspring compared with parent or parents 
+Options: A one genetically different , B one genetically identical , C two genetically different , D two genetically identical   
+
+--------------------------------------------------------------------------------
+31 The diagram shows some stages in reproduction.  female structure M which releases eggscell Qeggcellmale structure N which releases spermspermcellprocessP  Which letter correctly identifies the structure or process? 
+Options: A M is the oviduct. , B N is the sperm duct. , C P is fertilisation. , D Q is the gamete.   12 
+
+--------------------------------------------------------------------------------
+32 The diagram shows half a flower.  Which structure produces pollen?  
+Options: A, B, C, D   
+
+--------------------------------------------------------------------------------
+33 Two parents have the genotypes Bb and bb for a particular feature.  What is the probability of these parents having offspring that are homozygous recessive for this feature? 
+Options: A 100% , B 75% , C 50% , D 25%   
+
+--------------------------------------------------------------------------------
+34 A genetic cross between two organisms may be shown as Tt  Tt.  What does T represent? 
+Options: A a dominant allele , B a dominant chromosome , C a recessive allele , D a recessive chromosome   
+
+--------------------------------------------------------------------------------
+35 Some phenotypes are listed.  1 blood group 2 body mass 3 height 4 seed colour in peas  Which phenotypes are examples of continuous variation? 
+Options: A 1, 2 and 3 , B 2 and 3 only , C 2 and 4 , D 3 and 4  13   
+
+--------------------------------------------------------------------------------
+36 A food chain is shown.  lettuce plant  slug  hedgehog  By which process is energy transferred from the lettuce plant to the slug? 
+Options: A egestion , B excretion , C ingestion , D respiration   
+
+--------------------------------------------------------------------------------
+37 A single bush is food for a large population of greenfly. Several ladybirds eat the greenfly. The ladybirds are eaten by a bird.  Which diagram shows the pyramid of numbers for this food chain?  
+Options: A , B , C , D    14 
+
+--------------------------------------------------------------------------------
+38 Scientists studied the uptake of potassium ions from chemical fertilisers by wheat plants.  The results are shown.  060120180240300360420350300250200150100500potassiumuptake / kgper hectaredays after planting  What is the difference in the uptake of potassium ions at 360 days after planting compared to 30 days after planting? 
+Options: A 295 kg per hectare , B 290 kg per hectare , C 285 kg per hectare , D 280 kg per hectare   15   
+
+--------------------------------------------------------------------------------
+39 A student investigated gas exchange using the apparatus shown.  tube Ytube Xlimewatermouthpiece  What would be the appearance of the limewater in tube X and tube Y after breathing in and out of the mouthpiece for one minute?   tube X tube Y 
+Options: A clear clear , B clear cloudy , C cloudy clear , D cloudy cloudy   16  
+
+--------------------------------------------------------------------------------
+40 The diagram shows the flow of energy in an ecosystem.  3death1producer2Sunrespiration  Which row correctly completes boxes 1, 2 and 3?   1 2 3 
+Options: A herbivore carnivore decomposer , B carnivore herbivore decomposer , C decomposer carnivore herbivore , D carnivore decomposer herbivore    
 
 --------------------------------------------------------------------------------

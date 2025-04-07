@@ -9,11 +9,13 @@ class Parser:
     LAST_PAGE_COPYRIGHT_Y = 134
     DIFFERENCE = 5
     QUESTION_START_X = 49.6063  # Will be updated
+    IMAGE_PATH = "images/"
 
-    def __init__(self, pdf: pdfplumber.PDF):
+    def __init__(self, pdf: pdfplumber.PDF, image_prefix: str = ""):
         self.pdf = pdf
         self.chars = self.read_texts()
         self.find_position_constants()
+        self.image_prefix = image_prefix
 
     def read_texts(self):
         chars = []
@@ -104,9 +106,10 @@ class Parser:
     def extract_image_inpage(
         self,
         page: pdfplumber.page,
+        path_prefix: str,
     ):
-        images = []
-        for image in page.images:
+        image_paths = []
+        for i, image in enumerate(page.images):
             if image["x0"] < self.QUESTION_START_X:
                 continue
             if image["x1"] > page.width - self.QUESTION_START_X:
@@ -122,8 +125,10 @@ class Parser:
                 image["bottom"],
             )
             im = page.within_bbox(bbox).to_image()
-            images.append(im)
-        return images
+            path = path_prefix + f"_{i+1}.png"
+            im.save(path)
+            image_paths.append(path)
+        return image_paths
 
     def find_question_starts(self):
         # This method should be overridden in subclasses

@@ -1,4 +1,4 @@
-from parser.ms_parser import Parser
+from ms_parser import Parser
 from pdf2docx import Converter
 from typing import List, Optional
 import re
@@ -121,7 +121,7 @@ class SQMSParser(Parser):
 
 
 if __name__ == "__main__":
-    from parser.sq_parser import QuestionPaperParser
+    from sq_parser import QuestionPaperParser
     import pdfplumber
 
     qp_path = "papers/igcse-biology-0610/0610_w22_qp_42.pdf"
