@@ -1,5 +1,6 @@
 from .question import Question, SubQuestion, SubSubQuestion, MultipleChoiceQuestion
 from .answer import MarkScheme
+from .syllabus import Syllabus
 
 __all__ = [
     "Question",
@@ -7,4 +8,5 @@ __all__ = [
     "SubSubQuestion",
     "MultipleChoiceQuestion",
     "MarkScheme",
+    "Syllabus",
 ]
