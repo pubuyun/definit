@@ -6,7 +6,7 @@ import pprint
 
 
 class SyllabusParser:
-    PAGES = (12, 46)  # inclusive
+    PAGES = (12, 41)  # inclusive
     CORE_START_X = 62
     SUPPLEMENT_START_X = 308
     IGNORE_PAGE_FOOTER_Y = 30
@@ -17,7 +17,6 @@ class SyllabusParser:
     def __init__(self, pdf: pdfplumber.PDF):
         self.pdf = pdf
         self.chars = self.read_texts()
-        self.bolds = list(filter(lambda x: x["bold"], self.chars))
 
     def read_texts(self):
         chars = []
@@ -37,16 +36,17 @@ class SyllabusParser:
             chars.extend(
                 [
                     {
-                        "index": i,
+                        "index": len(chars) + j,
                         "x": char["x0"],
                         "y": char["y0"],
                         "text": char["text"],
                         "bold": "bold" in char["fontname"].lower(),
                         "page": i + 1,
                     }
-                    for char in page_chars
+                    for j, char in enumerate(page_chars)
                 ]
             )
+
         return chars
 
     def parse_syllabus(self):
@@ -84,7 +84,7 @@ class SyllabusParser:
             [
                 char["text"]
                 for char in self.chars[
-                    start : (end if end < len(self.bolds) else len(self.chars))
+                    start : (end if end < len(self.chars) else len(self.chars))
                 ]
                 if char["bold"]
             ]
@@ -99,7 +99,7 @@ class SyllabusParser:
                     [
                         char["text"]
                         for char in self.chars[
-                            point_start : (
+                            (point_start + 2) : (
                                 point_starts[i + 1]
                                 if i < len(point_starts) - 1
                                 else end
@@ -113,23 +113,28 @@ class SyllabusParser:
     def find_title_starts(self) -> List[int]:
         title_starts = []
         title_number = 1
-        bolds = "".join([char["text"] for char in self.bolds])
-        for match in re.finditer(self.TITLE_PATTERN, bolds):
+        bolds = [char for char in filter(lambda x: x["bold"], self.chars)]
+        bolds_text = "".join(bold["text"] for bold in bolds)
+        for match in re.finditer(self.TITLE_PATTERN, bolds_text):
             if match.group(1) == str(title_number):
-                title_starts.append(self.bolds[match.start()]["index"])
+                print(
+                    f"match: {match.group(0)}, index: {match.start()}, real_index: {bolds[match.start()]['index']}"
+                )
+                title_starts.append(bolds[match.start()]["index"])
                 title_number += 1
         return title_starts
 
     def find_subtitle_starts(self, start: int, end: int) -> List[int]:
         subtitle_starts = []
         subtitle_number = 1
-        text = "".join([char["text"] for char in self.chars[start:end] if char["bold"]])
-        indexes = [char["index"] for char in self.chars[start:end] if char["bold"]]
-        for i, match in enumerate(re.finditer(self.SUBTITLE_PATTERN, text)):
-            if match:
-                print(f"match: {match.group(0)}")
+        bolds_in_range = [char for char in self.chars[start:end] if char["bold"]]
+        bold_texts = "".join(bold["text"] for bold in bolds_in_range)
+        for i, match in enumerate(re.finditer(self.SUBTITLE_PATTERN, bold_texts)):
             if match and match.group(1) == str(subtitle_number):
-                subtitle_starts.append(indexes[i])
+                print(
+                    f"\tmatch: {match.group(0)}, index: {match.start()}, real_index: {bolds_in_range[match.start()]['index']}"
+                )
+                subtitle_starts.append(bolds_in_range[match.start()]["index"])
                 subtitle_number += 1
         return subtitle_starts
 
@@ -152,10 +157,20 @@ class SyllabusParser:
 
 
 if __name__ == "__main__":
-    syallabus_path = "papers/595426-2023-2025-syllabus.pdf"
+    syallabus_path = "papers/595430-2023-2025-syllabus.pdf"
+
+    def jsonize(syllabus: Syllabus) -> Dict:
+        return {
+            "number": syllabus.number,
+            "title": syllabus.title,
+            "content": syllabus.content,
+        }
+
     with pdfplumber.open(syallabus_path) as pdf:
         syllabus_parser = SyllabusParser(pdf)
         syllabuses = syllabus_parser.parse_syllabus()
         with open("output.txt", "w", encoding="utf-8") as f:
-            # f.write(pprint.pformat(syllabuses))
-            f.write("".join([char["text"] for char in syllabus_parser.bolds]))
+            f.write(pprint.pformat([jsonize(syllabus) for syllabus in syllabuses]))
+            # f.write("".join([char["text"] for char in syllabus_parser.bolds]))
+            # f.write("\n")
+            # f.write("\n".join([str(char["index"]) for char in syllabus_parser.chars]))
