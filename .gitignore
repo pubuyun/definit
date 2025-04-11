@@ -2,3 +2,4 @@
 atk.py
 images/*.png
 cs.py
+__pycache__
