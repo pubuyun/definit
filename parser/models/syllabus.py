@@ -2,7 +2,7 @@ from typing import List, Optional
 
 
 class Syllabus:
-    def __init__(self, number: str, title: str, content: List[str]):
+    def __init__(self, number: str, title: str, content: List[str] = []):
         self.number = number
         self.title = title
         self.content = content

@@ -2,37 +2,34 @@ from parser.models import Syllabus
 import pdfplumber
 from typing import Dict, List, Optional
 import re
+import pprint
 
 
 class SyllabusParser:
     PAGES = (12, 46)  # inclusive
+    CORE_START_X = 62
+    SUPPLEMENT_START_X = 308
+    IGNORE_PAGE_FOOTER_Y = 30
+    IGNORE_HEADER_Y = 760
+    TITLE_PATTERN = r"(?<!\.)(\d+)\s*([A-Za-z\s]+)"
+    SUBTITLE_PATTERN = r"\d+\.(\d+)\s*([A-Za-z\s]+)"
 
     def __init__(self, pdf: pdfplumber.PDF):
         self.pdf = pdf
         self.chars = self.read_texts()
-
-    CORE_START_X = 50
-    SUPPLEMENT_START_X = 200
-    IGNORE_FOOTER_Y = 50
-    IGNORE_HEADER_Y = 700
-    TITLE_PATTERN = r"(\d+)\s+([A-Za-z0-9\s]+)"
-    SUBTITLE_PATTERN = r"(\d+\.\d+)\s+([A-Za-z0-9\s]+)"
+        self.bolds = list(filter(lambda x: x["bold"], self.chars))
 
     def read_texts(self):
         chars = []
-        for i, page in enumerate(self.pdf.pages[1:]):
+        for i, page in enumerate(self.pdf.pages[self.PAGES[0] - 1 : self.PAGES[1]]):
             if re.search(r"BLANK PAGE", page.extract_text()):
                 continue
             page_chars = page.chars
             page_chars = list(
                 filter(
-                    lambda x: x["y0"]
-                    > (
-                        self.IGNORE_PAGE_FOOTER_Y
-                        if (i != len(self.pdf.pages) - 2)
-                        else self.LAST_PAGE_COPYRIGHT_Y
-                    )
-                    and x["y0"] != self.PAGE_NUMBER_Y
+                    lambda x: self.IGNORE_HEADER_Y
+                    > x["y0"]
+                    > (self.IGNORE_PAGE_FOOTER_Y)
                     and len(x["text"]) == 1,
                     page_chars,
                 )
@@ -40,6 +37,7 @@ class SyllabusParser:
             chars.extend(
                 [
                     {
+                        "index": i,
                         "x": char["x0"],
                         "y": char["y0"],
                         "text": char["text"],
@@ -54,6 +52,7 @@ class SyllabusParser:
     def parse_syllabus(self):
         syllabuses = []
         title_starts = self.find_title_starts()
+        print(f"title_starts: {title_starts}")
         for i, title_start in enumerate(title_starts):
             syllabuses.extend(
                 self.parse_syllabus_from_title(
@@ -65,21 +64,11 @@ class SyllabusParser:
                     ),
                 )
             )
-
-    def find_syallbus_starts(self):
-        # This method should be overridden in subclasses
-        pass
-
-    def find_subtitle_starts(self, start: int, end: int) -> List[int]:
-        # This method should be overridden in subclasses
-        pass
-
-    def find_point_starts(self, start: int, end: int) -> List[int]:
-        # This method should be overridden in subclasses
-        pass
+        return syllabuses
 
     def parse_syllabus_from_title(self, start: int, end: int) -> List[Syllabus]:
         subtitle_starts = self.find_subtitle_starts(start, end)
+        print(f"subtitle_starts: {subtitle_starts}")
         syllabuses = []
         for i, subtitle_start in enumerate(subtitle_starts):
             syllabuses.append(
@@ -88,12 +77,20 @@ class SyllabusParser:
                     (subtitle_starts[i + 1] if i + 1 < len(subtitle_starts) else end),
                 )
             )
+        return syllabuses
 
     def parse_syllabus_from_subtitle(self, start: int, end: int) -> Optional[Syllabus]:
-        title = self.parse_subtitle(start)
-        if not title:
-            return None
-        syllabus = Syllabus(title=title)
+        title = "".join(
+            [
+                char["text"]
+                for char in self.chars[
+                    start : (end if end < len(self.bolds) else len(self.chars))
+                ]
+                if char["bold"]
+            ]
+        )
+        number = re.search(r"\d+.\d+", title).group(0)
+        syllabus = Syllabus(number=number, title=title)
         # parse content
         point_starts = self.find_point_starts(start, end)
         for i, point_start in enumerate(point_starts):
@@ -113,7 +110,52 @@ class SyllabusParser:
             )
         return syllabus
 
-    def parse_subtitle(self, start: int) -> str:
-        # re.match(self.TITLE_PATTERN, self.chars[start]["text"])
-        #     return self.chars[start]["text"]
-        pass
+    def find_title_starts(self) -> List[int]:
+        title_starts = []
+        title_number = 1
+        bolds = "".join([char["text"] for char in self.bolds])
+        for match in re.finditer(self.TITLE_PATTERN, bolds):
+            if match.group(1) == str(title_number):
+                title_starts.append(self.bolds[match.start()]["index"])
+                title_number += 1
+        return title_starts
+
+    def find_subtitle_starts(self, start: int, end: int) -> List[int]:
+        subtitle_starts = []
+        subtitle_number = 1
+        text = "".join([char["text"] for char in self.chars[start:end] if char["bold"]])
+        indexes = [char["index"] for char in self.chars[start:end] if char["bold"]]
+        for i, match in enumerate(re.finditer(self.SUBTITLE_PATTERN, text)):
+            if match:
+                print(f"match: {match.group(0)}")
+            if match and match.group(1) == str(subtitle_number):
+                subtitle_starts.append(indexes[i])
+                subtitle_number += 1
+        return subtitle_starts
+
+    def find_point_starts(self, start: int, end: int) -> List[int]:
+        point_starts = []
+        current_point = 1
+        for i in range(start, end):
+            # if the char within 20 pixels of the CORE_START_X or SUPPLEMENT_START_X, and it is a number, check for it
+            if (
+                abs(self.chars[i]["x"] - self.CORE_START_X) < 20
+                or abs(self.chars[i]["x"] - self.SUPPLEMENT_START_X) < 20
+            ):
+                match = re.match(
+                    r"\d+", "".join([char["text"] for char in self.chars[i : i + 1]])
+                )
+                if match and match.group(0) == str(current_point):
+                    point_starts.append(i)
+                    current_point += 1
+        return point_starts
+
+
+if __name__ == "__main__":
+    syallabus_path = "papers/595426-2023-2025-syllabus.pdf"
+    with pdfplumber.open(syallabus_path) as pdf:
+        syllabus_parser = SyllabusParser(pdf)
+        syllabuses = syllabus_parser.parse_syllabus()
+        with open("output.txt", "w", encoding="utf-8") as f:
+            # f.write(pprint.pformat(syllabuses))
+            f.write("".join([char["text"] for char in syllabus_parser.bolds]))
