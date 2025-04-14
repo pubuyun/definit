@@ -1,8 +1,8 @@
-from ms_parser import Parser
+from parser.ms_parser import Parser
 from pdf2docx import Converter
 from typing import List, Optional
 import re
-from models.question import Question, SubQuestion, SubSubQuestion
+from parser.models.question import Question, SubQuestion, SubSubQuestion
 
 
 class SQMSParser(Parser):
@@ -90,6 +90,8 @@ class SQMSParser(Parser):
     def complete_answers(self):
         # Complete subsubquestion answers first
         for question in self.questions:
+            if not question.subquestions:
+                continue
             for subquestion in question.subquestions:
                 # Update subquestion's answer by concatenating subsubquestion answers
                 if not subquestion.answer and subquestion.subsubquestions:
@@ -107,7 +109,7 @@ class SQMSParser(Parser):
                         )
 
             # Update question's answer by concatenating subquestion answers
-            if not question.answer and question.subquestions:
+            if not question.answer:
                 answers = [
                     f"({sq.number}) {sq.answer}"
                     for sq in question.subquestions

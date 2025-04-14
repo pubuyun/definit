@@ -1,4 +1,4 @@
-from ms_parser import Parser
+from parser.ms_parser import Parser
 from typing import List, Optional
 from models.question import MultipleChoiceQuestion
 

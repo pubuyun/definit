@@ -1,17 +1,19 @@
 from dataclasses import dataclass
 from typing import List, Optional
 from PIL.Image import Image
-from .answer import MarkScheme
+from .syllabus import Syllabus
 
 
 @dataclass
 class SubSubQuestion:
+
     def __init__(
         self,
         number: str,
         text: str,
         marks: int = 0,
-        answer: Optional[MarkScheme] = None,
+        answer: Optional[str] = None,
+        syllabus: Optional[Syllabus] = None,  # syllabus of the question
     ):
         self.number = number  # roman numeral
         self.text = text
@@ -24,13 +26,15 @@ class SubSubQuestion:
 
 @dataclass
 class SubQuestion:
+
     def __init__(
         self,
         number: str,
         text: str,
         subsubquestions: Optional[List[SubSubQuestion]],
         marks: int = 0,
-        answer: Optional[MarkScheme] = None,
+        answer: Optional[str] = None,
+        syllabus: Optional[Syllabus] = None,  # syllabus of the question
     ):
         self.number = number  # a, b, c...
         self.text = text
@@ -49,11 +53,12 @@ class Question:
         self,
         number: int,
         text: str,
-        subquestions: List[SubQuestion],
         marks: int = 0,
-        answer: Optional[MarkScheme] = None,
+        subquestions: Optional[List[SubQuestion]] = None,
+        answer: Optional[str] = None,
         question_image: Optional[str] = None,  # images in the question
         image: Optional[str] = None,  # image of the whole question
+        syllabus: Optional[Syllabus] = None,  # syllabus of the question
     ):
         self.number = number
         self.text = text
@@ -71,6 +76,7 @@ class Question:
 
 @dataclass
 class MultipleChoiceQuestion:
+
     def __init__(
         self,
         number: int,
@@ -78,6 +84,7 @@ class MultipleChoiceQuestion:
         options: List[str],
         answer: Optional[str] = None,
         image: Optional[Image] = None,
+        syllabus: Optional[Syllabus] = None,  # syllabus of the question
     ):
         self.number = number
         self.text = text

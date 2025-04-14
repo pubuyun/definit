@@ -6,7 +6,7 @@ import pprint
 
 
 class SyllabusParser:
-    PAGES = (12, 41)  # inclusive
+    PAGES = (12, 46)
     CORE_START_X = 62
     SUPPLEMENT_START_X = 308
     IGNORE_PAGE_FOOTER_Y = 30
@@ -14,8 +14,9 @@ class SyllabusParser:
     TITLE_PATTERN = r"(?<!\.)(\d+)\s*([A-Za-z\s]+)"
     SUBTITLE_PATTERN = r"\d+\.(\d+)\s*([A-Za-z\s]+)"
 
-    def __init__(self, pdf: pdfplumber.PDF):
+    def __init__(self, pdf: pdfplumber.PDF, pages: Optional[tuple] = None):
         self.pdf = pdf
+        self.PAGES = pages if pages else self.PAGES
         self.chars = self.read_texts()
 
     def read_texts(self):
@@ -52,7 +53,6 @@ class SyllabusParser:
     def parse_syllabus(self):
         syllabuses = []
         title_starts = self.find_title_starts()
-        print(f"title_starts: {title_starts}")
         for i, title_start in enumerate(title_starts):
             syllabuses.extend(
                 self.parse_syllabus_from_title(
@@ -68,7 +68,6 @@ class SyllabusParser:
 
     def parse_syllabus_from_title(self, start: int, end: int) -> List[Syllabus]:
         subtitle_starts = self.find_subtitle_starts(start, end)
-        print(f"subtitle_starts: {subtitle_starts}")
         syllabuses = []
         for i, subtitle_start in enumerate(subtitle_starts):
             syllabuses.append(
@@ -117,9 +116,6 @@ class SyllabusParser:
         bolds_text = "".join(bold["text"] for bold in bolds)
         for match in re.finditer(self.TITLE_PATTERN, bolds_text):
             if match.group(1) == str(title_number):
-                print(
-                    f"match: {match.group(0)}, index: {match.start()}, real_index: {bolds[match.start()]['index']}"
-                )
                 title_starts.append(bolds[match.start()]["index"])
                 title_number += 1
         return title_starts
@@ -131,9 +127,6 @@ class SyllabusParser:
         bold_texts = "".join(bold["text"] for bold in bolds_in_range)
         for i, match in enumerate(re.finditer(self.SUBTITLE_PATTERN, bold_texts)):
             if match and match.group(1) == str(subtitle_number):
-                print(
-                    f"\tmatch: {match.group(0)}, index: {match.start()}, real_index: {bolds_in_range[match.start()]['index']}"
-                )
                 subtitle_starts.append(bolds_in_range[match.start()]["index"])
                 subtitle_number += 1
         return subtitle_starts
