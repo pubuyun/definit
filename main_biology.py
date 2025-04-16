@@ -11,24 +11,33 @@ from parser.models.syllabus import Syllabus
 
 import pdfplumber
 from typing import List, Optional
+import os
 
 
 def get_questions(
-    syllabuses: List[Syllabus],
-    question_paper_pdf: pdfplumber.pdf,
-    mark_scheme_pdf: pdfplumber.pdf,
+    classifier: Classifier,
+    qp_pdf: str,
+    ms_pdf: str,
     is_mcq: bool,
 ) -> List[Question]:
     if is_mcq:
-        mcq_parser = MCQParser(question_paper_pdf)
-        questions = mcq_parser.parse_question_paper()
-        mcqms_parser = MCQMSParser(mark_scheme_pdf, questions)
-        questions = mcqms_parser.parse_ms()
+        with pdfplumber.open(qp_pdf) as qppdf:
+            mcq_parser = MCQParser(
+                qppdf, image_prefix=os.path.splitext(os.path.basename(qp_pdf))[0]
+            )
+            questions = mcq_parser.parse_question_paper()
+        mcqms_parser = MCQMSParser(ms_pdf, questions)
+        if mcqms_parser.parse_no_error():
+            questions = mcqms_parser.mcqs
+        else:
+            print(f"Parsing error in {ms_pdf}.")
     else:
-        sq_parser = QuestionPaperParser(question_paper_pdf)
-        questions = sq_parser.parse_question_paper()
-        sqms_parser = SQMSParser(mark_scheme_pdf, questions)
+        with pdfplumber.open(qp_pdf) as qppdf:
+            sq_parser = QuestionPaperParser(
+                qppdf, image_prefix=os.path.splitext(os.path.basename(qp_pdf))[0]
+            )
+            questions = sq_parser.parse_question_paper()
+        sqms_parser = SQMSParser(ms_pdf, questions)
         questions = sqms_parser.parse_ms()
-    classifier = Classifier(syllabuses, questions)
     classifier.classify_all()
-    return questions
+    return classifier.questions

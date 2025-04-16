@@ -89,24 +89,25 @@ class SyllabusParser:
             ]
         )
         number = re.search(r"\d+.\d+", title).group(0)
-        syllabus = Syllabus(number=number, title=title)
+        syllabus = Syllabus(number=number, title=title, content=[])
         # parse content
         point_starts = self.find_point_starts(start, end)
         for i, point_start in enumerate(point_starts):
-            syllabus.content.append(
-                "".join(
-                    [
-                        char["text"]
-                        for char in self.chars[
-                            (point_start + 2) : (
-                                point_starts[i + 1]
-                                if i < len(point_starts) - 1
-                                else end
-                            )
-                        ]
+            raw_content = "".join(
+                [
+                    char["text"]
+                    for char in self.chars[
+                        (point_start + 2) : (
+                            point_starts[i + 1] if i < len(point_starts) - 1 else end
+                        )
                     ]
-                )
+                ]
             )
+
+            splited = list(
+                filter(lambda x: len(x) > 3, re.split(r"\(\w+\)", raw_content))
+            )
+            syllabus.content.extend(splited)
         return syllabus
 
     def find_title_starts(self) -> List[int]:
@@ -141,7 +142,7 @@ class SyllabusParser:
                 or abs(self.chars[i]["x"] - self.SUPPLEMENT_START_X) < 20
             ):
                 match = re.match(
-                    r"\d+", "".join([char["text"] for char in self.chars[i : i + 1]])
+                    r"\d+", "".join([char["text"] for char in self.chars[i : i + 2]])
                 )
                 if match and match.group(0) == str(current_point):
                     point_starts.append(i)
@@ -150,20 +151,10 @@ class SyllabusParser:
 
 
 if __name__ == "__main__":
-    syallabus_path = "papers/595430-2023-2025-syllabus.pdf"
-
-    def jsonize(syllabus: Syllabus) -> Dict:
-        return {
-            "number": syllabus.number,
-            "title": syllabus.title,
-            "content": syllabus.content,
-        }
+    syallabus_path = "papers/595426-2023-2025-syllabus.pdf"
 
     with pdfplumber.open(syallabus_path) as pdf:
         syllabus_parser = SyllabusParser(pdf)
         syllabuses = syllabus_parser.parse_syllabus()
         with open("output.txt", "w", encoding="utf-8") as f:
-            f.write(pprint.pformat([jsonize(syllabus) for syllabus in syllabuses]))
-            # f.write("".join([char["text"] for char in syllabus_parser.bolds]))
-            # f.write("\n")
-            # f.write("\n".join([str(char["index"]) for char in syllabus_parser.chars]))
+            f.write("\n\n".join([str(syl) for syl in syllabuses]))
