@@ -7,17 +7,25 @@ from parser.models.question import (
 from parser.models.syllabus import Syllabus
 from typing import Any, Dict, List, Optional, Tuple
 import re
-from transformers import AutoTokenizer, AutoModel
 import torch
-from torch.nn.functional import cosine_similarity
 import tqdm
 import hashlib
+import tensorflow as tf
+import tensorflow_hub as hub
+import numpy as np
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-tokenizer = AutoTokenizer.from_pretrained("allenai/scibert_scivocab_uncased")
-model = AutoModel.from_pretrained("allenai/scibert_scivocab_uncased")
-model = model.to(device)
-model.eval()
+# Check if GPU is available for TensorFlow
+physical_devices = tf.config.list_physical_devices("GPU")
+if physical_devices:
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+    print("TensorFlow using GPU")
+else:
+    print("TensorFlow using CPU")
+
+# Load Universal Sentence Encoder
+print("Loading Universal Sentence Encoder...")
+use_model = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
+print("Model loaded")
 
 
 class Classifier:
@@ -57,17 +65,23 @@ class Classifier:
                 all_points.append(point.lower().strip())
                 syllabus_indices.append(idx)
 
-        embeddings = []
-        for i in tqdm.tqdm(range(len(all_points)), desc="Calculating embeddings"):
-            embedding = self.get_sentence_embedding(all_points[i])
-            embeddings.append(embedding.cpu())
+        # Process in batches to avoid memory issues
+        embeddings_list = []
+        for i in tqdm.tqdm(
+            range(0, len(all_points), self.batch_size), desc="Calculating embeddings"
+        ):
+            batch = all_points[i : i + self.batch_size]
+            batch_embeddings = self.get_sentence_embeddings(batch)
+            embeddings_list.extend(batch_embeddings)
 
-        return torch.stack(embeddings).to(device), syllabus_indices
+        # Convert numpy embeddings to torch tensor
+        embeddings_tensor = torch.tensor(np.array(embeddings_list), dtype=torch.float32)
+        return embeddings_tensor, syllabus_indices
 
     def _save_cache(self, current_hash: str) -> None:
         cache_data = {
             "hash": current_hash,
-            "embeddings": self.syllabus_embeddings.cpu(),
+            "embeddings": self.syllabus_embeddings,
             "syllabus_indices": self.syllabus_mapping,
         }
         torch.save(cache_data, self.cache_path)
@@ -79,7 +93,7 @@ class Classifier:
             if cache_data["hash"] != current_hash:
                 print("Cache invalid: syllabus content changed")
                 return False
-            self.syllabus_embeddings = cache_data["embeddings"].to(device)
+            self.syllabus_embeddings = cache_data["embeddings"]
             self.syllabus_mapping = cache_data["syllabus_indices"]
             return True
         except Exception as e:
@@ -87,36 +101,29 @@ class Classifier:
             return False
 
     @staticmethod
-    def get_sentence_embedding(sentence: str) -> torch.Tensor:
-        raw_segments = [s.strip() for s in re.split(r"/|;|\.", sentence) if s.strip()]
-        valid_segments = [s for s in raw_segments if len(s) >= 3]
-        if not valid_segments:
-            valid_segments = [sentence] if len(sentence) >= 3 else [sentence + "[UNK]"]
+    def get_sentence_embeddings(sentences: List[str]) -> List[np.ndarray]:
+        """Get embeddings for a batch of sentences using Universal Sentence Encoder"""
+        # Clean and process sentences
+        processed_sentences = []
+        for sentence in sentences:
+            # Remove multiple dots, scores, etc.
+            clean_sentence = re.sub(r"\.{3,}", "", sentence)
+            clean_sentence = re.sub(r"\[\d+\]", "", clean_sentence)
 
-        embeddings = []
-        with torch.no_grad():
-            for seg in valid_segments:
-                inputs = tokenizer(
-                    seg.lower(),
-                    return_tensors="pt",
-                    truncation=True,
-                    padding=True,
-                    max_length=512,
-                ).to(device)
-                outputs = model(**inputs)
-                embeddings.append(outputs.last_hidden_state[:, 0, :])
-        if embeddings:
-            stacked = torch.stack(embeddings)
-            return torch.mean(stacked, dim=0).squeeze()
-        else:
-            inputs = tokenizer(
-                sentence.lower(),
-                return_tensors="pt",
-                truncation=True,
-                padding=True,
-                max_length=512,
-            ).to(device)
-            return model(**inputs).last_hidden_state[:, 0, :].squeeze()
+            # If sentence is too short, add padding
+            if len(clean_sentence) < 3:
+                clean_sentence = clean_sentence + " [padding]"
+
+            processed_sentences.append(clean_sentence)
+
+        # Generate embeddings using USE
+        embeddings = use_model(processed_sentences).numpy()
+        return list(embeddings)
+
+    @staticmethod
+    def get_sentence_embedding(sentence: str) -> np.ndarray:
+        """Get embedding for a single sentence"""
+        return Classifier.get_sentence_embeddings([sentence])[0]
 
     def classify_all(
         self, questions: List[Question | MultipleChoiceQuestion]
@@ -146,21 +153,30 @@ class Classifier:
     def get_best_syllabus(self, question_sentence: str) -> Syllabus:
         if not question_sentence:
             return Syllabus("0", "Unknown")
-        # remove more than three connected dots, remove score
+
+        # Clean question sentence
         question_sentence = re.sub(r"\.{3,}", "", question_sentence)
         question_sentence = re.sub(r"\[\d+\]", "", question_sentence)
 
+        # Get question embedding using USE
         question_embedding = self.get_sentence_embedding(question_sentence)
-        similarities = cosine_similarity(
-            question_embedding.unsqueeze(0),
+        question_tensor = torch.tensor(question_embedding, dtype=torch.float32)
+
+        # Calculate cosine similarity with all syllabus points
+        similarities = torch.nn.functional.cosine_similarity(
+            question_tensor.unsqueeze(0),
             self.syllabus_embeddings,
             dim=1,
         )
-        # get max 5 similarities
+        print(question_sentence, similarities)
+
+        # Get top 5 most similar points
         max_indices = torch.topk(similarities, 5).indices
-        # get syllabuses with max similarities
+
+        # Map to syllabus indices and find most common
         mapped_indices = torch.tensor([self.syllabus_mapping[i] for i in max_indices])
         syllabus_idx = torch.bincount(mapped_indices).argmax().item()
+
         return self.syllabus_objects[syllabus_idx]
 
 
@@ -175,17 +191,17 @@ if __name__ == "__main__":
         output = ""
         for q in questions:
             output += (
-                f"{q.text}\n{q.syllabus.title if hasattr(q, "syllabus") else ""}\n "
+                f"{q.text}\n{q.syllabus.title if hasattr(q, 'syllabus') else ''}\n "
             )
             if q.subquestions:
                 for sub_q in q.subquestions:
                     text = sub_q.text.strip()
-                    output += f"\n    {text}\n{sub_q.syllabus.title if hasattr(sub_q, "syllabus") else ""}"
+                    output += f"\n    {text}\n{sub_q.syllabus.title if hasattr(sub_q, 'syllabus') else ''}"
                     if sub_q.subsubquestions:
                         for subsub_q in sub_q.subsubquestions:
                             text = subsub_q.text.strip()
                             subsub_q: SubSubQuestion
-                            output += f"\n        {text}\n{subsub_q.syllabus.title if hasattr(subsub_q, "syllabus") else ""}\n"
+                            output += f"\n        {text}\n{subsub_q.syllabus.title if hasattr(subsub_q, 'syllabus') else ''}\n"
             output += "\n" + "-" * 80 + "\n"
         return output.strip()
 
@@ -197,7 +213,7 @@ if __name__ == "__main__":
         questions = sq_parser.parse_question_paper()
     sqms_parser = SQMSParser("papers/igcse-biology-0610/0610_w22_ms_42.pdf", questions)
     questions = sqms_parser.parse_ms()
-    classifier = Classifier(syllabuses, cache_path="biology_syllabus.pt")
+    classifier = Classifier(syllabuses, cache_path="biology_syllabus_use.pt")
     questions = classifier.classify_all(questions)
     with open("output.txt", "w", encoding="utf-8") as f:
         f.write(format_question_hierarchy(questions))
