@@ -20,6 +20,17 @@ class QuestionPaperParser(Parser):
     SUBQUESTION_START_X = 72
     SUBSUBQUESTION_STARTS = (90, 100)
 
+    def join_chars(self, start_index: int, end_index: int) -> str:
+        result = []
+        for i in range(start_index, end_index):
+            char = self.chars[i]
+            if i > start_index:
+                prev_char = self.chars[i - 1]
+                if abs(char["y"] - prev_char["y"]) > 1:
+                    result.append(" ")
+            result.append(char["text"])
+        return "".join(result)
+
     def find_position_constants(self):
         bold_chars = [char for char in self.chars if char["bold"]]
         if len(bold_chars) == 0:
@@ -81,9 +92,7 @@ class QuestionPaperParser(Parser):
         subquestion_starts = self.find_subquestion_starts(start_index, end_index)
         if subquestion_starts:
             subquestions = []
-            question_text = "".join(
-                char["text"] for char in self.chars[start_index : subquestion_starts[0]]
-            )
+            question_text = self.join_chars(start_index, subquestion_starts[0])
             for i, subquestion_start in enumerate(subquestion_starts):
                 if i == len(subquestion_starts) - 1:
                     subquestion_end = end_index
@@ -98,9 +107,7 @@ class QuestionPaperParser(Parser):
                 )
         else:
             subquestions = None
-            question_text = "".join(
-                char["text"] for char in self.chars[start_index:end_index]
-            )
+            question_text = self.join_chars(start_index, end_index)
         return Question(
             number=number,
             text=question_text,
@@ -113,10 +120,7 @@ class QuestionPaperParser(Parser):
         subsubquestion_starts = self.find_subsubquestion_starts(start_index, end_index)
         if subsubquestion_starts:
             subsubquestions = []
-            subquestion_text = "".join(
-                char["text"]
-                for char in self.chars[start_index : subsubquestion_starts[0]]
-            )
+            subquestion_text = self.join_chars(start_index, subsubquestion_starts[0])
             for i, subsubquestion_start in enumerate(subsubquestion_starts):
                 if i == len(subsubquestion_starts) - 1:
                     subsubquestion_end = end_index
@@ -131,9 +135,7 @@ class QuestionPaperParser(Parser):
                 )
         else:
             subsubquestions = None
-            subquestion_text = "".join(
-                char["text"] for char in self.chars[start_index:end_index]
-            )
+            subquestion_text = self.join_chars(start_index, end_index)
         return SubQuestion(
             number=number,
             text=subquestion_text,
@@ -141,9 +143,7 @@ class QuestionPaperParser(Parser):
         )
 
     def parse_subsubquestion(self, start_index: int, end_index: int, number: str):
-        subsubquestion_text = "".join(
-            char["text"] for char in self.chars[start_index:end_index]
-        )
+        subsubquestion_text = self.join_chars(start_index, end_index)
         return SubSubQuestion(number=number, text=subsubquestion_text)
 
     def find_subquestion_starts(self, start_index: int, end_index: int):

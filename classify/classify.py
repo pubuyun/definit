@@ -5,125 +5,81 @@ from parser.models.question import (
     MultipleChoiceQuestion,
 )
 from parser.models.syllabus import Syllabus
-from typing import Any, Dict, List, Optional, Tuple
+
+from typing import List, Optional
 import re
-import torch
 import tqdm
-import hashlib
-import tensorflow as tf
-import tensorflow_hub as hub
+import pickle
+import os
 import numpy as np
-
-# Check if GPU is available for TensorFlow
-physical_devices = tf.config.list_physical_devices("GPU")
-if physical_devices:
-    tf.config.experimental.set_memory_growth(physical_devices[0], True)
-    print("TensorFlow using GPU")
-else:
-    print("TensorFlow using CPU")
-
-# Load Universal Sentence Encoder
-print("Loading Universal Sentence Encoder...")
-use_model = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
-print("Model loaded")
+from collections import Counter
+from sentence_transformers import SentenceTransformer, util
 
 
 class Classifier:
+
     def __init__(
         self,
         syllabuses: List[Syllabus],
         batch_size: int = 64,
-        cache_path: str = "syllabus_embeddings.pt",
+        cache_path: str = "syllabus_embeddings.pkl",
+        model_name: str = "allenai/scibert_scivocab_uncased",
     ):
         self.batch_size = batch_size
         self.cache_path = cache_path
-        current_hash = self._compute_syllabus_hash(syllabuses)
-        if self._try_load_cache(syllabuses, current_hash):
-            print("Loaded embeddings from cache")
-        else:
-            print("Generating new embeddings...")
-            self.syllabus_embeddings, self.syllabus_mapping = (
-                self._preprocess_syllabuses(syllabuses)
-            )
-            self._save_cache(current_hash)
         self.syllabus_objects = syllabuses
 
-    def _compute_syllabus_hash(self, syllabuses: List[Syllabus]) -> str:
-        hash_str = ""
-        for syllabus in syllabuses:
-            for point in syllabus.content:
-                hash_str += point.lower().strip()
-        return hashlib.md5(hash_str.encode()).hexdigest()
+        print(f"Initializing SentenceTransformer with model: {model_name}")
+        self.model = SentenceTransformer(model_name)
 
-    def _preprocess_syllabuses(
-        self, syllabuses: List[Syllabus]
-    ) -> Tuple[torch.Tensor, List[int]]:
-        all_points = []
-        syllabus_indices = []
+        # Try to load cache, otherwise process syllabuses
+        if os.path.exists(cache_path) and self._try_load_cache():
+            print(f"Loaded embeddings from cache: {cache_path}")
+        else:
+            print("Processing syllabus content...")
+            self._preprocess_syllabuses(syllabuses)
+            self._save_cache()
+
+    def _preprocess_syllabuses(self, syllabuses: List[Syllabus]) -> None:
+        # Create corpus and mapping
+        self.corpus = []
+        self.syllabus_mapping = []
+
         for idx, syllabus in enumerate(syllabuses):
             for point in syllabus.content:
-                all_points.append(point.lower().strip())
-                syllabus_indices.append(idx)
+                text = point.lower().strip()
+                self.corpus.append(text)
+                self.syllabus_mapping.append(idx)
 
-        # Process in batches to avoid memory issues
-        embeddings_list = []
-        for i in tqdm.tqdm(
-            range(0, len(all_points), self.batch_size), desc="Calculating embeddings"
-        ):
-            batch = all_points[i : i + self.batch_size]
-            batch_embeddings = self.get_sentence_embeddings(batch)
-            embeddings_list.extend(batch_embeddings)
+        print(f"Encoding {len(self.corpus)} syllabus points")
+        self.corpus_embeddings = self.model.encode(
+            self.corpus,
+            batch_size=self.batch_size,
+            show_progress_bar=True,
+            convert_to_numpy=True,
+        )
 
-        # Convert numpy embeddings to torch tensor
-        embeddings_tensor = torch.tensor(np.array(embeddings_list), dtype=torch.float32)
-        return embeddings_tensor, syllabus_indices
-
-    def _save_cache(self, current_hash: str) -> None:
+    def _save_cache(self) -> None:
         cache_data = {
-            "hash": current_hash,
-            "embeddings": self.syllabus_embeddings,
-            "syllabus_indices": self.syllabus_mapping,
+            "corpus": self.corpus,
+            "corpus_embeddings": self.corpus_embeddings,
+            "syllabus_mapping": self.syllabus_mapping,
         }
-        torch.save(cache_data, self.cache_path)
+        with open(self.cache_path, "wb") as f:
+            pickle.dump(cache_data, f)
         print(f"Embeddings cached to {self.cache_path}")
 
-    def _try_load_cache(self, syllabuses: List[Syllabus], current_hash: str) -> bool:
+    def _try_load_cache(self) -> bool:
         try:
-            cache_data = torch.load(self.cache_path, map_location="cpu")
-            if cache_data["hash"] != current_hash:
-                print("Cache invalid: syllabus content changed")
-                return False
-            self.syllabus_embeddings = cache_data["embeddings"]
-            self.syllabus_mapping = cache_data["syllabus_indices"]
+            with open(self.cache_path, "rb") as f:
+                cache_data = pickle.load(f)
+                self.corpus = cache_data["corpus"]
+                self.corpus_embeddings = cache_data["corpus_embeddings"]
+                self.syllabus_mapping = cache_data["syllabus_mapping"]
             return True
         except Exception as e:
             print(f"Cache load failed: {str(e)}")
             return False
-
-    @staticmethod
-    def get_sentence_embeddings(sentences: List[str]) -> List[np.ndarray]:
-        """Get embeddings for a batch of sentences using Universal Sentence Encoder"""
-        # Clean and process sentences
-        processed_sentences = []
-        for sentence in sentences:
-            # Remove multiple dots, scores, etc.
-            clean_sentence = re.sub(r"\.{3,}", "", sentence)
-            clean_sentence = re.sub(r"\[\d+\]", "", clean_sentence)
-
-            # If sentence is too short, add padding
-            if len(clean_sentence) < 3:
-                clean_sentence = clean_sentence + " [padding]"
-
-            processed_sentences.append(clean_sentence)
-
-        # Generate embeddings using USE
-        embeddings = use_model(processed_sentences).numpy()
-        return list(embeddings)
-
-    @staticmethod
-    def get_sentence_embedding(sentence: str) -> np.ndarray:
-        """Get embedding for a single sentence"""
-        return Classifier.get_sentence_embeddings([sentence])[0]
 
     def classify_all(
         self, questions: List[Question | MultipleChoiceQuestion]
@@ -146,38 +102,37 @@ class Classifier:
             if question.subquestions:
                 for subquestion in question.subquestions:
                     self.classify(subquestion)
-        question.syllabus = self.get_best_syllabus(
-            question.text + " " + question.answer if question.answer else ""
+
+        # Combine question text and answer for better matching
+        question_text = (
+            question.text + " " + (question.answer if question.answer else "")
         )
+        question.syllabus = self.get_best_syllabus(question_text)
 
-    def get_best_syllabus(self, question_sentence: str) -> Syllabus:
-        if not question_sentence:
-            return Syllabus("0", "Unknown")
-
-        # Clean question sentence
+    def get_best_syllabus(self, question_sentence: str, threshold=0.3) -> Syllabus:
+        # Clean text: remove more than three connected dots and score markers
         question_sentence = re.sub(r"\.{3,}", "", question_sentence)
         question_sentence = re.sub(r"\[\d+\]", "", question_sentence)
+        question_sentence = re.sub(r"\(\w{1,3}\)", "", question_sentence)
 
-        # Get question embedding using USE
-        question_embedding = self.get_sentence_embedding(question_sentence)
-        question_tensor = torch.tensor(question_embedding, dtype=torch.float32)
+        # Get embedding for the question
+        question_embedding = self.model.encode(question_sentence, convert_to_numpy=True)
 
-        # Calculate cosine similarity with all syllabus points
-        similarities = torch.nn.functional.cosine_similarity(
-            question_tensor.unsqueeze(0),
-            self.syllabus_embeddings,
-            dim=1,
+        similarities = util.semantic_search(
+            question_embedding,
+            self.corpus_embeddings,
+            top_k=10,
+            score_function=util.cos_sim,
         )
-        print(question_sentence, similarities)
 
-        # Get top 5 most similar points
-        max_indices = torch.topk(similarities, 5).indices
+        weighted_similarities = Counter()
+        for hit in filter(lambda x: x["score"] > threshold, similarities[0]):
+            syllabus_idx = self.syllabus_mapping[hit["corpus_id"]]
+            weighted_similarities[syllabus_idx] += hit["score"]
 
-        # Map to syllabus indices and find most common
-        mapped_indices = torch.tensor([self.syllabus_mapping[i] for i in max_indices])
-        syllabus_idx = torch.bincount(mapped_indices).argmax().item()
-
-        return self.syllabus_objects[syllabus_idx]
+        if not weighted_similarities:
+            return Syllabus("0", "unknown")
+        return self.syllabus_objects[weighted_similarities.most_common(1)[0][0]]
 
 
 if __name__ == "__main__":
@@ -187,24 +142,6 @@ if __name__ == "__main__":
     import pdfplumber
     import pprint
 
-    def format_question_hierarchy(questions):
-        output = ""
-        for q in questions:
-            output += (
-                f"{q.text}\n{q.syllabus.title if hasattr(q, 'syllabus') else ''}\n "
-            )
-            if q.subquestions:
-                for sub_q in q.subquestions:
-                    text = sub_q.text.strip()
-                    output += f"\n    {text}\n{sub_q.syllabus.title if hasattr(sub_q, 'syllabus') else ''}"
-                    if sub_q.subsubquestions:
-                        for subsub_q in sub_q.subsubquestions:
-                            text = subsub_q.text.strip()
-                            subsub_q: SubSubQuestion
-                            output += f"\n        {text}\n{subsub_q.syllabus.title if hasattr(subsub_q, 'syllabus') else ''}\n"
-            output += "\n" + "-" * 80 + "\n"
-        return output.strip()
-
     with pdfplumber.open("papers/595426-2023-2025-syllabus.pdf") as syllabus_pdf:
         syllabus_parser = SyllabusParser(syllabus_pdf, pages=(12, 46))
         syllabuses = syllabus_parser.parse_syllabus()
@@ -213,7 +150,26 @@ if __name__ == "__main__":
         questions = sq_parser.parse_question_paper()
     sqms_parser = SQMSParser("papers/igcse-biology-0610/0610_w22_ms_42.pdf", questions)
     questions = sqms_parser.parse_ms()
-    classifier = Classifier(syllabuses, cache_path="biology_syllabus_use.pt")
+    classifier = Classifier(syllabuses, cache_path="biology_syllabus.pt")
     questions = classifier.classify_all(questions)
+
+    def format_question_hierarchy(questions):
+        output = ""
+        for q in questions:
+            output += (
+                f"{q.text}\n{q.syllabus.title if hasattr(q, "syllabus") else ""}\n "
+            )
+            if q.subquestions:
+                for sub_q in q.subquestions:
+                    text = sub_q.text.strip()
+                    output += f"\n    {text}\n{sub_q.syllabus.title if hasattr(sub_q, "syllabus") else ""}"
+                    if sub_q.subsubquestions:
+                        for subsub_q in sub_q.subsubquestions:
+                            text = subsub_q.text.strip()
+                            subsub_q: SubSubQuestion
+                            output += f"\n        {text}\n{subsub_q.syllabus.title if hasattr(subsub_q, "syllabus") else ""}\n"
+            output += "\n" + "-" * 80 + "\n"
+        return output.strip()
+
     with open("output.txt", "w", encoding="utf-8") as f:
         f.write(format_question_hierarchy(questions))
