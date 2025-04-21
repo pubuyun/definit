@@ -79,15 +79,12 @@ class SyllabusParser:
         return syllabuses
 
     def parse_syllabus_from_subtitle(self, start: int, end: int) -> Optional[Syllabus]:
-        title = "".join(
-            [
-                char["text"]
-                for char in self.chars[
-                    start : (end if end < len(self.chars) else len(self.chars))
-                ]
-                if char["bold"]
-            ]
-        )
+        title = ""
+        for char in self.chars[start:end]:
+            if char["bold"]:
+                title += char["text"]
+            else:
+                break
         number = re.search(r"\d+.\d+", title).group(0)
         syllabus = Syllabus(number=number, title=title, content=[])
         # parse content

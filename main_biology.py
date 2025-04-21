@@ -3,7 +3,7 @@ from parser.sq_ms_parser import SQMSParser
 from parser.mcq_parser import MCQParser
 from parser.mcq_ms_parser import MCQMSParser
 from parser.syllabus_parser import SyllabusParser
-from classify.classify import Classifier
+from classify.classify_bert import Classifier
 
 from parser.models.question import MultipleChoiceQuestion
 from parser.models.question import Question, SubQuestion, SubSubQuestion

@@ -16,7 +16,7 @@ from collections import Counter
 from sentence_transformers import SentenceTransformer, util
 
 
-class Classifier:
+class BERTClassifier:
 
     def __init__(
         self,
@@ -150,7 +150,7 @@ if __name__ == "__main__":
         questions = sq_parser.parse_question_paper()
     sqms_parser = SQMSParser("papers/igcse-biology-0610/0610_w22_ms_42.pdf", questions)
     questions = sqms_parser.parse_ms()
-    classifier = Classifier(syllabuses, cache_path="biology_syllabus.pt")
+    classifier = BERTClassifier(syllabuses, cache_path="biology_syllabus.pt")
     questions = classifier.classify_all(questions)
 
     def format_question_hierarchy(questions):

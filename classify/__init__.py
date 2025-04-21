@@ -1,4 +1,4 @@
-from .classify import Classifier
+from .classify_bert import Classifier
 
 __all__ = [
     "Classifier",

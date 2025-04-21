@@ -128,11 +128,25 @@ if __name__ == "__main__":
 
     qp_path = "papers/igcse-biology-0610/0610_w22_qp_42.pdf"
     ms_path = "papers/igcse-biology-0610/0610_w22_ms_42.pdf"
+
+    def format_question_hierarchy(questions):
+        output = ""
+        for q in questions:
+            output += f"{q.answer}\n"
+            if q.subquestions:
+                for sub_q in q.subquestions:
+                    output += f"\n    {sub_q.answer.strip() if sub_q.answer else ''}\n"
+                    if sub_q.subsubquestions:
+                        for subsub_q in sub_q.subsubquestions:
+                            output += f"\n        {subsub_q.answer.strip() if subsub_q.answer else ''}\n"
+            output += "\n" + "-" * 80 + "\n"
+        return output.strip()
+
     with pdfplumber.open(qp_path) as pdf:
         qp = QuestionPaperParser(pdf)
         questions = qp.parse_question_paper()
     with pdfplumber.open(ms_path) as pdf:
         ms = SQMSParser(pdf_path=ms_path, questions=questions)
     questions = ms.parse_ms()
-    for question in questions:
-        print(question.answer)
+    with open("output.txt", "w", encoding="utf-8") as f:
+        f.write(format_question_hierarchy(questions))

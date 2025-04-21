@@ -8,4 +8,8 @@ class Syllabus:
         self.content = content if content is not None else []
 
     def __repr__(self):
-        return f"Syllabus(number={self.number}, title={self.title}, content:\n{",\n".join(self.content)})"
+        return (
+            f"Syllabus(number={self.number}, title={self.title}, content:\n"
+            + ",\n".join(self.content)
+            + ")"
+        )
