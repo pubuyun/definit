@@ -13,12 +13,13 @@ class SubSubQuestion:
         text: str,
         marks: int = 0,
         answer: Optional[str] = None,
-        syllabus: Optional[Syllabus] = None,  # syllabus of the question
+        syllabus: List[Syllabus] = None,  # syllabus of the question
     ):
         self.number = number  # roman numeral
         self.text = text
         self.marks = marks
         self.answer = answer
+        self.syllabus = syllabus
 
     def __str__(self):
         return self.text
@@ -34,13 +35,14 @@ class SubQuestion:
         subsubquestions: Optional[List[SubSubQuestion]],
         marks: int = 0,
         answer: Optional[str] = None,
-        syllabus: Optional[Syllabus] = None,  # syllabus of the question
+        syllabus: Optional[List[Syllabus]] = None,  # syllabus of the question
     ):
         self.number = number  # a, b, c...
         self.text = text
         self.subsubquestions = subsubquestions
         self.answer = answer
         self.marks = marks
+        self.syllabus = syllabus
 
     def __str__(self):
         return self.text + (f"\n{self.subsubquestions}" if self.subsubquestions else "")
@@ -58,7 +60,7 @@ class Question:
         answer: Optional[str] = None,
         question_image: Optional[str] = None,  # images in the question
         image: Optional[str] = None,  # image of the whole question
-        syllabus: Optional[Syllabus] = None,  # syllabus of the question
+        syllabus: Optional[List[Syllabus]] = None,  # syllabus of the question
     ):
         self.number = number
         self.text = text
@@ -67,6 +69,7 @@ class Question:
         self.answer = answer
         self.question_image = question_image
         self.image = image
+        self.syllabus = syllabus
 
     def __str__(self):
         return f"({self.number}): {self.text}" + (
