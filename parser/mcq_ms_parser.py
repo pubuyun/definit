@@ -1,6 +1,6 @@
 from parser.ms_parser import Parser
 from typing import List, Optional
-from models.question import MultipleChoiceQuestion
+from parser.models.question import MultipleChoiceQuestion
 
 
 class MCQMSParser(Parser):
