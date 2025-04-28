@@ -4,9 +4,14 @@ from parser.models.question import MultipleChoiceQuestion
 
 
 class MCQMSParser(Parser):
-    def __init__(self, pdf_path: str, mcqs: List[MultipleChoiceQuestion]):
+    def __init__(
+        self,
+        pdf_path: str,
+        mcqs: List[MultipleChoiceQuestion],
+        image_prefix: str = "images/example-",
+    ):
         self.mcqs = mcqs
-        super().__init__(pdf_path)
+        super().__init__(pdf_path, image_prefix)
 
     def parse_no_error(self):
         # parse if there is no parse error in ms and qp
@@ -18,6 +23,7 @@ class MCQMSParser(Parser):
                 return self.parse_with_error()
             question.answer = answer["Answer"]
             question.marks = int(answer["Marks"])
+            question.ms_image = answer["Image"]
         return True
 
     def parse_with_error(self):
@@ -38,6 +44,7 @@ class MCQMSParser(Parser):
                 # Numbers match - assign answer and marks
                 self.mcqs[q_ptr].answer = answers[a_ptr]["Answer"]
                 self.mcqs[q_ptr].marks = int(answers[a_ptr]["Marks"])
+                self.mcqs[q_ptr].ms_image = answers[a_ptr]["Image"]
                 q_ptr += 1
                 a_ptr += 1
             elif q_num < a_num:

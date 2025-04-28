@@ -5,9 +5,7 @@ from pprint import pprint
 
 
 class Parser:
-    IMAGE_PATH = "images/"
-
-    def __init__(self, pdf_path: str, image_prefix: str = "example-"):
+    def __init__(self, pdf_path: str, image_prefix: str = "images/example-"):
         self.pdf_path = pdf_path
         self.image_prefix = image_prefix
         self.tables = self.parse()
@@ -73,8 +71,7 @@ class Parser:
                         pix = fitz_page.get_pixmap(matrix=matrix, clip=row_bbox)
                         # Save the image of the row
                         image_path = (
-                            self.IMAGE_PATH
-                            + self.image_prefix
+                            self.image_prefix
                             + row_content_dict["Question"].replace(" ", "_")
                             + ".png"
                         )

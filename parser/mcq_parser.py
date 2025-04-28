@@ -51,7 +51,7 @@ class MCQParser(Parser):
             and self.chars[end_index + 1]["page"] == page
             else self.IGNORE_PAGE_FOOTER_Y
         )
-        image = self.extract_mcq_image(
+        image = self.extract_image_inpage(
             page=page,
             y0=start_y,
             y1=end_y,
@@ -94,27 +94,6 @@ class MCQParser(Parser):
             char["text"] for char in self.chars[start_index:end_index]
         )
         return option_text
-
-    def extract_mcq_image(self, page: int, y0: int, y1: int, resolution=200):
-        page = self.pdf.pages[page]
-        # convert y0 y1 (from top) to y0 y1 (from bottom)
-        y0 = page.height - y0
-        y1 = page.height - y1
-        if y1 > page.height - self.IGNORE_PAGE_FOOTER_Y:
-            y1 = page.height - self.IGNORE_PAGE_FOOTER_Y
-        im = (
-            page.crop(
-                (
-                    self.QUESTION_START_X - 10,
-                    y0 - 20,
-                    page.width,
-                    y1 - 10,
-                )  # (x0, top, x1, bottom)
-            )
-            .to_image(resolution=resolution)
-            .original
-        )
-        return im
 
 
 if __name__ == "__main__":

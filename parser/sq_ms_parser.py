@@ -6,9 +6,14 @@ from parser.models.question import Question, SubQuestion, SubSubQuestion
 
 
 class SQMSParser(Parser):
-    def __init__(self, pdf_path: str, questions: List[Question]):
-        super().__init__(pdf_path)
+    def __init__(
+        self,
+        pdf_path: str,
+        questions: List[Question],
+        image_prefix: str = "images/example-",
+    ):
         self.questions = questions
+        super().__init__(pdf_path, image_prefix)
 
     def parse_ms(self):
         for ms in self.tables:
@@ -21,12 +26,13 @@ class SQMSParser(Parser):
                 subsubquestion_number = matches.group(3) if matches.group(3) else None
                 answer = ms["Answer"]
                 marks = int(ms["Marks"]) if ms["Marks"] else 0
-
+                image_path = ms["Image"]
                 # Assign answer to the appropriate question/subquestion/subsubquestion
                 self.assign_to_question(
                     answer,
                     marks,
                     question_number,
+                    image_path,
                     subquestion_number,
                     subsubquestion_number,
                 )
@@ -40,6 +46,7 @@ class SQMSParser(Parser):
         answer: str,
         marks: int,
         question_number: int,
+        image_path: str | List[str],
         subquestion_number: Optional[str] = None,
         subsubquestion_number: Optional[str] = None,
     ):
@@ -54,6 +61,7 @@ class SQMSParser(Parser):
         if subquestion_number is None:
             matching_question.answer = answer
             matching_question.marks = marks
+            matching_question.ms_image = image_path
             return
 
         # Find matching subquestion
@@ -72,6 +80,7 @@ class SQMSParser(Parser):
         if subsubquestion_number is None:
             matching_subquestion.answer = answer
             matching_subquestion.marks = marks
+            matching_subquestion.ms_image = image_path
             return
 
         # Find and assign to matching subsubquestion
@@ -86,6 +95,7 @@ class SQMSParser(Parser):
         if matching_subsubquestion:
             matching_subsubquestion.answer = answer
             matching_subsubquestion.marks = marks
+            matching_subquestion.ms_image = image_path
 
     def complete_answers(self):
         # Complete subsubquestion answers first
@@ -93,33 +103,60 @@ class SQMSParser(Parser):
             if not question.subquestions:
                 continue
             for subquestion in question.subquestions:
-                # Update subquestion's answer by concatenating subsubquestion answers
-                if not subquestion.answer and subquestion.subsubquestions:
+                # Update subquestion's answer and ms_image by concatenating subsubquestion data
+                if subquestion.subsubquestions:
+                    # Handle answers
+                    if not subquestion.answer:
+                        answers = [
+                            f"({ssq.number}) {ssq.answer}"
+                            for ssq in subquestion.subsubquestions
+                            if ssq.answer
+                        ]
+                        if answers:
+                            subquestion.answer = "\n".join(answers)
+                            subquestion.marks = sum(
+                                ssq.marks
+                                for ssq in subquestion.subsubquestions
+                                if ssq.marks is not None
+                            )
+
+                    # Handle ms_images
+                    if not subquestion.ms_image:
+                        ms_images = [
+                            ssq.ms_image
+                            for ssq in subquestion.subsubquestions
+                            if ssq.ms_image
+                        ]
+                        if ms_images:
+                            subquestion.ms_image = ms_images
+
+            # Update question's answer and ms_image by concatenating subquestion data
+            if question.subquestions:
+                # Handle answers
+                if not question.answer:
                     answers = [
-                        f"({ssq.number}) {ssq.answer}"
-                        for ssq in subquestion.subsubquestions
-                        if ssq.answer
+                        f"({sq.number}) {sq.answer}"
+                        for sq in question.subquestions
+                        if sq.answer
                     ]
                     if answers:
-                        subquestion.answer = "\n".join(answers)
-                        subquestion.marks = sum(
-                            ssq.marks
-                            for ssq in subquestion.subsubquestions
-                            if ssq.marks is not None
+                        question.answer = "\n".join(answers)
+                        question.marks = sum(
+                            sq.marks
+                            for sq in question.subquestions
+                            if sq.marks is not None
                         )
 
-            # Update question's answer by concatenating subquestion answers
-            if not question.answer:
-                answers = [
-                    f"({sq.number}) {sq.answer}"
-                    for sq in question.subquestions
-                    if sq.answer
-                ]
-                if answers:
-                    question.answer = "\n".join(answers)
-                    question.marks = sum(
-                        sq.marks for sq in question.subquestions if sq.marks is not None
-                    )
+                # Handle ms_images
+                if not question.ms_image:
+                    ms_images = []
+                    for sq in question.subquestions:
+                        if isinstance(sq.ms_image, list):
+                            ms_images.extend(sq.ms_image)
+                        elif sq.ms_image:
+                            ms_images.append(sq.ms_image)
+                    if ms_images:
+                        question.ms_image = ms_images
 
 
 if __name__ == "__main__":

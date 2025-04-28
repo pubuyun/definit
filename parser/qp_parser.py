@@ -103,32 +103,26 @@ class Parser:
             return stitched
         return images[0]
 
-    def extract_image_inpage(
-        self,
-        page: pdfplumber.page,
-        path_prefix: str,
-    ):
-        image_paths = []
-        for i, image in enumerate(page.images):
-            if image["x0"] < self.QUESTION_START_X:
-                continue
-            if image["x1"] > page.width - self.QUESTION_START_X:
-                continue
-            if image["top"] < self.IGNORE_PAGE_FOOTER_Y:
-                continue
-            if image["top"] > page.height - self.IGNORE_PAGE_FOOTER_Y:
-                continue
-            bbox = (
-                image["x0"],
-                image["top"],
-                image["x1"],
-                image["bottom"],
+    def extract_image_inpage(self, page: int, y0: int, y1: int, resolution=200):
+        page = self.pdf.pages[page]
+        # convert y0 y1 (from top) to y0 y1 (from bottom)
+        y0 = page.height - y0
+        y1 = page.height - y1
+        if y1 > page.height - self.IGNORE_PAGE_FOOTER_Y:
+            y1 = page.height - self.IGNORE_PAGE_FOOTER_Y
+        im = (
+            page.crop(
+                (
+                    self.QUESTION_START_X - 10,
+                    y0 - 20,
+                    page.width,
+                    y1 - 10,
+                )  # (x0, top, x1, bottom)
             )
-            im = page.within_bbox(bbox).to_image()
-            path = path_prefix + f"_{i+1}.png"
-            im.save(path)
-            image_paths.append(path)
-        return image_paths
+            .to_image(resolution=resolution)
+            .original
+        )
+        return im
 
     def find_question_starts(self):
         # This method should be overridden in subclasses

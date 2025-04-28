@@ -74,77 +74,128 @@ class QuestionPaperParser(Parser):
     def parse_question(self, start_index: int, end_index: int, number: int):
         start_page = self.chars[start_index]["page"]
         end_page = self.chars[end_index - 1]["page"]
-        image = self.extract_question_image(
-            start_page=start_page,
-            end_page=end_page,
-            resolution=200,
-        )
-        # save image
-        image_path = f"{self.IMAGE_PATH}{self.image_prefix}_question_{number}.png"
-        image.save(image_path)
-        inside_image_paths = []
-        for page in self.pdf.pages[start_page : end_page + 1]:
-            page_image_paths = self.extract_image_inpage(
-                page, path_prefix=image_path[:-4]
-            )
-            inside_image_paths.extend(page_image_paths)
 
         subquestion_starts = self.find_subquestion_starts(start_index, end_index)
         if subquestion_starts:
             subquestions = []
+            image_paths = []  # List to store all subquestion image paths
             question_text = self.join_chars(start_index, subquestion_starts[0])
             for i, subquestion_start in enumerate(subquestion_starts):
                 if i == len(subquestion_starts) - 1:
                     subquestion_end = end_index
                 else:
                     subquestion_end = subquestion_starts[i + 1]
-                subquestions.append(
-                    self.parse_subquestion(
-                        subquestion_start,
-                        subquestion_end,
-                        chr(ord("a") + i),
-                    )
+                subquestion = self.parse_subquestion(
+                    subquestion_start,
+                    subquestion_end,
+                    chr(ord("a") + i),
                 )
+                subquestions.append(subquestion)
+                if isinstance(
+                    subquestion.image, list
+                ):  # If subquestion has subsubquestions
+                    image_paths.extend(subquestion.image)
+                elif subquestion.image:  # If subquestion has its own image
+                    image_paths.append(subquestion.image)
+            return Question(
+                number=number,
+                text=question_text,
+                subquestions=subquestions,
+                image=image_paths,  # List of all subquestion image paths
+            )
         else:
             subquestions = None
             question_text = self.join_chars(start_index, end_index)
-        return Question(
-            number=number,
-            text=question_text,
-            subquestions=subquestions,
-            image=image_path,  # whole question image
-            question_image=inside_image_paths,  # images in the question
-        )
+            image = self.extract_question_image(
+                start_page=start_page,
+                end_page=end_page,
+                resolution=200,
+            )
+            # save image
+            image_path = f"{self.IMAGE_PATH}{self.image_prefix}_question_{number}.png"
+            image.save(image_path)
+            return Question(
+                number=number,
+                text=question_text,
+                subquestions=subquestions,
+                image=image_path,  # whole question image
+            )
 
     def parse_subquestion(self, start_index: int, end_index: int, number: str):
         subsubquestion_starts = self.find_subsubquestion_starts(start_index, end_index)
         if subsubquestion_starts:
             subsubquestions = []
+            image_paths = []  # List to store subsubquestion image paths
             subquestion_text = self.join_chars(start_index, subsubquestion_starts[0])
             for i, subsubquestion_start in enumerate(subsubquestion_starts):
                 if i == len(subsubquestion_starts) - 1:
                     subsubquestion_end = end_index
                 else:
                     subsubquestion_end = subsubquestion_starts[i + 1]
-                subsubquestions.append(
-                    self.parse_subsubquestion(
-                        subsubquestion_start,
-                        subsubquestion_end,
-                        self.ROMAN_NUMERALS[i],
-                    )
+                subsubquestion = self.parse_subsubquestion(
+                    subsubquestion_start,
+                    subsubquestion_end,
+                    self.ROMAN_NUMERALS[i],
                 )
+                subsubquestions.append(subsubquestion)
+                if subsubquestion.image:
+                    image_paths.append(subsubquestion.image)
+            return SubQuestion(
+                number=number,
+                text=subquestion_text,
+                subsubquestions=subsubquestions,
+                image=image_paths,  # List of subsubquestion image paths
+            )
         else:
             subsubquestions = None
             subquestion_text = self.join_chars(start_index, end_index)
-        return SubQuestion(
-            number=number,
-            text=subquestion_text,
-            subsubquestions=subsubquestions,
-        )
+            # Extract image only if no subsubquestions
+            start_y = self.chars[start_index]["y"]
+            page = self.chars[start_index]["page"]
+            end_y = (
+                self.chars[end_index + 1]["y"]
+                if end_index < len(self.chars)
+                and self.chars[end_index + 1]["page"] == page
+                else self.IGNORE_PAGE_FOOTER_Y
+            )
+            image = self.extract_image_inpage(
+                page=page,
+                y0=start_y,
+                y1=end_y,
+                resolution=200,
+            )
+            image_path = (
+                f"{self.IMAGE_PATH}{self.image_prefix}_question_sub_{number}.png"
+            )
+            image.save(image_path)
+            return SubQuestion(
+                number=number,
+                text=subquestion_text,
+                subsubquestions=subsubquestions,
+                image=image_path,  # Single image path
+            )
 
     def parse_subsubquestion(self, start_index: int, end_index: int, number: str):
         subsubquestion_text = self.join_chars(start_index, end_index)
-        return SubSubQuestion(number=number, text=subsubquestion_text)
+        # Extract image for subsubquestion
+        start_y = self.chars[start_index]["y"]
+        page = self.chars[start_index]["page"]
+        end_y = (
+            self.chars[end_index + 1]["y"]
+            if end_index < len(self.chars) and self.chars[end_index + 1]["page"] == page
+            else self.IGNORE_PAGE_FOOTER_Y
+        )
+        image = self.extract_image_inpage(
+            page=page,
+            y0=start_y,
+            y1=end_y,
+            resolution=200,
+        )
+        image_path = (
+            f"{self.IMAGE_PATH}{self.image_prefix}_question_subsub_{number}.png"
+        )
+        image.save(image_path)
+        return SubSubQuestion(number=number, text=subsubquestion_text, image=image_path)
 
     def find_subquestion_starts(self, start_index: int, end_index: int):
         subquestion_starts = []

@@ -13,12 +13,16 @@ class SubSubQuestion:
         text: str,
         marks: int = 0,
         answer: Optional[str] = None,
+        image: Optional[str] = None,  # image of the whole question
+        ms_image: Optional[str] = None,  # image of the mark scheme
         syllabus: List[Syllabus] = None,  # syllabus of the question
     ):
         self.number = number  # roman numeral
         self.text = text
         self.marks = marks
         self.answer = answer
+        self.image = image
+        self.ms_image = ms_image
         self.syllabus = syllabus
 
     def __str__(self):
@@ -35,6 +39,8 @@ class SubQuestion:
         subsubquestions: Optional[List[SubSubQuestion]],
         marks: int = 0,
         answer: Optional[str] = None,
+        image: Optional[str | List[str]] = None,  # image of the whole question
+        ms_image: Optional[str | List[str]] = None,  # image of the mark scheme
         syllabus: Optional[List[Syllabus]] = None,  # syllabus of the question
     ):
         self.number = number  # a, b, c...
@@ -42,6 +48,8 @@ class SubQuestion:
         self.subsubquestions = subsubquestions
         self.answer = answer
         self.marks = marks
+        self.image = image
+        self.ms_image = ms_image
         self.syllabus = syllabus
 
     def __str__(self):
@@ -58,8 +66,8 @@ class Question:
         marks: int = 0,
         subquestions: Optional[List[SubQuestion]] = None,
         answer: Optional[str] = None,
-        question_image: Optional[str] = None,  # images in the question
-        image: Optional[str] = None,  # image of the whole question
+        image: Optional[str | List[str]] = None,  # image of the whole question
+        ms_image: Optional[str | List[str]] = None,  # image of the mark scheme
         syllabus: Optional[List[Syllabus]] = None,  # syllabus of the question
     ):
         self.number = number
@@ -67,8 +75,8 @@ class Question:
         self.subquestions = subquestions
         self.marks = marks
         self.answer = answer
-        self.question_image = question_image
         self.image = image
+        self.ms_image = ms_image
         self.syllabus = syllabus
 
     def __str__(self):
@@ -86,7 +94,8 @@ class MultipleChoiceQuestion:
         text: str,
         options: List[str],
         answer: Optional[str] = None,
-        image: Optional[Image] = None,
+        image: Optional[str] = None,
+        ms_image: Optional[str] = None,
         syllabus: Optional[Syllabus] = None,  # syllabus of the question
     ):
         self.number = number
