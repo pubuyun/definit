@@ -116,7 +116,7 @@ class Parser:
                     self.QUESTION_START_X - 10,
                     y0 - 20,
                     page.width,
-                    y1 - 10,
+                    y1 - 12,
                 )  # (x0, top, x1, bottom)
             )
             .to_image(resolution=resolution)
