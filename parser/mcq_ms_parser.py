@@ -8,7 +8,7 @@ class MCQMSParser(Parser):
         self,
         pdf_path: str,
         mcqs: List[MultipleChoiceQuestion],
-        image_prefix: str = "images/example-",
+        image_prefix: str = "example",
     ):
         self.mcqs = mcqs
         super().__init__(pdf_path, image_prefix)
@@ -68,9 +68,9 @@ if __name__ == "__main__":
     pdf_path = "papers/igcse-biology-0610/0610_w22_ms_12.pdf"
     mcqs = [
         MultipleChoiceQuestion(number=i, text=f"Question {i}", options=[])
-        for i in range(1, 41, 2)
+        for i in range(1, 41)
     ]
-    parser = MCQMSParser(pdf_path, mcqs)
+    parser = MCQMSParser(pdf_path, mcqs, image_prefix="0610_w22_ms_12")
     parser.parse_no_error()
     for mcq in parser.mcqs:
         if mcq.answer is not None:

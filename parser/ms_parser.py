@@ -7,7 +7,7 @@ from pprint import pprint
 class Parser:
     IMAGE_PATH = "images/"
 
-    def __init__(self, pdf_path: str, image_prefix: str = "example-"):
+    def __init__(self, pdf_path: str, image_prefix: str = "example"):
         self.pdf_path = pdf_path
         self.image_prefix = image_prefix
         self.tables = self.parse()
@@ -75,6 +75,7 @@ class Parser:
                         image_path = (
                             self.IMAGE_PATH
                             + self.image_prefix
+                            + "_"
                             + row_content_dict["Question"].replace(" ", "_")
                             + ".png"
                         )
@@ -109,7 +110,7 @@ class Parser:
 
 if __name__ == "__main__":
     pdf_path = "papers/igcse-biology-0610/0610_w22_ms_42.pdf"
-    parser = Parser(pdf_path)
+    parser = Parser(pdf_path, image_prefix="0610_w22_ms_42")
 
     # Print example of the first row
     if parser.tables:

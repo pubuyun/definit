@@ -19,6 +19,8 @@ class QuestionPaperParser(Parser):
     QUESTION_START_X = 49.6063
     SUBQUESTION_START_X = 72
     SUBSUBQUESTION_STARTS = (90, 100)
+    question_parsing: int = 0
+    subquestion_parsing: str = "z"
 
     def join_chars(self, start_index: int, end_index: int) -> str:
         result = []
@@ -74,7 +76,7 @@ class QuestionPaperParser(Parser):
     def parse_question(self, start_index: int, end_index: int, number: int):
         start_page = self.chars[start_index]["page"]
         end_page = self.chars[end_index - 1]["page"]
-
+        self.question_parsing = number
         subquestion_starts = self.find_subquestion_starts(start_index, end_index)
         if subquestion_starts:
             subquestions = []
@@ -123,6 +125,7 @@ class QuestionPaperParser(Parser):
 
     def parse_subquestion(self, start_index: int, end_index: int, number: str):
         subsubquestion_starts = self.find_subsubquestion_starts(start_index, end_index)
+        self.subquestion_parsing = number
         if subsubquestion_starts:
             subsubquestions = []
             image_paths = []  # List to store subsubquestion image paths
@@ -164,9 +167,7 @@ class QuestionPaperParser(Parser):
                 y1=end_y,
                 resolution=200,
             )
-            image_path = (
-                f"{self.IMAGE_PATH}{self.image_prefix}_question_sub_{number}.png"
-            )
+            image_path = f"{self.IMAGE_PATH}{self.image_prefix}_question{self.question_parsing}_sub_{number}.png"
             image.save(image_path)
             return SubQuestion(
                 number=number,
@@ -191,9 +192,7 @@ class QuestionPaperParser(Parser):
             y1=end_y,
             resolution=200,
         )
-        image_path = (
-            f"{self.IMAGE_PATH}{self.image_prefix}_question_subsub_{number}.png"
-        )
+        image_path = f"{self.IMAGE_PATH}{self.image_prefix}_question_{self.question_parsing}_sub_{self.subquestion_parsing}_subsub_{number}.png"
         image.save(image_path)
         return SubSubQuestion(number=number, text=subsubquestion_text, image=image_path)
 

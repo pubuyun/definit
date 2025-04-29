@@ -10,7 +10,7 @@ class SQMSParser(Parser):
         self,
         pdf_path: str,
         questions: List[Question],
-        image_prefix: str = "images/example-",
+        image_prefix: str = "example-",
     ):
         self.questions = questions
         super().__init__(pdf_path, image_prefix)
@@ -180,10 +180,12 @@ if __name__ == "__main__":
         return output.strip()
 
     with pdfplumber.open(qp_path) as pdf:
-        qp = QuestionPaperParser(pdf)
+        qp = QuestionPaperParser(pdf, image_prefix="0610_w22_qp_42")
         questions = qp.parse_question_paper()
     with pdfplumber.open(ms_path) as pdf:
-        ms = SQMSParser(pdf_path=ms_path, questions=questions)
+        ms = SQMSParser(
+            pdf_path=ms_path, questions=questions, image_prefix="0610_w22_ms_42"
+        )
     questions = ms.parse_ms()
     with open("output.txt", "w", encoding="utf-8") as f:
         f.write(format_question_hierarchy(questions))

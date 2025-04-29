@@ -16,6 +16,8 @@ import re
 from dotenv import load_dotenv
 
 load_dotenv()
+API_KEY = os.getenv("API_KEY")
+API_URL = os.getenv("API_URL")
 
 CONFIGS = {
     "igcse-biology-0610": {
@@ -54,6 +56,7 @@ def parse(
         questions = classifier.classify_all(questions)
         return questions
 
+
 print(config for config in CONFIGS.keys())
 path = input("Select a config: ")
 config = CONFIGS[path]
@@ -61,9 +64,20 @@ syllabus_path = config["syllabus_path"]
 syllabus_page_range = config["syllabus_page_range"]
 sq_prefix = config["sq_prefix"]
 
+with pdfplumber.open(syllabus_path) as pdf:
+    syllabuses = SyllabusParser(pdf, syllabus_page_range).parse_syllabus()
 
-result = re.match(
-    r"\d{4}_\w\d{2}_\w+_(\d)\d\.pdf", os.path.basename(question_paper)
-)
-if result.group(1):
-    
+classifier = LLMClassifier(syllabuses=syllabuses, api_key=API_KEY, api_url=API_URL)
+
+for f in os.listdir("papers/igcse-biology-0610"):
+    result = re.match(r"\d{4}_\w\d{2}_qp_(\d)\d\.pdf", f)
+    if not result:
+        continue
+    if paper := result.group(2):
+        if paper in sq_prefix:
+            issq = True
+        else:
+            issq = False
+    question_paper = os.path.join("papers/igcse-biology-0610", f)
+    markscheme = question_paper.replace("qp", "ms")
+    questions = parse(classifier, question_paper, markscheme, issq)
