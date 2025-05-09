@@ -107,7 +107,9 @@ for f in os.listdir("papers/igcse-biology-0610"):
     with pdfplumber.open(question_paper, pages=[1]) as qppdf:
         issq = "Multiple Choice" not in qppdf.pages[0].extract_text()
 
-    collection_name = os.path.basename(question_paper)[:-4] + "_sq" if issq else "_mcq"
+    collection_name = os.path.basename(question_paper)[:-4] + (
+        "_sq" if issq else "_mcq"
+    )
     if database[collection_name].count_documents({}) > 0:
         print("Already processed", question_paper)
         continue
