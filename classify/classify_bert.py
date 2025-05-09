@@ -13,7 +13,6 @@ import pickle
 import os
 import numpy as np
 from collections import Counter
-from sentence_transformers import SentenceTransformer, util
 
 
 class BERTClassifier:
@@ -25,6 +24,8 @@ class BERTClassifier:
         cache_path: str = "syllabus_embeddings.pkl",
         model_name: str = "allenai/scibert_scivocab_uncased",
     ):
+        from sentence_transformers import SentenceTransformer, util
+
         self.batch_size = batch_size
         self.cache_path = cache_path
         self.syllabus_objects = syllabuses

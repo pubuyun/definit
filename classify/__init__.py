@@ -1,5 +1,7 @@
-from .classify_bert import Classifier
+from .classify_bert import BERTClassifier
+from .classify_llm import LLMClassifier
 
 __all__ = [
-    "Classifier",
+    "BERTClassifier",
+    "LLMClassifier",
 ]

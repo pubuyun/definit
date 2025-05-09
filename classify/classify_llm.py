@@ -114,7 +114,7 @@ class LLMClassifier:
                     if not syllabus:
                         print(f"Error: {syllabus_number} not found in syllabus")
                         continue
-                    if self.assign_to_question(
+                    if not self.assign_to_question(
                         syllabus,
                         questions,
                         int(question_number_list[0]),
@@ -129,8 +129,6 @@ class LLMClassifier:
                             else None
                         ),
                     ):
-                        print(f"Assigned {question_number} to {syllabus_number}")
-                    else:
                         print(f"Error: {question_number} not found in questions")
                 return questions
             else:
@@ -197,7 +195,7 @@ class LLMClassifier:
             return False
 
         # If no subquestion, assign directly to question
-        if subquestion_number is None:
+        if not subquestion_number:
             matching_question.syllabus = syllabus
             return True
 
@@ -214,7 +212,7 @@ class LLMClassifier:
             return False
 
         # If no subsubquestion, assign to subquestion
-        if subsubquestion_number is None:
+        if not subsubquestion_number:
             matching_subquestion.syllabus = syllabus
             return True
 
