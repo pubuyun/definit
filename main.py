@@ -20,6 +20,7 @@ from bson import ObjectId
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 API_URL = os.getenv("API_URL")
+MONGO_URI = os.getenv("MONGO_URI")
 
 CONFIGS = {
     "igcse-biology-0610": {
@@ -28,7 +29,7 @@ CONFIGS = {
     },
 }
 
-client = MongoClient("mongodb://120.25.192.109:27017/")
+client = MongoClient(MONGO_URI)
 
 
 def convert_obj(obj: Optional[object]) -> Optional[dict]:

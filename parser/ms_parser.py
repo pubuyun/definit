@@ -51,6 +51,7 @@ class Parser:
                             headers.append("")
                     # Check if the table is a valid MS table
                     if not self.isms(headers):
+                        print("not a valid MS table", headers)
                         continue
                     # Process each row except header in the table
                     for i, row in enumerate(table_block[1:]):
@@ -98,6 +99,7 @@ class Parser:
         MSKEYS = [
             "Question",
             "Answer",
+            "Marks",
         ]
         stripped = [
             element.strip().replace("\n", "") for element in page_table if element != ""
@@ -109,8 +111,8 @@ class Parser:
 
 
 if __name__ == "__main__":
-    pdf_path = "papers/igcse-biology-0610/0610_w22_ms_42.pdf"
-    parser = Parser(pdf_path, image_prefix="0610_w22_ms_42")
+    pdf_path = "papers/igcse-biology-0610/0610_m15_ms_32.pdf"
+    parser = Parser(pdf_path, image_prefix="0610_m15_ms_32")
 
     # Print example of the first row
     if parser.tables:

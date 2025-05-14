@@ -163,8 +163,8 @@ if __name__ == "__main__":
     from sq_parser import QuestionPaperParser
     import pdfplumber
 
-    qp_path = "papers/igcse-biology-0610/0610_w22_qp_42.pdf"
-    ms_path = "papers/igcse-biology-0610/0610_w22_ms_42.pdf"
+    qp_path = "papers/igcse-biology-0610/0610_m15_qp_32.pdf"
+    ms_path = "papers/igcse-biology-0610/0610_m15_ms_32.pdf"
 
     def format_question_hierarchy(questions):
         output = ""
