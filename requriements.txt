@@ -1,0 +1,8 @@
+tqdm
+pillow
+pdfplumber
+requests
+pdf2docx
+fitz
+prettyprinter
+numpy

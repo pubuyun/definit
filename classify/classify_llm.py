@@ -189,7 +189,7 @@ class LLMClassifier:
     ) -> bool:
         # Find matching question
         matching_question = next(
-            (q for q in questions if q.number == question_number), None
+            filter(lambda q: q.number == question_number, questions), None
         )
         if not matching_question:
             return False
@@ -202,9 +202,10 @@ class LLMClassifier:
         # Find matching subquestion
         matching_subquestion = next(
             (
-                sq
-                for sq in matching_question.subquestions
-                if sq.number == subquestion_number
+                filter(
+                    lambda sq: sq.number == subquestion_number,
+                    matching_question.subquestions,
+                )
             ),
             None,
         )

@@ -93,31 +93,41 @@ with pdfplumber.open(syllabus_path) as pdf:
 
 classifier = LLMClassifier(syllabuses=syllabuses, api_key=API_KEY, api_url=API_URL)
 
+error_list = []
 for f in os.listdir("papers/igcse-biology-0610"):
-    if "qp" not in f:
+    try:
+        if "qp" not in f:
+            continue
+
+        question_paper = os.path.join("papers/igcse-biology-0610", f)
+        markscheme = question_paper.replace("qp", "ms")
+        print("Processing", question_paper)
+
+        if not os.path.exists(markscheme):
+            print("Markscheme not found for", question_paper)
+            continue
+
+        with pdfplumber.open(question_paper, pages=[1]) as qppdf:
+            issq = "Multiple Choice" not in qppdf.pages[0].extract_text()
+
+        collection_name = os.path.basename(question_paper)[:-4] + (
+            "_sq" if issq else "_mcq"
+        )
+        if database[collection_name].count_documents({}) > 0:
+            print("Already processed", question_paper)
+            continue
+
+        questions = parse(classifier, question_paper, markscheme, issq)
+
+        collection = database[collection_name]
+        for question in questions:
+            question_dict = convert_obj(question)
+            collection.insert_one(question_dict)
+    except Exception as e:
+        print("Error processing", question_paper, ":", str(e))
+        error_list.append((question_paper, str(e)))
         continue
 
-    question_paper = os.path.join("papers/igcse-biology-0610", f)
-    markscheme = question_paper.replace("qp", "ms")
-    print("Processing", question_paper)
-
-    if not os.path.exists(markscheme):
-        print("Markscheme not found for", question_paper)
-        continue
-
-    with pdfplumber.open(question_paper, pages=[1]) as qppdf:
-        issq = "Multiple Choice" not in qppdf.pages[0].extract_text()
-
-    collection_name = os.path.basename(question_paper)[:-4] + (
-        "_sq" if issq else "_mcq"
-    )
-    if database[collection_name].count_documents({}) > 0:
-        print("Already processed", question_paper)
-        continue
-
-    questions = parse(classifier, question_paper, markscheme, issq)
-
-    collection = database[collection_name]
-    for question in questions:
-        question_dict = convert_obj(question)
-        collection.insert_one(question_dict)
+with open("error_log.txt", "w") as f:
+    for error in error_list:
+        f.write(f"{error[0]}: {error[1]}\n")

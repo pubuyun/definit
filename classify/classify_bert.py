@@ -158,17 +158,17 @@ if __name__ == "__main__":
         output = ""
         for q in questions:
             output += (
-                f"{q.text}\n{q.syllabus.title if hasattr(q, "syllabus") else ""}\n "
+                f"{q.text}\n{q.syllabus.title if hasattr(q, 'syllabus') else ''}\n "
             )
             if q.subquestions:
                 for sub_q in q.subquestions:
                     text = sub_q.text.strip()
-                    output += f"\n    {text}\n{sub_q.syllabus.title if hasattr(sub_q, "syllabus") else ""}"
+                    output += f"\n    {text}\n{sub_q.syllabus.title if hasattr(sub_q, 'syllabus') else ''}"
                     if sub_q.subsubquestions:
                         for subsub_q in sub_q.subsubquestions:
                             text = subsub_q.text.strip()
                             subsub_q: SubSubQuestion
-                            output += f"\n        {text}\n{subsub_q.syllabus.title if hasattr(subsub_q, "syllabus") else ""}\n"
+                            output += f"\n        {text}\n{subsub_q.syllabus.title if hasattr(subsub_q, 'syllabus') else ''}\n"
             output += "\n" + "-" * 80 + "\n"
         return output.strip()
 
