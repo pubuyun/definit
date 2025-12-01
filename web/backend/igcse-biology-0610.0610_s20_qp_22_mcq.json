@@ -1,0 +1,1317 @@
+[{
+  "_id": {
+    "$oid": "692951c18d940b878ee80903"
+  },
+  "number": 1,
+  "text": "1 The diagram shows what happened in an experiment with plant seedlings.  startlightnext daylight  Which characteristic of living things made the seedlings grow towards the light? ",
+  "options": [
+    "A excretion ",
+    "B nutrition ",
+    "C respiration ",
+    "D sensitivity   "
+  ],
+  "answer": null,
+  "image": "images/0610_s20_qp_22_question_1.png",
+  "syllabus": {
+    "number": "1.1",
+    "title": "1.1 Characteristics of living organisms",
+    "content": [
+      "1 Characteristics of living organismsCore1 Describe the characteristics of living organisms by describing:",
+      "  movement as an action by an organism or part of an organism causing a change of position or place ",
+      "  respiration as the chemical reactions in cells that break down nutrient molecules and release energy for metabolism",
+      "  sensitivity as the ability to detect and respond to changes in the internal or external environment",
+      "  growth as a permanent increase in size and dry mass",
+      "  reproduction as the processes that make more of the same kind of organism",
+      "  excretion as the removal of the waste products of metabolism and substances in excess of requirements",
+      "  nutrition as the taking in of materials for energy, growth and developmentSupplement"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c18d940b878ee80904"
+  },
+  "number": 2,
+  "text": "2 A rat has the scientific name Rattus rattus.  What do the two parts of this name refer to? ",
+  "options": [
+    "A genus and species ",
+    "B kingdom and genus ",
+    "C kingdom and species ",
+    "D variety and genus   "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_2.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_2.png",
+  "syllabus": {
+    "number": "1.2",
+    "title": "1.2 Concept and uses of classication systems",
+    "content": [
+      "Concept and uses of classication systemsCore1 State that organisms can be classied into groups by the features that they share2 Describe a species as a group of organisms that can reproduce to produce fertile offspring",
+      "Describe the binomial system of naming species as an internationally agreed system in which the scientic name of an organism is made up of two parts showing the genus and species",
+      "Construct and use dichotomous keys based on identiable featuresSupplement",
+      "Explain that classication systems aim to reect evolutionary relationships",
+      "Explain that the sequences of bases in DNA are used as a means of classication",
+      "Explain that groups of organisms which share a more recent ancestor (are more closely related) have base sequences in DNA that are more similar than those that share only a distant ancestor"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c18d940b878ee80905"
+  },
+  "number": 3,
+  "text": "3 The diagram shows a plant cell.  A biologist wants to find out the number of chromosomes it contains.  Which labelled part should be examined more closely?  ",
+  "options": [
+    "A",
+    "B",
+    "C",
+    "D   3   "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_3.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_3.png",
+  "syllabus": {
+    "number": "2.1",
+    "title": "2.1 Cell structure",
+    "content": [
+      "Cell structureCore1  Describe and compare the structure of a plant cell with an animal cell, limited to: cell wall, cell membrane, nucleus, cytoplasm, chloroplasts, ribosomes, mitochondria, vacuoles",
+      " Describe the structure of a bacterial cell, limited to: cell wall, cell membrane, cytoplasm, ribosomes, circular DNA, plasmids",
+      " Identify the cell structures listed in 2.1.1 and 2.1.2 in diagrams and images of plant, animal and bacterial cells ",
+      " Describe the functions of the structures listed in 2.1.1 and 2.1.2 in plant, animal and bacterial cells",
+      " State that new cells are produced by division of existing cells",
+      " State that specialised cells have specic functions, limited to: ",
+      "  ciliated cells – movement of mucus in the trachea and bronchi",
+      " root hair cells – absorption",
+      " palisade mesophyll cells – photosynthesis",
+      " neurones – conduction of electrical impulses",
+      " red blood cells – transport of oxygen",
+      " sperm and egg cells ",
+      " – reproduction",
+      " Describe the meaning of the terms: cell, tissue, organ, organ system and organism as illustrated by examples given in the syllabusSupplement"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c18d940b878ee80906"
+  },
+  "number": 4,
+  "text": "4 The diagram shows a human liver cell.  M  The length of structure M on the diagram is 6 mm.  The magnification of the diagram is x 2000.  What is the actual length of M? ",
+  "options": [
+    "A 0.03 µm ",
+    "B 3 µm ",
+    "C 333 µm ",
+    "D 12 000 mm   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_4.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_4.png",
+  "syllabus": {
+    "number": "2.2",
+    "title": "2.2 Size of specimens",
+    "content": [
+      "State and use the formula:  magnication = image size ÷ actual size",
+      "Calculate magnication and size of biological specimens using millimetres as unitsSupplement",
+      "Convert measurements between millimetres ",
+      " and micrometres "
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c18d940b878ee80907"
+  },
+  "number": 5,
+  "text": "5 Which diagram shows the appearance of a plant cell several minutes after it has been placed in a concentrated solution of sugar?  ",
+  "options": [
+    "A",
+    "B",
+    "C",
+    "D   4 "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_5.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_5.png",
+  "syllabus": {
+    "number": "3.2",
+    "title": "3.2 Osmosis",
+    "content": [
+      "Describe the role of water as a solvent in organisms with reference to digestion, excretion and transport",
+      "State that water diffuses through partially permeable membranes by osmosis",
+      "State that water moves into and out of cells by osmosis through the cell membrane",
+      "Investigate osmosis using materials such as dialysis tubing",
+      "Investigate and describe the effects on plant tissues of immersing them in solutions of different concentrations ",
+      "State that plants are supported by the pressure of water inside the cells pressing outwards on the cell wallSupplement",
+      "Describe osmosis as the net movement of water molecules from a region of higher water potential (dilute solution) to a region of lower water potential (concentrated solution), through a partially permeable membrane ",
+      "Explain the effects on plant cells of immersing them in solutions of different concentrations by using the terms: turgid, turgor pressure, plasmolysis, accid",
+      "Explain the importance of water potential and osmosis in the uptake and loss of water by organisms"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c18d940b878ee80908"
+  },
+  "number": 6,
+  "text": "6 An uncooked piece of potato was placed in a solution. After two hours the size of the piece of potato had decreased.  Which row explains why this has happened and how the potato cells have changed?   water potential potato cells become potato cells external solution",
+  "options": [
+    "A higher lower flaccid ",
+    "B higher lower turgid ",
+    "C lower higher flaccid ",
+    "D lower higher turgid   "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_6.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_6.png",
+  "syllabus": {
+    "number": "3.2",
+    "title": "3.2 Osmosis",
+    "content": [
+      "Describe the role of water as a solvent in organisms with reference to digestion, excretion and transport",
+      "State that water diffuses through partially permeable membranes by osmosis",
+      "State that water moves into and out of cells by osmosis through the cell membrane",
+      "Investigate osmosis using materials such as dialysis tubing",
+      "Investigate and describe the effects on plant tissues of immersing them in solutions of different concentrations ",
+      "State that plants are supported by the pressure of water inside the cells pressing outwards on the cell wallSupplement",
+      "Describe osmosis as the net movement of water molecules from a region of higher water potential (dilute solution) to a region of lower water potential (concentrated solution), through a partially permeable membrane ",
+      "Explain the effects on plant cells of immersing them in solutions of different concentrations by using the terms: turgid, turgor pressure, plasmolysis, accid",
+      "Explain the importance of water potential and osmosis in the uptake and loss of water by organisms"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80909"
+  },
+  "number": 7,
+  "text": "7 The diagram shows a section of DNA, with four bases identified on one strand.  GACT  Which sequence of bases would be on the other strand, starting from the top? ",
+  "options": [
+    "A AGTC ",
+    "B CTGA ",
+    "C GACT ",
+    "D TCAG   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_7.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_7.png",
+  "syllabus": {
+    "number": "4.1",
+    "title": "4.1 Biological molecules",
+    "content": [
+      "Biological moleculesCore1 List the chemical elements that make up: carbohydrates, fats and proteins",
+      "State that large molecules are made from smaller molecules, limited to:",
+      " starch, glycogen and cellulose from glucose",
+      " proteins from amino acids ",
+      " fats and oils from fatty acids and glycerol",
+      "Describe the use of:",
+      " iodine solution test for starch ",
+      " Benedict’s solution test for reducing sugars ",
+      " biuret test for proteins ",
+      " ethanol emulsion test for fats and oils",
+      " DCPIP test for vitamin CSupplement",
+      "Describe the structure of a DNA molecule:",
+      "  two strands coiled together to form a double helix",
+      " each strand contains chemicals called bases",
+      "  bonds between pairs of bases hold the strands together",
+      "  the bases always pair up in the same way: A with T, and C with G (full names are not required)"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8090a"
+  },
+  "number": 8,
+  "text": "8 Which food-testing solution shows a positive result when it turns from blue to purple? ",
+  "options": [
+    "A Benedict’s solution ",
+    "B biuret solution ",
+    "C ethanol ",
+    "D iodine solution   5   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_8.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_8.png",
+  "syllabus": {
+    "number": "4.1",
+    "title": "4.1 Biological molecules",
+    "content": [
+      "Biological moleculesCore1 List the chemical elements that make up: carbohydrates, fats and proteins",
+      "State that large molecules are made from smaller molecules, limited to:",
+      " starch, glycogen and cellulose from glucose",
+      " proteins from amino acids ",
+      " fats and oils from fatty acids and glycerol",
+      "Describe the use of:",
+      " iodine solution test for starch ",
+      " Benedict’s solution test for reducing sugars ",
+      " biuret test for proteins ",
+      " ethanol emulsion test for fats and oils",
+      " DCPIP test for vitamin CSupplement",
+      "Describe the structure of a DNA molecule:",
+      "  two strands coiled together to form a double helix",
+      " each strand contains chemicals called bases",
+      "  bonds between pairs of bases hold the strands together",
+      "  the bases always pair up in the same way: A with T, and C with G (full names are not required)"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8090b"
+  },
+  "number": 9,
+  "text": "9 The diagram shows the four types of human tooth.  1234incisorcaninepremolarmolar  Which teeth are used for grinding food? ",
+  "options": [
+    "A 1 and 2 ",
+    "B 2 and 3 ",
+    "C 3 and 4 ",
+    "D 4 and 1   "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_9.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_9.png",
+  "syllabus": {
+    "number": "7.3",
+    "title": "7.3 Physical digestion",
+    "content": [
+      "Describe physical digestion as the breakdown of food into smaller pieces without chemical change to the food molecules",
+      "State that physical digestion increases the surface area of food for the action of enzymes in chemical digestion",
+      "Identify in diagrams and images the types of human teeth: incisors, canines, premolars and molars",
+      "Describe the structure of human teeth, limited to: enamel, dentine, pulp, nerves, blood vessels and cement, and understand that teeth are embedded in bone and the gums",
+      "Describe the functions of the types of human teeth in physical digestion of food",
+      "Describe the function of the stomach in physical digestionSupplement",
+      "Outline the role of bile in emulsifying fats and oils to increase the surface area for chemical digestion"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8090c"
+  },
+  "number": 10,
+  "text": "10 Enzymes function best at their optimum temperature.  Which statement describes the effect on an enzyme of increasing the temperature to the enzyme’s optimum temperature? ",
+  "options": [
+    "A There are more frequent successful collisions. ",
+    "B The kinetic energy of the enzymes decreases. ",
+    "C The enzymes begin to lose their complementary shape. ",
+    "D The rate at which enzyme-substrate complexes form is reduced.   6 "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_10.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_10.png",
+  "syllabus": {
+    "number": "5.1",
+    "title": "5.1 Enzymes",
+    "content": [
+      "EnzymesCore1 Describe a catalyst as a substance that increases the rate of a chemical reaction and is not changed by the reaction",
+      "Describe enzymes as proteins that are involved in all metabolic reactions, where they function as biological catalysts",
+      "Describe why enzymes are important in all living organisms in terms of a reaction rate necessary to sustain life",
+      "Describe enzyme action with reference to the shape of the active site of an enzyme being complementary to its substrate and the formation of products ",
+      "Investigate and describe the effect of changes in temperature and pH on enzyme activity with reference to optimum temperature and denaturationSupplement",
+      "Explain enzyme action with reference to: active site, enzyme-substrate complex, substrate and product",
+      "Explain the specicity of enzymes in terms of the complementary shape and t of the active site with the substrate",
+      "Explain the effect of changes in temperature on enzyme activity in terms of kinetic energy, shape and t, frequency of effective collisions and denaturation",
+      "Explain the effect of changes in pH on enzyme activity in terms of shape and t and denaturation"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8090d"
+  },
+  "number": 11,
+  "text": "11 The diagram shows how the rate of photosynthesis varies with light intensity.  The four curves show different conditions of temperature and carbon dioxide concentration.  rate ofphotosynthesislight intensity30 °C, 0.2% CO220 °C, 0.2% CO230 °C, 0.1% CO220 °C, 0.1% CO2P  What limits the rate of photosynthesis at point P?   light intensity carbon dioxide concentration temperature  ",
+  "options": [
+    "A    key ",
+    "B    = yes ",
+    "C    = no ",
+    "D       "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_11.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_11.png",
+  "syllabus": {
+    "number": "6.1",
+    "title": "6.1 Photosynthesis",
+    "content": [
+      "PhotosynthesisCore1 Describe photosynthesis as the process by which plants synthesise carbohydrates from raw materials using energy from light",
+      "State the word equation for photosynthesis as:  carbon dioxide + water → glucose + oxygen  in the presence of light and chlorophyll",
+      "State that chlorophyll is a green pigment that is found in chloroplasts",
+      "State that chlorophyll transfers energy from light into energy in chemicals, for the synthesis of carbohydratesSupplement10 State the balanced chemical equation for photosynthesis as: 6CO2 + 6H2O → C6H12O6 + 6O2continued6.1 Photosynthesis continuedCore",
+      "Outline the subsequent use and storage of the carbohydrates made in photosynthesis, limited to:",
+      " starch as an energy store",
+      " cellulose to build cell walls",
+      " glucose used in respiration to provide energy",
+      " sucrose for transport in the phloem",
+      " nectar to attract insects for pollination ",
+      "Explain the importance of:",
+      " nitrate ions for making amino acids",
+      " magnesium ions for making chlorophyll",
+      "Investigate the need for chlorophyll, light and carbon dioxide for photosynthesis, using appropriate controls",
+      "Investigate and describe the effects of varying light intensity, carbon dioxide concentration and temperature on the rate of photosynthesis",
+      "Investigate and describe the effect of light and dark conditions on gas exchange in an aquatic plant using hydrogencarbonate indicator solutionSupplement11 Identify and explain the limiting factors of photosynthesis in different environmental conditions"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8090e"
+  },
+  "number": 12,
+  "text": "12 The diagram shows a plant cell.  In which part of the cell does photosynthesis occur?  ",
+  "options": [
+    "A",
+    "B",
+    "C",
+    "D   7   "
+  ],
+  "answer": "D",
+  "image": "images/0610_s20_qp_22_question_12.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_12.png",
+  "syllabus": {
+    "number": "6.1",
+    "title": "6.1 Photosynthesis",
+    "content": [
+      "PhotosynthesisCore1 Describe photosynthesis as the process by which plants synthesise carbohydrates from raw materials using energy from light",
+      "State the word equation for photosynthesis as:  carbon dioxide + water → glucose + oxygen  in the presence of light and chlorophyll",
+      "State that chlorophyll is a green pigment that is found in chloroplasts",
+      "State that chlorophyll transfers energy from light into energy in chemicals, for the synthesis of carbohydratesSupplement10 State the balanced chemical equation for photosynthesis as: 6CO2 + 6H2O → C6H12O6 + 6O2continued6.1 Photosynthesis continuedCore",
+      "Outline the subsequent use and storage of the carbohydrates made in photosynthesis, limited to:",
+      " starch as an energy store",
+      " cellulose to build cell walls",
+      " glucose used in respiration to provide energy",
+      " sucrose for transport in the phloem",
+      " nectar to attract insects for pollination ",
+      "Explain the importance of:",
+      " nitrate ions for making amino acids",
+      " magnesium ions for making chlorophyll",
+      "Investigate the need for chlorophyll, light and carbon dioxide for photosynthesis, using appropriate controls",
+      "Investigate and describe the effects of varying light intensity, carbon dioxide concentration and temperature on the rate of photosynthesis",
+      "Investigate and describe the effect of light and dark conditions on gas exchange in an aquatic plant using hydrogencarbonate indicator solutionSupplement11 Identify and explain the limiting factors of photosynthesis in different environmental conditions"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8090f"
+  },
+  "number": 13,
+  "text": "13 The graph shows the effect of pH on the activity of an enzyme.  enzymeactivity1357pH911  In which part of the alimentary canal would this enzyme be most active? ",
+  "options": [
+    "A large intestine ",
+    "B mouth ",
+    "C small intestine ",
+    "D stomach   "
+  ],
+  "answer": "D",
+  "image": "images/0610_s20_qp_22_question_13.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_13.png",
+  "syllabus": {
+    "number": "7.4",
+    "title": "7.4 Chemical digestion",
+    "content": [
+      "Describe chemical digestion as the break down of large insoluble molecules into small soluble molecules",
+      "State the role of chemical digestion in producing small soluble molecules that can be absorbed",
+      "Describe the functions of enzymes as follows:",
+      "  amylase breaks down starch to simple reducing sugars",
+      " proteases break down protein to amino acids",
+      "  lipase breaks down fats and oils to fatty acids and glycerol",
+      "State where, in the digestive system, amylase, protease and lipase are secreted and where they act",
+      "Describe the functions of hydrochloric acid in gastric juice, limited to killing harmful microorganisms in food and providing an acidic pH for optimum enzyme activitySupplement",
+      "Describe the digestion of starch in the digestive system:",
+      " amylase breaks down starch to maltose",
+      "  maltase breaks down maltose to glucose on the membranes of the epithelium lining the small intestine",
+      "Describe the digestion of protein by proteases in the digestive system:",
+      "  pepsin breaks down protein in the acidic conditions of the stomach",
+      "  trypsin breaks down protein in the alkaline conditions of the small intestine",
+      "Explain that bile is an alkaline mixture that neutralises the acidic mixture of food and gastric juices entering the duodenum from the stomach, to provide a suitable pH for enzyme action"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80910"
+  },
+  "number": 14,
+  "text": "14 The diagram shows the structure of a villus. The arteriole, capillary, lacteal and venule are labelled with letters.  Which letter shows where nutrients are absorbed into the blood?  ",
+  "options": [
+    "AD",
+    "B",
+    "Cdirection of blood flow   8 "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_14.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_14.png",
+  "syllabus": {
+    "number": "7.5",
+    "title": "7.5 Absorption",
+    "content": [
+      "State that the small intestine is the region where nutrients are absorbed   ",
+      "State that most water is absorbed from the small intestine but that some is also absorbed from the colonSupplement",
+      "Explain the signicance of villi and microvilli in increasing the internal surface area of the small intestine",
+      "Describe the structure of a villus",
+      "Describe the roles of capillaries and lacteals in villi"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80911"
+  },
+  "number": 15,
+  "text": "15 Which change increases the rate of water uptake by the roots of a plant? ",
+  "options": [
+    "A decrease in evaporation of water from mesophyll cells ",
+    "B decrease in length of root hairs ",
+    "C decrease in water potential of root hair cells ",
+    "D decrease in water potential of soil water    "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_15.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_15.png",
+  "syllabus": {
+    "number": "8.2",
+    "title": "8.2 Water uptake",
+    "content": [
+      "Identify in diagrams and images root hair cells and state their functions",
+      "State that the large surface area of root hairs increases the uptake of water and mineral ions ",
+      "Outline the pathway taken by water through the root, stem and leaf as: root hair cells, root cortex cells, xylem, mesophyll cells",
+      "Investigate, using a suitable stain, the pathway of water through the above-ground parts of a plantSupplement"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80912"
+  },
+  "number": 16,
+  "text": "16 Dodder is a plant that grows on other plants called the hosts. The dodder plant connects to the host’s vascular bundles.  The dodder plant does not have green leaves or roots.  What correctly describes the regions for translocation?   host leaves dodder ",
+  "options": [
+    "A sink sink ",
+    "B sink source ",
+    "C source sink ",
+    "D source source   "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_16.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_16.png",
+  "syllabus": {
+    "number": "8.4",
+    "title": "8.4 Translocation",
+    "content": [
+      "Describe translocation as the movement of sucrose and amino acids in phloem from sources to sinks ",
+      "Describe:",
+      "  sources as the parts of plants that release sucrose or amino acids  ",
+      "  sinks as the parts of plants that use or store sucrose or amino acids",
+      "Explain why some parts of a plant may act as a source and a sink at different times"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80913"
+  },
+  "number": 17,
+  "text": "17 The diagrams show the single circulation of a fish and the double circulation of a mammal.  gill capillariesbody capillariesfish circulationlung capillariesbody capillariesmammal circulationventricleventriclesatriumRTSYXZatria  Which letters represent areas of oxygenated blood? ",
+  "options": [
+    "A R and X ",
+    "B S and Y ",
+    "C T and Y ",
+    "D T and Z   9   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_17.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_17.png",
+  "syllabus": {
+    "number": "9.1",
+    "title": "9.1 Circulatory systems",
+    "content": [
+      "Circulatory systemsCore1 Describe the circulatory system as a system of blood vessels with a pump and valves to ensure one-way ow of bloodSupplement",
+      "Describe the single circulation of a sh",
+      "Describe the double circulation of a mammal",
+      "Explain the advantages of a double circulation"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80914"
+  },
+  "number": 18,
+  "text": "18 The diagram shows the human heart and main blood vessels.  lungsrest of bodyX  What is the blood vessel labelled X? ",
+  "options": [
+    "A aorta ",
+    "B pulmonary artery ",
+    "C pulmonary vein ",
+    "D vena cava   "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_18.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_18.png",
+  "syllabus": {
+    "number": "9.3",
+    "title": "9.3 Blood vessels",
+    "content": [
+      "Describe the structure of arteries, veins and capillaries, limited to: relative thickness of wall, diameter of the lumen and the presence of valves in veins",
+      "State the functions of capillaries ",
+      "Identify in diagrams and images the main blood vessels to and from the:",
+      "  heart, limited to: vena cava, aorta, pulmonary artery and pulmonary vein ",
+      "  lungs, limited to: pulmonary artery and pulmonary vein",
+      " kidney, limited to: renal artery and renal veinSupplement",
+      "Explain how the structure of arteries and veins is related to the pressure of the blood that they transport   ",
+      "Explain how the structure of capillaries is related to their functions",
+      "Identify, in diagrams and images, the main blood vessels to and from the liver as: hepatic artery, hepatic veins and hepatic portal vein"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80915"
+  },
+  "number": 19,
+  "text": "19 The following are statements about immunity.  1 The transfer of antibodies from mother to baby in breast milk is an example of passive immunity. 2 Passive immunity results in long term immunity because of the production of memory cells. 3 Active immunity is gained after vaccination with antigens.  Which statements are correct? ",
+  "options": [
+    "A 1, 2 and 3 ",
+    "B 1 and 2 only ",
+    "C 1 and 3 only ",
+    "D 2 and 3 only   10 "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_19.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_19.png",
+  "syllabus": {
+    "number": "10.1",
+    "title": "10.1 Diseases and immunity",
+    "content": [
+      "Diseases and immunityCore1 Describe a pathogen as a disease-causing organism",
+      "Describe a transmissible disease as a disease in which the pathogen can be passed from one host to another",
+      "State that a pathogen is transmitted: ",
+      "  by direct contact, including through blood and other body uids",
+      "  indirectly, including from contaminated surfaces, food, animals and air",
+      "Describe the body defences, limited to: skin, hairs in the nose, mucus, stomach acid and white blood cells",
+      "Explain the importance of the following in controlling the spread of disease: ",
+      " a clean water supply",
+      " hygienic food preparation",
+      " good personal hygiene",
+      " waste disposal",
+      "  sewage treatment (details of the stages of sewage treatment are not required)Supplement",
+      "Describe active immunity as defence against a pathogen by antibody production in the body",
+      "State that each pathogen has its own antigens, which have specic shapes",
+      "Describe antibodies as proteins that bind to antigens leading to direct destruction of pathogens or marking of pathogens for destruction by phagocytes",
+      "State that specic antibodies have complementary shapes which t specic antigens ",
+      " Explain that active immunity is gained after an infection by a pathogen or by vaccination",
+      " Outline the process of vaccination:",
+      "  weakened pathogens or their antigens are put into the body ",
+      "  the antigens stimulate an immune response by lymphocytes which produce antibodies",
+      "  memory cells are produced that give  long-term immunity",
+      " Explain the role of vaccination in controlling the spread of diseases",
+      " Explain that passive immunity is a short-term defence against a pathogen by antibodies acquired from another individual, including across the placenta and in breast milk",
+      " Explain the importance of breast-feeding for the development of passive immunity in infants",
+      " State that memory cells are not produced in passive immunitycontinued10.1 Diseases and immunity continuedCoreSupplement",
+      " Describe cholera as a disease caused by a bacterium which is transmitted in contaminated water",
+      " Explain that the cholera bacterium produces a toxin that causes secretion of chloride ions into the small intestine, causing osmotic movement of water into the gut, causing diarrhoea, dehydration and loss of ions from the blood"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80916"
+  },
+  "number": 20,
+  "text": "20 What is the site of gas exchange in humans? ",
+  "options": [
+    "A nose ",
+    "B alveoli ",
+    "C bronchus ",
+    "D trachea   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_20.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_20.png",
+  "syllabus": {
+    "number": "11.1",
+    "title": "11.1 Gas exchange in humans",
+    "content": [
+      "1 Gas exchange in humansCore1 Describe the features of gas exchange surfaces in humans, limited to: large surface area, thin surface, good blood supply and good ventilation with air",
+      "Identify in diagrams and images the following parts of the breathing system: lungs, diaphragm, ribs, intercostal muscles, larynx, trachea, bronchi, bronchioles, alveoli and associated capillaries  ",
+      "Investigate the differences in composition between inspired and expired air using limewater as a test for carbon dioxide",
+      "Describe the differences in composition between inspired and expired air, limited to: oxygen, carbon dioxide and water vapour",
+      "Investigate and describe the effects of physical activity on the rate and depth of breathingSupplement",
+      "Identify in diagrams and images the internal and external intercostal muscles  ",
+      "State the function of cartilage in the trachea",
+      "Explain the role of the ribs, the internal and external intercostal muscles and the diaphragm in producing volume and pressure changes in the thorax leading to the ventilation of the lungs",
+      "Explain the differences in composition between inspired and expired air ",
+      " Explain the link between physical activity and the rate and depth of breathing in terms of: an increased carbon dioxide concentration in the blood, which is detected by the brain, leading to an increased rate and greater depth of breathing",
+      " Explain the role of goblet cells, mucus and ciliated cells in protecting the breathing system from pathogens and particles"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80917"
+  },
+  "number": 21,
+  "text": "21 The substances listed are associated with aerobic respiration.  1 carbon dioxide 2 glucose 3 oxygen 4 water  Which substances are the products of aerobic respiration? ",
+  "options": [
+    "A 1 and 3 ",
+    "B 1 and 4 ",
+    "C 2 and 3 ",
+    "D 3 and 4   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_21.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_21.png",
+  "syllabus": {
+    "number": "12.2",
+    "title": "12.2 Aerobic respiration",
+    "content": [
+      "Describe aerobic respiration as the chemical reactions in cells that use oxygen to break down nutrient molecules to release energy",
+      "State the word equation for aerobic respiration as:  glucose + oxygen → carbon dioxide + waterSupplement",
+      "State the balanced chemical equation for aerobic respiration as:  C6H12O6 + 6O2 → 6CO2 + 6H2O"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80918"
+  },
+  "number": 22,
+  "text": "22 The formula C2H5OH represents a chemical produced during anaerobic respiration.  What is this chemical? ",
+  "options": [
+    "A alcohol ",
+    "B glucose ",
+    "C glycogen ",
+    "D lactic acid   "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_22.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_22.png",
+  "syllabus": {
+    "number": "12.3",
+    "title": "12.3 Anaerobic respiration",
+    "content": [
+      "Describe anaerobic respiration as the chemical reactions in cells that break down nutrient molecules to release energy without using oxygen",
+      "State that anaerobic respiration releases much less energy per glucose molecule than aerobic respiration",
+      "State the word equation for anaerobic respiration in yeast as: glucose → alcohol + carbon dioxide",
+      "State the word equation for anaerobic respiration in muscles during vigorous exercise as: glucose → lactic acidSupplement",
+      "State the balanced chemical equation for anaerobic respiration in yeast as: C6H12O6 → 2C2H5OH + 2CO2",
+      "State that lactic acid builds up in muscles and blood during vigorous exercise causing an oxygen debtcontinued12.3 Anaerobic respiration continuedCoreSupplement",
+      "Outline how the oxygen debt is removed after exercise, limited to:",
+      "  continuation of fast heart rate to transport lactic acid in the blood from the muscles to the liver",
+      "  continuation of deeper and faster breathing to supply oxygen for aerobic respiration of lactic acid ",
+      " aerobic respiration of lactic acid in the liver"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80919"
+  },
+  "number": 23,
+  "text": "23 What is filtered out of the blood in the glomerulus into the kidney tubule?   glucose urea  ",
+  "options": [
+    "A   key ",
+    "B   = yes ",
+    "C   = no ",
+    "D      11   "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_23.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_23.png",
+  "syllabus": {
+    "number": "13.1",
+    "title": "13.1 Excretion in humans",
+    "content": [
+      "Excretion in humansCore1 State that carbon dioxide is excreted through the lungs",
+      "State that the kidneys excrete urea and excess water and ions",
+      "Identify in diagrams and images the kidneys, ureters, bladder and urethra Supplement",
+      "Identify in diagrams and images the structure of the kidney, limited to the cortex and medulla",
+      "Outline the structure and function of a nephron and its associated blood vessels, limited to:",
+      "  the role of the glomerulus in the ltration from the blood of water, glucose, urea and ions",
+      "  the role of the nephron in the reabsorption of all of the glucose, some of the ions and most of the water back into the blood",
+      "  the formation of urine containing urea, excess water and excess ions (details of these processes are not required)",
+      "Describe the role of the liver in the assimilation of amino acids by converting them to proteins",
+      "State that urea is formed in the liver from excess amino acids",
+      "Describe deamination as the removal of the nitrogen-containing part of amino acids to form urea",
+      "Explain the importance of excretion, limited to toxicity of urea"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8091a"
+  },
+  "number": 24,
+  "text": "24 Which responses occur in the iris of the eye when a person walks from a brightly lit area to a dimly lit area?   circular muscle radial muscle ",
+  "options": [
+    "A contract contract ",
+    "B contract relax ",
+    "C relax contract ",
+    "D relax relax   "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_24.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_24.png",
+  "syllabus": {
+    "number": "14.2",
+    "title": "14.2 Sense organs",
+    "content": [
+      "Describe sense organs as groups of receptor cells responding to specic stimuli: light, sound, touch, temperature and chemicals",
+      "Identify in diagrams and images the structures of the eye, limited to: cornea, iris, pupil, lens, retina, optic nerve and blind spot",
+      "Describe the function of each part of the eye, limited to: ",
+      " cornea – refracts light ",
+      "  iris – controls how much light enters the pupil ",
+      " lens – focuses light on to the retina",
+      "  retina – contains light receptors, some sensitive to light of different colours ",
+      " optic nerve – carries impulses to the brain",
+      "Explain the pupil reex, limited to changes in light intensity and pupil diameter Supplement",
+      "Explain the pupil reex in terms of the antagonistic action of circular and radial muscles in the iris",
+      "Explain accommodation to view near and distant objects in terms of the contraction and relaxation of the ciliary muscles, tension in the suspensory ligaments, shape of the lens and refraction of light",
+      "Describe the distribution of rods and cones in the retina of a human",
+      "Outline the function of rods and cones, limited to:",
+      " greater sensitivity of rods for night vision ",
+      "  three different kinds of cones, absorbing light of different colours, for colour vision",
+      "Identify in diagrams and images the position of the fovea and state its function"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8091b"
+  },
+  "number": 25,
+  "text": "25 Which glands are endocrine glands? ",
+  "options": [
+    "A adrenal, pancreas, testes ",
+    "B adrenal, ovaries, salivary ",
+    "C ovaries, sweat, testes ",
+    "D pancreas, salivary, sweat   "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_25.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_25.png",
+  "syllabus": {
+    "number": "14.3",
+    "title": "14.3 Hormones",
+    "content": [
+      "Describe a hormone as a chemical substance, produced by a gland and carried by the blood, which alters the activity of one or more specic target organs   ",
+      "Identify in diagrams and images specic endocrine glands and state the hormones they secrete, limited to:",
+      " adrenal glands and adrenaline",
+      " pancreas and insulin",
+      " testes and testosterone",
+      " ovaries and oestrogen",
+      "Describe adrenaline as the hormone secreted in ‘ght or ight’ situations and its effects, limited to:",
+      " increased breathing rate",
+      " increased heart rate",
+      " increased pupil diameter",
+      "Compare nervous and hormonal control, limited to speed of action and duration of effect Supplement",
+      "State that glucagon is secreted by the pancreas  ",
+      "Describe the role of adrenaline in the control of metabolic activity, limited to:",
+      "  increasing the blood glucose concentration",
+      " increasing heart rate"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8091c"
+  },
+  "number": 26,
+  "text": "26 What are the effects of insulin and adrenaline on the concentration of blood glucose?   effect of insulin on blood glucose concentration effect of adrenalineon blood glucose concentration ",
+  "options": [
+    "A decreases decreases ",
+    "B decreases increases ",
+    "C increases decreases ",
+    "D increases increases   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_26.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_26.png",
+  "syllabus": {
+    "number": "14.4",
+    "title": "14.4 Homeostasis",
+    "content": [
+      "Describe homeostasis as the maintenance of a constant internal environment",
+      "State that insulin decreases blood glucose concentrationSupplement",
+      "Explain the concept of homeostatic control by negative feedback with reference to a set point",
+      "Describe the control of blood glucose concentration by the liver and the roles of insulin and glucagon ",
+      "Outline the treatment of Type 1 diabetes ",
+      "Identify in diagrams and images of the skin: hairs, hair erector muscles, sweat glands, receptors, sensory neurones, blood vessels and fatty tissue",
+      "Describe the maintenance of a constant internal body temperature in mammals in terms of: insulation, sweating, shivering and the role of the brain",
+      "Describe the maintenance of a constant internal body temperature in mammals in terms of vasodilation and vasoconstriction of arterioles supplying skin surface capillaries"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8091d"
+  },
+  "number": 27,
+  "text": "27 Asexual reproduction can be used to produce crops.  Why might a disease be likely to spread throughout the whole crop? ",
+  "options": [
+    "A crop plants are genetically different ",
+    "B crop plants are genetically identical ",
+    "C many offspring are produced ",
+    "D offspring are produced quickly   12 "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_27.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_27.png",
+  "syllabus": {
+    "number": "16.1",
+    "title": "16.1 Asexual reproduction",
+    "content": [
+      "Asexual reproductionCore1 Describe asexual reproduction as a process resulting in the production of genetically identical offspring from one parent",
+      "Identify examples of asexual reproduction in diagrams, images and information providedSupplement",
+      "Discuss the advantages and disadvantages of asexual reproduction: ",
+      " to a population of a species in the wild ",
+      " to crop production"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8091e"
+  },
+  "number": 28,
+  "text": "28 In a comparison between the processes of artificial insemination (AI) and in vitro fertilisation (IVF), which statement applies to IVF only? ",
+  "options": [
+    "A Human egg cells are harvested from the ovary. ",
+    "B Donated sperm cells are used to fertilise the egg cells. ",
+    "C Childless couples are given the opportunity to have a child of their own. ",
+    "D Fertilisation occurs inside the body of the female.   "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_28.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_28.png",
+  "syllabus": {
+    "number": "20.4",
+    "title": "20.4 Conservation",
+    "content": [
+      "Describe a sustainable resource as one which is produced as rapidly as it is removed from the environment so that it does not run out ",
+      "State that some resources can be conserved and managed sustainably, limited to forests and sh stocks ",
+      "Explain why organisms become endangered or extinct, including: climate change, habitat destruction, hunting, overharvesting, pollution and introduced species",
+      "Describe how endangered species can be conserved, limited to: ",
+      "  monitoring and protecting species and habitats",
+      " education",
+      " captive breeding programmes ",
+      " seed banksSupplement",
+      "Explain how forests can be conserved using: education, protected areas, quotas and replanting",
+      "Explain how sh stocks can be conserved using: education, closed seasons, protected areas, controlled net types and mesh size, quotas and monitoring",
+      "Describe the reasons for conservation programmes, limited to: ",
+      " maintaining or increasing biodiversity ",
+      " reducing extinction",
+      " protecting vulnerable ecosystems",
+      "  maintaining ecosystem functions, limited to nutrient cycling and resource provision, including food, drugs, fuel and genes",
+      "Describe the use of articial insemination ",
+      " and in vitro fertilisation ",
+      " in captive breeding programmes ",
+      "Explain the risks to a species if its population size decreases, reducing genetic variation (knowledge of genetic drift is not required) "
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8091f"
+  },
+  "number": 29,
+  "text": "29 The diagram shows half a flower. There is a description of each numbered part.  123  1 the stigma which receives pollen from insects 2 the anther which produces smooth and light pollen grains 3 the ovule where fertilisation occurs when the male and female nuclei fuse  Which descriptions are correct for an insect-pollinated flower? ",
+  "options": [
+    "A 1 only ",
+    "B 1 and 3 only ",
+    "C 2 and 3 only ",
+    "D 1, 2 and 3   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_29.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_29.png",
+  "syllabus": {
+    "number": "16.3",
+    "title": "16.3 Sexual reproduction in plants",
+    "content": [
+      "Identify in diagrams and images and draw the following parts of an insect-pollinated ower: sepals, petals, stamens, laments, anthers, carpels, style, stigma, ovary and ovules ",
+      "State the functions of the structures listed in 16.3.1 ",
+      "Identify in diagrams and images and describe the anthers and stigmas of a wind-pollinated ower  ",
+      "Distinguish between the pollen grains of  insect-pollinated and wind-pollinated owers  ",
+      "Describe pollination as the transfer of pollen grains from an anther to a stigma Supplement9 Describe self-pollination as the transfer of pollen grains from the anther of a ower to the stigma of the same ower or a different ower on the same plant10 Describe cross-pollination as the transfer of pollen grains from the anther of a ower to the stigma of a ower on a different plant of the same species11 Discuss the potential effects of self-pollination and cross-pollination on a population, in terms of variation, capacity to respond to changes in the environment and reliance on pollinatorscontinued1",
+      "3 Sexual reproduction in plants continuedCore6 State that fertilisation occurs when a pollen nucleus fuses with a nucleus in an ovule",
+      "Describe the structural adaptations of  insect-pollinated and wind-pollinated owers",
+      "Investigate and describe the environmental conditions that affect germination of seeds, limited to the requirement for: water, oxygen and a suitable temperatureSupplement12 Describe the growth of the pollen tube and its entry into the ovule followed by fertilisation (details of production of endosperm and development are not required)"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80920"
+  },
+  "number": 30,
+  "text": "30 What is a diploid nucleus? ",
+  "options": [
+    "A a nucleus containing one set of chromosomes ",
+    "B a nucleus containing two sets of chromosomes ",
+    "C a nucleus with one double helix of DNA ",
+    "D a nucleus with two genes   13   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_30.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_30.png",
+  "syllabus": {
+    "number": "17.1",
+    "title": "17.1 Chromosomes, genes and proteins",
+    "content": [
+      "Chromosomes, genes and proteinsCore1 State that chromosomes are made of DNA, which contains genetic information in the form of genes  ",
+      "Dene a gene as a length of DNA that codes for a protein  ",
+      "Dene an allele as an alternative form of a gene",
+      "Describe the inheritance of sex in humans with reference to X and Y chromosomesSupplement",
+      "State that the sequence of bases in a gene determines the sequence of amino acids used to make a specic protein (knowledge of the details of nucleotide structure is not required)  ",
+      "Explain that different sequences of amino acids give different shapes to protein moleculescontinued1",
+      "1 Chromosomes, genes and proteins continuedCoreSupplement7 Explain that DNA controls cell function by controlling the production of proteins, including enzymes, membrane carriers and receptors for neurotransmitters",
+      "Explain how a protein is made, limited to:  •the gene coding for the protein remains in the nucleus •messenger RNA ",
+      " is a copy of a gene •mRNA molecules are made in the nucleus and move to the cytoplasm •the mRNA passes through ribosomes •the ribosome assembles amino acids into protein molecules •the specic sequence of amino acids is determined by the sequence of bases in the mRNA   (knowledge of the details of transcription or translation is not required)",
+      "Explain that most body cells in an organism contain the same genes, but many genes in a particular cell are not expressed because the cell only makes the specic proteins it needs",
+      " Describe a haploid nucleus as a nucleus containing a single set of chromosomes",
+      " Describe a diploid nucleus as a nucleus containing two sets of chromosomes",
+      " State that in a diploid cell, there is a pair of each type of chromosome and in a human diploid cell there are 23 pairs"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80921"
+  },
+  "number": 31,
+  "text": "31 Which statement about meiosis is correct? ",
+  "options": [
+    "A At the end of meiosis a zygote has been produced. ",
+    "B During meiosis the haploid number is halved in the daughter cells. ",
+    "C Meiosis is reduction division in which diploid daughter cells are produced. ",
+    "D The parent cell contains twice as many chromosomes as each daughter cell.   "
+  ],
+  "answer": "D",
+  "image": "images/0610_s20_qp_22_question_31.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_31.png",
+  "syllabus": {
+    "number": "17.3",
+    "title": "17.3 Meiosis",
+    "content": [
+      "State that meiosis is involved in the production of gametes",
+      "Describe meiosis as a reduction division in which the chromosome number is halved from diploid to haploid resulting in genetically different cells (details of the stages of meiosis are not required)"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80922"
+  },
+  "number": 32,
+  "text": "32 The diagram shows the inheritance of height in pea plants.  tall parent plantTTtall offspring plantTttall offspring plantTtdwarf parent planttt  Which plants have a heterozygous genotype? ",
+  "options": [
+    "A both parent plants ",
+    "B dwarf parent plant only ",
+    "C both offspring plants ",
+    "D tall parent plant only   "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_32.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_32.png",
+  "syllabus": {
+    "number": "17.4",
+    "title": "17.4 Monohybrid inheritance",
+    "content": [
+      "Describe inheritance as the transmission of genetic information from generation to generation",
+      "Describe genotype as the genetic make-up of an organism and in terms of the alleles present  ",
+      "Describe phenotype as the observable features of an organism  ",
+      "Describe homozygous as having two identical alleles of a particular gene  ",
+      "State that two identical homozygous individuals that breed together will be pure-breeding",
+      "Describe heterozygous as having two different alleles of a particular gene  ",
+      "State that a heterozygous individual will not be pure-breeding",
+      "Describe a dominant allele as an allele that is expressed if it is present in the genotype",
+      "Describe a recessive allele as an allele that is only expressed when there is no dominant allele of the gene present in the genotype",
+      " Interpret pedigree diagrams for the inheritance of a given characteristic",
+      " Use genetic diagrams to predict the results of monohybrid crosses and calculate phenotypic ratios, limited to 1 : 1 and 3 : 1 ratios",
+      " Use Punnett squares in crosses which result in more than one genotype to work out and show the possible different genotypesSupplement",
+      " Explain how to use a test cross to identify an unknown genotype continued17.4 Monohybrid inheritance continuedCoreSupplement",
+      " Describe codominance as a situation in which both alleles in heterozygous organisms contribute to the phenotype",
+      " Explain the inheritance of ABO blood groups: phenotypes are A, B, AB and O blood groups and alleles are IA, IB and Io",
+      " Describe a sex-linked characteristic as a feature in which the gene responsible is located on a sex chromosome and that this makes the characteristic more common in one sex than in the other",
+      " Describe red-green colour blindness as an example of sex linkage",
+      " Use genetic diagrams to predict the results of monohybrid crosses involving codominance or sex linkage and calculate phenotypic ratios"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80923"
+  },
+  "number": 33,
+  "text": "33 The graph shows the masses of two different types of tomato.  020406080100120140160180200220240number oftomatoesmass / gtype 1type 2  What can be concluded from the graph? ",
+  "options": [
+    "A Genes do not affect the mass of tomatoes. ",
+    "B Type 1 tomatoes show continuous variation. ",
+    "C Type 2 tomatoes are sometimes smaller than type 1 tomatoes. ",
+    "D Type 2 tomatoes show discontinuous variation.   14 "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_33.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_33.png",
+  "syllabus": {
+    "number": "18.1",
+    "title": "18.1 Variation",
+    "content": [
+      "VariationCore1 Describe variation as differences between individuals of the same species  ",
+      "State that continuous variation results in a range of phenotypes between two extremes; examples include body length and body mass",
+      "State that discontinuous variation results in a limited number of phenotypes with no intermediates; examples include ABO blood groups, seed shape in peas and seed colour in peas",
+      "State that discontinuous variation is usually caused by genes only and continuous variation is caused by both genes and the environment ",
+      "Investigate and describe examples of continuous and discontinuous variation  ",
+      "Describe mutation as genetic change   ",
+      "State that mutation is the way in which new alleles are formed   ",
+      "State that ionising radiation and some chemicals increase the rate of mutationSupplement",
+      "Describe gene mutation as a random change in the base sequence of DNA  ",
+      " State that mutation, meiosis, random mating and random fertilisation are sources of genetic variation in populations"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80924"
+  },
+  "number": 34,
+  "text": "34 Which adaptation may be present in a xerophyte? ",
+  "options": [
+    "A leaves with small surface area and large numbers of stomata ",
+    "B little or no xylem tissue and leaves with large surface area ",
+    "C stomatal hairs and rolled leaves ",
+    "D thin or no cuticle and deep roots   "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_34.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_34.png",
+  "syllabus": {
+    "number": "18.2",
+    "title": "18.2 Adaptive features",
+    "content": [
+      "Describe an adaptive feature as an inherited feature that helps an organism to survive and reproduce in its environment",
+      "Interpret images or other information about a species to describe its adaptive featuresSupplement",
+      "Explain the adaptive features of hydrophytes and xerophytes to their environments"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80925"
+  },
+  "number": 35,
+  "text": "35 The diagram shows a food chain in a rock pool.  seaweed  →  whelks  →  crabs  →  seagulls  What will happen if the number of secondary consumers increases?  There will be ",
+  "options": [
+    "A fewer crabs. ",
+    "B fewer seagulls. ",
+    "C fewer whelks. ",
+    "D less seaweed.   "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_35.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_35.png",
+  "syllabus": {
+    "number": "19.2",
+    "title": "19.2 Food chains and food webs",
+    "content": [
+      "Describe a food chain as showing the transfer of energy from one organism to the next, beginning with a producer  ",
+      "Construct and interpret simple food chains",
+      "Describe a food web as a network of interconnected food chains and interpret food webs",
+      "Describe a producer as an organism that makes its own organic nutrients, usually using energy from sunlight, through photosynthesis",
+      "Describe a consumer as an organism that gets its energy by feeding on other organisms",
+      "State that consumers may be classed as primary, secondary, tertiary and quaternary according to their position in a food chain",
+      "Describe a herbivore as an animal that gets its energy by eating plants",
+      "Describe a carnivore as an animal that gets its energy by eating other animals",
+      "Describe a decomposer as an organism that gets its energy from dead or waste organic material",
+      " Use food chains and food webs to describe the impact humans have through overharvesting of food species and through introducing foreign species to a habitat",
+      " Draw, describe and interpret pyramids of numbers and pyramids of biomass",
+      " Discuss the advantages of using a pyramid of biomass rather than a pyramid of numbers to represent a food chain",
+      " Describe a trophic level as the position of an organism in a food chain, food web or ecological pyramidSupplement15 Draw, describe and interpret pyramids of energy 16 Discuss the advantages of using a pyramid of energy rather than pyramids of numbers or biomass to represent a food chaincontinued19.2 Food chains and food webs continuedCore",
+      " Identify the following as the trophic levels in food webs, food chains and ecological pyramids: producers, primary consumers, secondary consumers, tertiary consumers and quaternary consumersSupplement17 Explain why the transfer of energy from one trophic level to another is often not efcient18 Explain, in terms of energy loss,  why food chains usually have fewer than ve trophic levels19 Explain why it is more energy efcient for humans to eat crop plants than to eat livestock that have been fed on crop plants"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80926"
+  },
+  "number": 36,
+  "text": "36 What is defined as ‘all of the populations of different species in an ecosystem’? ",
+  "options": [
+    "A community ",
+    "B environment ",
+    "C habitat ",
+    "D trophic level   "
+  ],
+  "answer": "A",
+  "image": "images/0610_s20_qp_22_question_36.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_36.png",
+  "syllabus": {
+    "number": "19.4",
+    "title": "19.4 Populations",
+    "content": [
+      "Describe a population as a group of organisms of one species, living in the same area, at the same time",
+      "Describe a community as all of the populations of different species in an ecosystem  ",
+      "Describe an ecosystem as a unit containing the community of organisms and their environment, interacting together ",
+      "Identify and state the factors affecting the rate of population growth for a population of an organism, limited to food supply, competition, predation and disease",
+      "Identify the lag, exponential ",
+      ", stationary and death phases in the sigmoid curve of population growth for a population growing in an environment with limited resources",
+      "Interpret graphs and diagrams of population growthSupplement",
+      "Explain the factors that lead to each phase in the sigmoid curve of population growth, making reference, where appropriate, to the role of limiting factors"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80927"
+  },
+  "number": 37,
+  "text": "37 What is the role of anaerobic respiration in bread-making? ",
+  "options": [
+    "A to produce alcohol to flavour the bread ",
+    "B to produce gas to make the bread rise ",
+    "C to release enough energy to bake the bread ",
+    "D to release enough lactic acid to kill the yeast   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_37.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_37.png",
+  "syllabus": {
+    "number": "21.2",
+    "title": "21.2 Biotechnology",
+    "content": [
+      "BiotechnologyCore1 Describe the role of anaerobic respiration in yeast during the production of ethanol for biofuels  2 Describe the role of anaerobic respiration in yeast during bread-making",
+      "Describe the use of pectinase in fruit juice production",
+      "Investigate and describe the use of biological washing powders that contain enzymesSupplement",
+      "Explain the use of lactase to produce lactose-free milk",
+      "Describe how fermenters can be used for the large-scale production of useful products by bacteria and fungi, including insulin, penicillin and mycoprotein",
+      "Describe and explain the conditions that need to be  controlled in a fermenter, including: temperature, pH, oxygen, nutrient supply and waste products"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80928"
+  },
+  "number": 38,
+  "text": "38 A crop plant has been genetically modified to make it resistant to herbicides.  Which is a possible disadvantage of introducing this new crop plant? ",
+  "options": [
+    "A Loss of weeds reduces competition. ",
+    "B Some weeds might become resistant to the herbicide. ",
+    "C The crop plant is unharmed and produces a higher yield. ",
+    "D The new gene will appear in new generations of the crop. 15   "
+  ],
+  "answer": "B",
+  "image": "images/0610_s20_qp_22_question_38.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_38.png",
+  "syllabus": {
+    "number": "21.3",
+    "title": "21.3 Genetic modication",
+    "content": [
+      "3 Genetic modicationCore1 Describe genetic modication as changing the genetic material of an organism by removing, changing or inserting individual genes  Supplement3 Outline the process of genetic modication using bacterial production of a human protein as an example, limited to: ",
+      "  isolation of the DNA making up a human gene using restriction enzymes, forming sticky ends ",
+      "  cutting of bacterial plasmid DNA with the same restriction enzymes, forming complementary sticky ends ",
+      "  insertion of human DNA into bacterial plasmid DNA using DNA ligase to form a recombinant plasmid ",
+      "  insertion of recombinant plasmids into bacteria (specic details are not required)",
+      "  multiplication of bacteria containing recombinant plasmids",
+      "  expression in bacteria of the human gene to make the human proteincontinued21.3 Genetic modication continuedCore",
+      "Outline examples of genetic modication: ",
+      "  the insertion of human genes into bacteria to produce human proteins",
+      "  the insertion of genes into crop plants to confer resistance to herbicides ",
+      "  the insertion of genes into crop plants to confer resistance to insect pests ",
+      "  the insertion of genes into crop plants to improve nutritional qualitiesSupplement4 Discuss the advantages and disadvantages of genetically modifying crops, including soya, maize and rice"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee80929"
+  },
+  "number": 39,
+  "text": "39 Which is a reason for using bacteria in biotechnology? ",
+  "options": [
+    "A Bacteria are found inside the human body. ",
+    "B Bacteria do not become resistant to antibiotics. ",
+    "C Bacteria can make complex molecules. ",
+    "D Bacteria reproduce slowly.   "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_39.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_39.png",
+  "syllabus": {
+    "number": "21.1",
+    "title": "21.1 Biotechnology and genetic modication",
+    "content": [
+      "1 Biotechnology and genetic modicationCore1 State that bacteria are useful in biotechnology and genetic modication due to their rapid reproduction rate and their ability to make complex moleculesSupplement",
+      "Discuss why bacteria are useful in biotechnology and genetic modication, limited to:",
+      "  few ethical concerns over their manipulation and growth ",
+      "  the presence of plasmids"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "692951c28d940b878ee8092a"
+  },
+  "number": 40,
+  "text": "40 When a river is polluted by fertiliser, the following processes may occur.  1 increased aerobic respiration of decomposers 2 increased growth of producers 3 decreased oxygen concentration in the water  What is the correct sequence for these processes? ",
+  "options": [
+    "A 1 → 2 → 3 ",
+    "B 1 → 3 → 2 ",
+    "C 2 → 1 → 3 ",
+    "D 2 → 3 → 1   "
+  ],
+  "answer": "C",
+  "image": "images/0610_s20_qp_22_question_40.png",
+  "marks": 1,
+  "ms_image": "images/0610_s20_qp_22_40.png",
+  "syllabus": {
+    "number": "20.3",
+    "title": "20.3 Pollution",
+    "content": [
+      "Describe the effects of untreated sewage and excess fertiliser on aquatic ecosystems",
+      "Describe the effects of non-biodegradable plastics, in both aquatic and terrestrial ecosystems",
+      "Describe the sources and effects of pollution of the air by methane and carbon dioxide, limited to: the enhanced greenhouse effect and climate changeSupplement",
+      "Explain the process of eutrophication of water, limited to:  •increased availability of nitrate and other ions  •increased growth of producers •increased decomposition after death of producers  •increased aerobic respiration by decomposers  •reduction in dissolved oxygen •death of organisms requiring dissolved oxygen in water"
+    ]
+  }
+}]

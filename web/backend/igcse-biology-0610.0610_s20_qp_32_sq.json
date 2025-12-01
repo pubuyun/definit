@@ -1,0 +1,1107 @@
+[{
+  "_id": {
+    "$oid": "692951e68d940b878ee80953"
+  },
+  "number": 1,
+  "text": "1 ",
+  "subquestions": [
+    {
+      "number": "a",
+      "text": "(a) Some substances move into cells by the process of diffusion.   State the name of the outer part of an animal cell that substances move through during  diffusion.  ............................................................................................................................................. [1]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question1_sub_a.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "3.1",
+        "title": "3.1 Diffusion",
+        "content": [
+          "DiffusionCore1 Describe diffusion as the net movement of particles from a region of their higher concentration to a region of their lower concentration (i.e. down a concentration gradient), as a result of their random movement",
+          "State that the energy for diffusion comes from the kinetic energy of random movement of molecules and ions",
+          "State that some substances move into and out of cells by diffusion through the cell membrane",
+          "Describe the importance of diffusion of gases and solutes in living organisms  ",
+          "Investigate the factors that inuence diffusion, limited to: surface area, temperature, concentration gradient and distanceSupplement"
+        ]
+      }
+    },
+    {
+      "number": "b",
+      "text": "(b) Substances can also move by osmosis and active transport.   Table 1.1 shows some of the features of diffusion, osmosis and active transport.   Complete Table 1.1 by placing one tick ( 3 ) in each row to show the features of diffusion,  osmosis and active transport.   One has been done for you. Table 1.1 featurediffusionosmosisactive transport involves movement of water  only 3 always involves movement  across a partially permeable  membrane movement is from a higher  solute concentration to a  lower solute concentration requires energy from  respiration involves the movement of  both gases and solutes  [4]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question1_sub_b.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "3.1",
+        "title": "3.1 Diffusion",
+        "content": [
+          "DiffusionCore1 Describe diffusion as the net movement of particles from a region of their higher concentration to a region of their lower concentration (i.e. down a concentration gradient), as a result of their random movement",
+          "State that the energy for diffusion comes from the kinetic energy of random movement of molecules and ions",
+          "State that some substances move into and out of cells by diffusion through the cell membrane",
+          "Describe the importance of diffusion of gases and solutes in living organisms  ",
+          "Investigate the factors that inuence diffusion, limited to: surface area, temperature, concentration gradient and distanceSupplement"
+        ]
+      }
+    },
+    {
+      "number": "c",
+      "text": "(c) Oxygen moves from the air that we breathe into the blood.   State three structures of the gas exchange system that oxygen molecules must pass through  on their way to the blood. 1  ................................................................................................................................................ 2  ................................................................................................................................................ 3  ................................................................................................................................................ [3]  [Total: 8]",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question1_sub_c.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "11.1",
+        "title": "11.1 Gas exchange in humans",
+        "content": [
+          "1 Gas exchange in humansCore1 Describe the features of gas exchange surfaces in humans, limited to: large surface area, thin surface, good blood supply and good ventilation with air",
+          "Identify in diagrams and images the following parts of the breathing system: lungs, diaphragm, ribs, intercostal muscles, larynx, trachea, bronchi, bronchioles, alveoli and associated capillaries  ",
+          "Investigate the differences in composition between inspired and expired air using limewater as a test for carbon dioxide",
+          "Describe the differences in composition between inspired and expired air, limited to: oxygen, carbon dioxide and water vapour",
+          "Investigate and describe the effects of physical activity on the rate and depth of breathingSupplement",
+          "Identify in diagrams and images the internal and external intercostal muscles  ",
+          "State the function of cartilage in the trachea",
+          "Explain the role of the ribs, the internal and external intercostal muscles and the diaphragm in producing volume and pressure changes in the thorax leading to the ventilation of the lungs",
+          "Explain the differences in composition between inspired and expired air ",
+          " Explain the link between physical activity and the rate and depth of breathing in terms of: an increased carbon dioxide concentration in the blood, which is detected by the brain, leading to an increased rate and greater depth of breathing",
+          " Explain the role of goblet cells, mucus and ciliated cells in protecting the breathing system from pathogens and particles"
+        ]
+      }
+    }
+  ],
+  "marks": 0,
+  "answer": null,
+  "image": [
+    "images/0610_s20_qp_32_question1_sub_a.png",
+    "images/0610_s20_qp_32_question1_sub_b.png",
+    "images/0610_s20_qp_32_question1_sub_c.png"
+  ],
+  "ms_image": null,
+  "syllabus": null
+},
+{
+  "_id": {
+    "$oid": "692951e68d940b878ee80954"
+  },
+  "number": 2,
+  "text": "2 ",
+  "subquestions": [
+    {
+      "number": "a",
+      "text": "(a) Fig. 2.1 is a diagram of the human female reproductive system. C B D E A Fig. 2.1   Identify the letter from Fig. 2.1 which represents: • the vagina  ............................. • the uterus  ............................. • where ovulation occurs  ............................. • where the fetus grows  ............................. • where fertilisation occurs.  .............................   Each letter may be used once, more than once or not at all. [5]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question2_sub_a.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "16.4",
+        "title": "16.4 Sexual reproduction in humans",
+        "content": [
+          "Identify on diagrams and state the functions of the following parts of the male reproductive system: testes, scrotum, sperm ducts, prostate gland, urethra and penis ",
+          "Identify on diagrams and state the functions of the following parts of the female reproductive system: ovaries, oviducts, uterus, cervix and vagina ",
+          "Describe fertilisation as the fusion of the nuclei from a male gamete ",
+          " and a female gamete (egg cell)",
+          "Explain the adaptive features of sperm, limited to: agellum, mitochondria and enzymes in the acrosome",
+          "Explain the adaptive features of egg cells, limited to: energy stores and the jelly coat that changes at fertilisation",
+          "Compare male and female gametes in terms of: size, structure, motility and numbers",
+          "State that in early development, the zygote forms an embryo which is a ball of cells that implants into the lining of the uterus",
+          "Identify on diagrams and state the functions of the following in the development of the fetus: umbilical cord, placenta, amniotic sac and amniotic uidSupplement",
+          "Describe the function of the placenta and umbilical cord in relation to the exchange of dissolved nutrients, gases and excretory products between the blood of the mother and the blood of the fetus",
+          " State that some pathogens and toxins can pass across the placenta and affect the fetus"
+        ]
+      }
+    },
+    {
+      "number": "b",
+      "text": "(b) Egg cells are the female gametes and have special adaptive features.   Complete the sentences using words from the list.   Each word may be used once, more than once or not at all. birth      cellulose      cytoplasm      energy fertilisation      jelly      labour   Egg cells have ............................................... stores so that they can survive for several   days in the female reproductive system after ovulation.   They also have a ............................................... coating which changes after    ............................................... to prevent more sperm from entering the egg.  [3]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question2_sub_b.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "16.4",
+        "title": "16.4 Sexual reproduction in humans",
+        "content": [
+          "Identify on diagrams and state the functions of the following parts of the male reproductive system: testes, scrotum, sperm ducts, prostate gland, urethra and penis ",
+          "Identify on diagrams and state the functions of the following parts of the female reproductive system: ovaries, oviducts, uterus, cervix and vagina ",
+          "Describe fertilisation as the fusion of the nuclei from a male gamete ",
+          " and a female gamete (egg cell)",
+          "Explain the adaptive features of sperm, limited to: agellum, mitochondria and enzymes in the acrosome",
+          "Explain the adaptive features of egg cells, limited to: energy stores and the jelly coat that changes at fertilisation",
+          "Compare male and female gametes in terms of: size, structure, motility and numbers",
+          "State that in early development, the zygote forms an embryo which is a ball of cells that implants into the lining of the uterus",
+          "Identify on diagrams and state the functions of the following in the development of the fetus: umbilical cord, placenta, amniotic sac and amniotic uidSupplement",
+          "Describe the function of the placenta and umbilical cord in relation to the exchange of dissolved nutrients, gases and excretory products between the blood of the mother and the blood of the fetus",
+          " State that some pathogens and toxins can pass across the placenta and affect the fetus"
+        ]
+      }
+    },
+    {
+      "number": "c",
+      "text": "(c) Table 2.1 shows the average diameters of egg cells from different mammals. Table 2.1 mammalaverage diameter of egg cell / µm goat 122 horse168 human165 mouse  90 rabbit165 sheep125   ",
+      "subsubquestions": [
+        {
+          "number": "i",
+          "text": "(i) State the name of the mammal with the egg cell that has the smallest average diameter  in Table 2.1.  ..................................................................................................................................... [1]   ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_2_sub_c_subsub_i.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "2.2",
+            "title": "2.2 Size of specimens",
+            "content": [
+              "State and use the formula:  magnication = image size ÷ actual size",
+              "Calculate magnication and size of biological specimens using millimetres as unitsSupplement",
+              "Convert measurements between millimetres ",
+              " and micrometres "
+            ]
+          }
+        },
+        {
+          "number": "ii",
+          "text": "(ii) Calculate the difference in average diameter between the egg cells of humans and goats.  ................................................................................................................................µm [1]  ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_2_sub_c_subsub_ii.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "2.2",
+            "title": "2.2 Size of specimens",
+            "content": [
+              "State and use the formula:  magnication = image size ÷ actual size",
+              "Calculate magnication and size of biological specimens using millimetres as unitsSupplement",
+              "Convert measurements between millimetres ",
+              " and micrometres "
+            ]
+          }
+        }
+      ],
+      "answer": null,
+      "marks": 0,
+      "image": [
+        "images/0610_s20_qp_32_question_2_sub_c_subsub_i.png",
+        "images/0610_s20_qp_32_question_2_sub_c_subsub_ii.png"
+      ],
+      "ms_image": null,
+      "syllabus": null
+    },
+    {
+      "number": "d",
+      "text": "(d) Larger mammals usually have egg cells with a greater diameter.   Suggest which is the largest mammal using the information in Table 2.1.  ............................................................................................................................................. [1]  [Total: 11]",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question2_sub_d.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "2.2",
+        "title": "2.2 Size of specimens",
+        "content": [
+          "State and use the formula:  magnication = image size ÷ actual size",
+          "Calculate magnication and size of biological specimens using millimetres as unitsSupplement",
+          "Convert measurements between millimetres ",
+          " and micrometres "
+        ]
+      }
+    }
+  ],
+  "marks": 0,
+  "answer": null,
+  "image": [
+    "images/0610_s20_qp_32_question2_sub_a.png",
+    "images/0610_s20_qp_32_question2_sub_b.png",
+    "images/0610_s20_qp_32_question_2_sub_c_subsub_i.png",
+    "images/0610_s20_qp_32_question_2_sub_c_subsub_ii.png",
+    "images/0610_s20_qp_32_question2_sub_d.png"
+  ],
+  "ms_image": null,
+  "syllabus": null
+},
+{
+  "_id": {
+    "$oid": "692951e68d940b878ee80955"
+  },
+  "number": 3,
+  "text": "3 ",
+  "subquestions": [
+    {
+      "number": "a",
+      "text": "(a) A student investigated respiration in yeast. An equal mass of yeast was added to different  types of sugar solution.   The student measured the volume of carbon dioxide released by the yeast using four different  sugar solutions with the same concentrations.   The four different sugar solutions used were: • dextrose • lactose • maltose • sucrose.   Fig. 3.1 is a graph of the results. time / minutes volume of carbon dioxide released / cm 3 020406080100120140 10 0 20 30 40 50 60 70 80 90 100 sucrose dextrose maltose lactose Fig. 3.1   ",
+      "subsubquestions": [
+        {
+          "number": "i",
+          "text": "(i) State the name of the sugar solution that produced the most carbon dioxide.  ..................................................................................................................................... [1]   ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_3_sub_a_subsub_i.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "12.3",
+            "title": "12.3 Anaerobic respiration",
+            "content": [
+              "Describe anaerobic respiration as the chemical reactions in cells that break down nutrient molecules to release energy without using oxygen",
+              "State that anaerobic respiration releases much less energy per glucose molecule than aerobic respiration",
+              "State the word equation for anaerobic respiration in yeast as: glucose → alcohol + carbon dioxide",
+              "State the word equation for anaerobic respiration in muscles during vigorous exercise as: glucose → lactic acidSupplement",
+              "State the balanced chemical equation for anaerobic respiration in yeast as: C6H12O6 → 2C2H5OH + 2CO2",
+              "State that lactic acid builds up in muscles and blood during vigorous exercise causing an oxygen debtcontinued12.3 Anaerobic respiration continuedCoreSupplement",
+              "Outline how the oxygen debt is removed after exercise, limited to:",
+              "  continuation of fast heart rate to transport lactic acid in the blood from the muscles to the liver",
+              "  continuation of deeper and faster breathing to supply oxygen for aerobic respiration of lactic acid ",
+              " aerobic respiration of lactic acid in the liver"
+            ]
+          }
+        },
+        {
+          "number": "ii",
+          "text": "(ii) State the volume of carbon dioxide produced by yeast with the dextrose solution at  80 minutes.  .............................................................................................................................. cm 3  [1]  ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_3_sub_a_subsub_ii.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "12.3",
+            "title": "12.3 Anaerobic respiration",
+            "content": [
+              "Describe anaerobic respiration as the chemical reactions in cells that break down nutrient molecules to release energy without using oxygen",
+              "State that anaerobic respiration releases much less energy per glucose molecule than aerobic respiration",
+              "State the word equation for anaerobic respiration in yeast as: glucose → alcohol + carbon dioxide",
+              "State the word equation for anaerobic respiration in muscles during vigorous exercise as: glucose → lactic acidSupplement",
+              "State the balanced chemical equation for anaerobic respiration in yeast as: C6H12O6 → 2C2H5OH + 2CO2",
+              "State that lactic acid builds up in muscles and blood during vigorous exercise causing an oxygen debtcontinued12.3 Anaerobic respiration continuedCoreSupplement",
+              "Outline how the oxygen debt is removed after exercise, limited to:",
+              "  continuation of fast heart rate to transport lactic acid in the blood from the muscles to the liver",
+              "  continuation of deeper and faster breathing to supply oxygen for aerobic respiration of lactic acid ",
+              " aerobic respiration of lactic acid in the liver"
+            ]
+          }
+        }
+      ],
+      "answer": null,
+      "marks": 0,
+      "image": [
+        "images/0610_s20_qp_32_question_3_sub_a_subsub_i.png",
+        "images/0610_s20_qp_32_question_3_sub_a_subsub_ii.png"
+      ],
+      "ms_image": null,
+      "syllabus": null
+    },
+    {
+      "number": "b",
+      "text": "(b) The temperature during the investigation was maintained at 20 °C.   Predict the effect on the volume of carbon dioxide produced if the investigation was repeated  at 30 °C.  ...................................................................................................................................................  ...................................................................................................................................................  ............................................................................................................................................. [1]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question3_sub_b.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "5.1",
+        "title": "5.1 Enzymes",
+        "content": [
+          "EnzymesCore1 Describe a catalyst as a substance that increases the rate of a chemical reaction and is not changed by the reaction",
+          "Describe enzymes as proteins that are involved in all metabolic reactions, where they function as biological catalysts",
+          "Describe why enzymes are important in all living organisms in terms of a reaction rate necessary to sustain life",
+          "Describe enzyme action with reference to the shape of the active site of an enzyme being complementary to its substrate and the formation of products ",
+          "Investigate and describe the effect of changes in temperature and pH on enzyme activity with reference to optimum temperature and denaturationSupplement",
+          "Explain enzyme action with reference to: active site, enzyme-substrate complex, substrate and product",
+          "Explain the specicity of enzymes in terms of the complementary shape and t of the active site with the substrate",
+          "Explain the effect of changes in temperature on enzyme activity in terms of kinetic energy, shape and t, frequency of effective collisions and denaturation",
+          "Explain the effect of changes in pH on enzyme activity in terms of shape and t and denaturation"
+        ]
+      }
+    },
+    {
+      "number": "c",
+      "text": "(c) State two ways humans use anaerobic respiration in yeast to make useful products. 1  ................................................................................................................................................ 2  ................................................................................................................................................  [2]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question3_sub_c.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "21.2",
+        "title": "21.2 Biotechnology",
+        "content": [
+          "BiotechnologyCore1 Describe the role of anaerobic respiration in yeast during the production of ethanol for biofuels  2 Describe the role of anaerobic respiration in yeast during bread-making",
+          "Describe the use of pectinase in fruit juice production",
+          "Investigate and describe the use of biological washing powders that contain enzymesSupplement",
+          "Explain the use of lactase to produce lactose-free milk",
+          "Describe how fermenters can be used for the large-scale production of useful products by bacteria and fungi, including insulin, penicillin and mycoprotein",
+          "Describe and explain the conditions that need to be  controlled in a fermenter, including: temperature, pH, oxygen, nutrient supply and waste products"
+        ]
+      }
+    },
+    {
+      "number": "d",
+      "text": "(d) Describe the similarities and differences between anaerobic respiration in yeast and aerobic  respiration in humans. similarities  .................................................................................................................................  ...................................................................................................................................................  ...................................................................................................................................................  ...................................................................................................................................................  ................................................................................................................................................... differences  ................................................................................................................................  ...................................................................................................................................................  ...................................................................................................................................................  ...................................................................................................................................................  ................................................................................................................................................... [4]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question3_sub_d.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "12.2",
+        "title": "12.2 Aerobic respiration",
+        "content": [
+          "Describe aerobic respiration as the chemical reactions in cells that use oxygen to break down nutrient molecules to release energy",
+          "State the word equation for aerobic respiration as:  glucose + oxygen → carbon dioxide + waterSupplement",
+          "State the balanced chemical equation for aerobic respiration as:  C6H12O6 + 6O2 → 6CO2 + 6H2O"
+        ]
+      }
+    },
+    {
+      "number": "e",
+      "text": "(e) State the word equation for anaerobic respiration in humans.  ............................................................................................................................................. [2]  [Total: 11]",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question3_sub_e.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "12.3",
+        "title": "12.3 Anaerobic respiration",
+        "content": [
+          "Describe anaerobic respiration as the chemical reactions in cells that break down nutrient molecules to release energy without using oxygen",
+          "State that anaerobic respiration releases much less energy per glucose molecule than aerobic respiration",
+          "State the word equation for anaerobic respiration in yeast as: glucose → alcohol + carbon dioxide",
+          "State the word equation for anaerobic respiration in muscles during vigorous exercise as: glucose → lactic acidSupplement",
+          "State the balanced chemical equation for anaerobic respiration in yeast as: C6H12O6 → 2C2H5OH + 2CO2",
+          "State that lactic acid builds up in muscles and blood during vigorous exercise causing an oxygen debtcontinued12.3 Anaerobic respiration continuedCoreSupplement",
+          "Outline how the oxygen debt is removed after exercise, limited to:",
+          "  continuation of fast heart rate to transport lactic acid in the blood from the muscles to the liver",
+          "  continuation of deeper and faster breathing to supply oxygen for aerobic respiration of lactic acid ",
+          " aerobic respiration of lactic acid in the liver"
+        ]
+      }
+    }
+  ],
+  "marks": 0,
+  "answer": null,
+  "image": [
+    "images/0610_s20_qp_32_question_3_sub_a_subsub_i.png",
+    "images/0610_s20_qp_32_question_3_sub_a_subsub_ii.png",
+    "images/0610_s20_qp_32_question3_sub_b.png",
+    "images/0610_s20_qp_32_question3_sub_c.png",
+    "images/0610_s20_qp_32_question3_sub_d.png",
+    "images/0610_s20_qp_32_question3_sub_e.png"
+  ],
+  "ms_image": null,
+  "syllabus": null
+},
+{
+  "_id": {
+    "$oid": "692951e68d940b878ee80956"
+  },
+  "number": 4,
+  "text": "4 Fig. 4.1 shows some of the processes involved in the treatment of sewage. settlement trickle filters OR activated  sludge sludge  treatment methane screening raw sewage treated water Fig. 4.1  ",
+  "subquestions": [
+    {
+      "number": "a",
+      "text": "(a) Complete Table 4.1 by placing ticks ( 3 ) in the correct boxes to show what is involved in each  process during the treatment of sewage.   The first row has been completed for you. Table 4.1 process process involves: aeration removal of large  solids separating liquid  waste from solid  waste the use of  microorganisms production of  methane 3 screening settlement sludge treatment trickle filters OR  activated sludge  [4]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question4_sub_a.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "10.1",
+        "title": "10.1 Diseases and immunity",
+        "content": [
+          "Diseases and immunityCore1 Describe a pathogen as a disease-causing organism",
+          "Describe a transmissible disease as a disease in which the pathogen can be passed from one host to another",
+          "State that a pathogen is transmitted: ",
+          "  by direct contact, including through blood and other body uids",
+          "  indirectly, including from contaminated surfaces, food, animals and air",
+          "Describe the body defences, limited to: skin, hairs in the nose, mucus, stomach acid and white blood cells",
+          "Explain the importance of the following in controlling the spread of disease: ",
+          " a clean water supply",
+          " hygienic food preparation",
+          " good personal hygiene",
+          " waste disposal",
+          "  sewage treatment (details of the stages of sewage treatment are not required)Supplement",
+          "Describe active immunity as defence against a pathogen by antibody production in the body",
+          "State that each pathogen has its own antigens, which have specic shapes",
+          "Describe antibodies as proteins that bind to antigens leading to direct destruction of pathogens or marking of pathogens for destruction by phagocytes",
+          "State that specic antibodies have complementary shapes which t specic antigens ",
+          " Explain that active immunity is gained after an infection by a pathogen or by vaccination",
+          " Outline the process of vaccination:",
+          "  weakened pathogens or their antigens are put into the body ",
+          "  the antigens stimulate an immune response by lymphocytes which produce antibodies",
+          "  memory cells are produced that give  long-term immunity",
+          " Explain the role of vaccination in controlling the spread of diseases",
+          " Explain that passive immunity is a short-term defence against a pathogen by antibodies acquired from another individual, including across the placenta and in breast milk",
+          " Explain the importance of breast-feeding for the development of passive immunity in infants",
+          " State that memory cells are not produced in passive immunitycontinued10.1 Diseases and immunity continuedCoreSupplement",
+          " Describe cholera as a disease caused by a bacterium which is transmitted in contaminated water",
+          " Explain that the cholera bacterium produces a toxin that causes secretion of chloride ions into the small intestine, causing osmotic movement of water into the gut, causing diarrhoea, dehydration and loss of ions from the blood"
+        ]
+      }
+    },
+    {
+      "number": "b",
+      "text": "(b) Describe two reasons why it is necessary to treat sewage before returning the water to the  environment. 1  ................................................................................................................................................  ................................................................................................................................................... 2  ................................................................................................................................................  ................................................................................................................................................... [2]  [Total: 6]",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question4_sub_b.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "10.1",
+        "title": "10.1 Diseases and immunity",
+        "content": [
+          "Diseases and immunityCore1 Describe a pathogen as a disease-causing organism",
+          "Describe a transmissible disease as a disease in which the pathogen can be passed from one host to another",
+          "State that a pathogen is transmitted: ",
+          "  by direct contact, including through blood and other body uids",
+          "  indirectly, including from contaminated surfaces, food, animals and air",
+          "Describe the body defences, limited to: skin, hairs in the nose, mucus, stomach acid and white blood cells",
+          "Explain the importance of the following in controlling the spread of disease: ",
+          " a clean water supply",
+          " hygienic food preparation",
+          " good personal hygiene",
+          " waste disposal",
+          "  sewage treatment (details of the stages of sewage treatment are not required)Supplement",
+          "Describe active immunity as defence against a pathogen by antibody production in the body",
+          "State that each pathogen has its own antigens, which have specic shapes",
+          "Describe antibodies as proteins that bind to antigens leading to direct destruction of pathogens or marking of pathogens for destruction by phagocytes",
+          "State that specic antibodies have complementary shapes which t specic antigens ",
+          " Explain that active immunity is gained after an infection by a pathogen or by vaccination",
+          " Outline the process of vaccination:",
+          "  weakened pathogens or their antigens are put into the body ",
+          "  the antigens stimulate an immune response by lymphocytes which produce antibodies",
+          "  memory cells are produced that give  long-term immunity",
+          " Explain the role of vaccination in controlling the spread of diseases",
+          " Explain that passive immunity is a short-term defence against a pathogen by antibodies acquired from another individual, including across the placenta and in breast milk",
+          " Explain the importance of breast-feeding for the development of passive immunity in infants",
+          " State that memory cells are not produced in passive immunitycontinued10.1 Diseases and immunity continuedCoreSupplement",
+          " Describe cholera as a disease caused by a bacterium which is transmitted in contaminated water",
+          " Explain that the cholera bacterium produces a toxin that causes secretion of chloride ions into the small intestine, causing osmotic movement of water into the gut, causing diarrhoea, dehydration and loss of ions from the blood"
+        ]
+      }
+    }
+  ],
+  "marks": 0,
+  "answer": null,
+  "image": [
+    "images/0610_s20_qp_32_question4_sub_a.png",
+    "images/0610_s20_qp_32_question4_sub_b.png"
+  ],
+  "ms_image": null,
+  "syllabus": null
+},
+{
+  "_id": {
+    "$oid": "692951e68d940b878ee80957"
+  },
+  "number": 5,
+  "text": "5 ",
+  "subquestions": [
+    {
+      "number": "a",
+      "text": "(a) Fig. 5.1 is a photograph of part of a flower.   Some of the outer structures have been removed to show the internal parts. Fig. 5.1   ",
+      "subsubquestions": [
+        {
+          "number": "i",
+          "text": "(i) Label these structures on Fig. 5.1 with a label line and the name: • anther • petal • stigma.  [3]   ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_5_sub_a_subsub_i.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "16.3",
+            "title": "16.3 Sexual reproduction in plants",
+            "content": [
+              "Identify in diagrams and images and draw the following parts of an insect-pollinated ower: sepals, petals, stamens, laments, anthers, carpels, style, stigma, ovary and ovules ",
+              "State the functions of the structures listed in 16.3.1 ",
+              "Identify in diagrams and images and describe the anthers and stigmas of a wind-pollinated ower  ",
+              "Distinguish between the pollen grains of  insect-pollinated and wind-pollinated owers  ",
+              "Describe pollination as the transfer of pollen grains from an anther to a stigma Supplement9 Describe self-pollination as the transfer of pollen grains from the anther of a ower to the stigma of the same ower or a different ower on the same plant10 Describe cross-pollination as the transfer of pollen grains from the anther of a ower to the stigma of a ower on a different plant of the same species11 Discuss the potential effects of self-pollination and cross-pollination on a population, in terms of variation, capacity to respond to changes in the environment and reliance on pollinatorscontinued1",
+              "3 Sexual reproduction in plants continuedCore6 State that fertilisation occurs when a pollen nucleus fuses with a nucleus in an ovule",
+              "Describe the structural adaptations of  insect-pollinated and wind-pollinated owers",
+              "Investigate and describe the environmental conditions that affect germination of seeds, limited to the requirement for: water, oxygen and a suitable temperatureSupplement12 Describe the growth of the pollen tube and its entry into the ovule followed by fertilisation (details of production of endosperm and development are not required)"
+            ]
+          }
+        },
+        {
+          "number": "ii",
+          "text": "(ii) Describe two features visible in Fig. 5.1 that suggest that this is an insect-pollinated  flower. 1  ........................................................................................................................................  ........................................................................................................................................... 2  ........................................................................................................................................  ........................................................................................................................................... [2]  ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_5_sub_a_subsub_ii.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "16.3",
+            "title": "16.3 Sexual reproduction in plants",
+            "content": [
+              "Identify in diagrams and images and draw the following parts of an insect-pollinated ower: sepals, petals, stamens, laments, anthers, carpels, style, stigma, ovary and ovules ",
+              "State the functions of the structures listed in 16.3.1 ",
+              "Identify in diagrams and images and describe the anthers and stigmas of a wind-pollinated ower  ",
+              "Distinguish between the pollen grains of  insect-pollinated and wind-pollinated owers  ",
+              "Describe pollination as the transfer of pollen grains from an anther to a stigma Supplement9 Describe self-pollination as the transfer of pollen grains from the anther of a ower to the stigma of the same ower or a different ower on the same plant10 Describe cross-pollination as the transfer of pollen grains from the anther of a ower to the stigma of a ower on a different plant of the same species11 Discuss the potential effects of self-pollination and cross-pollination on a population, in terms of variation, capacity to respond to changes in the environment and reliance on pollinatorscontinued1",
+              "3 Sexual reproduction in plants continuedCore6 State that fertilisation occurs when a pollen nucleus fuses with a nucleus in an ovule",
+              "Describe the structural adaptations of  insect-pollinated and wind-pollinated owers",
+              "Investigate and describe the environmental conditions that affect germination of seeds, limited to the requirement for: water, oxygen and a suitable temperatureSupplement12 Describe the growth of the pollen tube and its entry into the ovule followed by fertilisation (details of production of endosperm and development are not required)"
+            ]
+          }
+        }
+      ],
+      "answer": null,
+      "marks": 0,
+      "image": [
+        "images/0610_s20_qp_32_question_5_sub_a_subsub_i.png",
+        "images/0610_s20_qp_32_question_5_sub_a_subsub_ii.png"
+      ],
+      "ms_image": null,
+      "syllabus": null
+    },
+    {
+      "number": "b",
+      "text": "(b) Many living organisms can be classified as plants or animals.   Table 5.1 shows some features of animals and plants.   Place ticks ( 3 ) in the boxes to show the correct features of animals and plants. Table 5.1 featureanimalsplants can respire can grow can make their own food contain DNA can respond to changes in  their environment  [5]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question5_sub_b.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "1.1",
+        "title": "1.1 Characteristics of living organisms",
+        "content": [
+          "1 Characteristics of living organismsCore1 Describe the characteristics of living organisms by describing:",
+          "  movement as an action by an organism or part of an organism causing a change of position or place ",
+          "  respiration as the chemical reactions in cells that break down nutrient molecules and release energy for metabolism",
+          "  sensitivity as the ability to detect and respond to changes in the internal or external environment",
+          "  growth as a permanent increase in size and dry mass",
+          "  reproduction as the processes that make more of the same kind of organism",
+          "  excretion as the removal of the waste products of metabolism and substances in excess of requirements",
+          "  nutrition as the taking in of materials for energy, growth and developmentSupplement"
+        ]
+      }
+    },
+    {
+      "number": "c",
+      "text": "(c) State two structures that are present in plant cells but not in animal cells. 1  ................................................................................................................................................ 2  ................................................................................................................................................ [2]  [Total: 12]",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question5_sub_c.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "2.1",
+        "title": "2.1 Cell structure",
+        "content": [
+          "Cell structureCore1  Describe and compare the structure of a plant cell with an animal cell, limited to: cell wall, cell membrane, nucleus, cytoplasm, chloroplasts, ribosomes, mitochondria, vacuoles",
+          " Describe the structure of a bacterial cell, limited to: cell wall, cell membrane, cytoplasm, ribosomes, circular DNA, plasmids",
+          " Identify the cell structures listed in 2.1.1 and 2.1.2 in diagrams and images of plant, animal and bacterial cells ",
+          " Describe the functions of the structures listed in 2.1.1 and 2.1.2 in plant, animal and bacterial cells",
+          " State that new cells are produced by division of existing cells",
+          " State that specialised cells have specic functions, limited to: ",
+          "  ciliated cells – movement of mucus in the trachea and bronchi",
+          " root hair cells – absorption",
+          " palisade mesophyll cells – photosynthesis",
+          " neurones – conduction of electrical impulses",
+          " red blood cells – transport of oxygen",
+          " sperm and egg cells ",
+          " – reproduction",
+          " Describe the meaning of the terms: cell, tissue, organ, organ system and organism as illustrated by examples given in the syllabusSupplement"
+        ]
+      }
+    }
+  ],
+  "marks": 0,
+  "answer": null,
+  "image": [
+    "images/0610_s20_qp_32_question_5_sub_a_subsub_i.png",
+    "images/0610_s20_qp_32_question_5_sub_a_subsub_ii.png",
+    "images/0610_s20_qp_32_question5_sub_b.png",
+    "images/0610_s20_qp_32_question5_sub_c.png"
+  ],
+  "ms_image": null,
+  "syllabus": null
+},
+{
+  "_id": {
+    "$oid": "692951e68d940b878ee80958"
+  },
+  "number": 6,
+  "text": "6 ",
+  "subquestions": [
+    {
+      "number": "a",
+      "text": "(a) A student wrote an incorrect definition of the term hormone.   The student’s incorrect definition is shown in Fig. 6.1. A hormone is an electrical substance, produced by a  gland and carried by the neurones, which alters the  activity of one or more specific target organs. Fig. 6.1   Identify the two incorrect words in the student’s definition. 1  ................................................................................................................................................ 2  ................................................................................................................................................ [2]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question6_sub_a.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "14.3",
+        "title": "14.3 Hormones",
+        "content": [
+          "Describe a hormone as a chemical substance, produced by a gland and carried by the blood, which alters the activity of one or more specic target organs   ",
+          "Identify in diagrams and images specic endocrine glands and state the hormones they secrete, limited to:",
+          " adrenal glands and adrenaline",
+          " pancreas and insulin",
+          " testes and testosterone",
+          " ovaries and oestrogen",
+          "Describe adrenaline as the hormone secreted in ‘ght or ight’ situations and its effects, limited to:",
+          " increased breathing rate",
+          " increased heart rate",
+          " increased pupil diameter",
+          "Compare nervous and hormonal control, limited to speed of action and duration of effect Supplement",
+          "State that glucagon is secreted by the pancreas  ",
+          "Describe the role of adrenaline in the control of metabolic activity, limited to:",
+          "  increasing the blood glucose concentration",
+          " increasing heart rate"
+        ]
+      }
+    },
+    {
+      "number": "b",
+      "text": "(b) Table 6.1 shows the names of some hormones and the glands where they are secreted.   Complete Table 6.1. Table 6.1 hormonegland adrenal insulin oestrogen testes  [4]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question6_sub_b.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "14.3",
+        "title": "14.3 Hormones",
+        "content": [
+          "Describe a hormone as a chemical substance, produced by a gland and carried by the blood, which alters the activity of one or more specic target organs   ",
+          "Identify in diagrams and images specic endocrine glands and state the hormones they secrete, limited to:",
+          " adrenal glands and adrenaline",
+          " pancreas and insulin",
+          " testes and testosterone",
+          " ovaries and oestrogen",
+          "Describe adrenaline as the hormone secreted in ‘ght or ight’ situations and its effects, limited to:",
+          " increased breathing rate",
+          " increased heart rate",
+          " increased pupil diameter",
+          "Compare nervous and hormonal control, limited to speed of action and duration of effect Supplement",
+          "State that glucagon is secreted by the pancreas  ",
+          "Describe the role of adrenaline in the control of metabolic activity, limited to:",
+          "  increasing the blood glucose concentration",
+          " increasing heart rate"
+        ]
+      }
+    },
+    {
+      "number": "c",
+      "text": "(c) Fig. 6.2 shows the position of some of the organs and endocrine glands in the body. kidney Fig. 6.2   Draw an X on Fig. 6.2 to identify an adrenal gland. [1]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question6_sub_c.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "14.3",
+        "title": "14.3 Hormones",
+        "content": [
+          "Describe a hormone as a chemical substance, produced by a gland and carried by the blood, which alters the activity of one or more specic target organs   ",
+          "Identify in diagrams and images specic endocrine glands and state the hormones they secrete, limited to:",
+          " adrenal glands and adrenaline",
+          " pancreas and insulin",
+          " testes and testosterone",
+          " ovaries and oestrogen",
+          "Describe adrenaline as the hormone secreted in ‘ght or ight’ situations and its effects, limited to:",
+          " increased breathing rate",
+          " increased heart rate",
+          " increased pupil diameter",
+          "Compare nervous and hormonal control, limited to speed of action and duration of effect Supplement",
+          "State that glucagon is secreted by the pancreas  ",
+          "Describe the role of adrenaline in the control of metabolic activity, limited to:",
+          "  increasing the blood glucose concentration",
+          " increasing heart rate"
+        ]
+      }
+    },
+    {
+      "number": "d",
+      "text": "(d) The list in Fig. 6.3 shows some of the changes that occur in boys and girls during puberty.     breasts grow    hair grows in armpits    pubic hair grows hips widen    menstruation    testes grow Fig. 6.3   ",
+      "subsubquestions": [
+        {
+          "number": "i",
+          "text": "(i) State two changes that occur in girls only from the list in Fig. 6.3. 1  ........................................................................................................................................ 2  ........................................................................................................................................ [2]   ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_6_sub_d_subsub_i.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "16.5",
+            "title": "16.5 Sexual hormones in humans",
+            "content": [
+              "Describe the roles of testosterone and oestrogen in the development and regulation of secondary sexual characteristics during puberty",
+              "Describe the menstrual cycle in terms of changes in the ovaries and in the lining of the uterusSupplement",
+              "Describe the sites of production of oestrogen and progesterone in the menstrual cycle and in pregnancy",
+              "Explain the role of hormones in controlling the menstrual cycle and pregnancy, limited to FSH, LH, progesterone and oestrogen "
+            ]
+          }
+        },
+        {
+          "number": "ii",
+          "text": "(ii) State one change that occurs in both boys and girls from the list in Fig. 6.3.  ..................................................................................................................................... [1]  [Total: 10]",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_6_sub_d_subsub_ii.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "16.5",
+            "title": "16.5 Sexual hormones in humans",
+            "content": [
+              "Describe the roles of testosterone and oestrogen in the development and regulation of secondary sexual characteristics during puberty",
+              "Describe the menstrual cycle in terms of changes in the ovaries and in the lining of the uterusSupplement",
+              "Describe the sites of production of oestrogen and progesterone in the menstrual cycle and in pregnancy",
+              "Explain the role of hormones in controlling the menstrual cycle and pregnancy, limited to FSH, LH, progesterone and oestrogen "
+            ]
+          }
+        }
+      ],
+      "answer": null,
+      "marks": 0,
+      "image": [
+        "images/0610_s20_qp_32_question_6_sub_d_subsub_i.png",
+        "images/0610_s20_qp_32_question_6_sub_d_subsub_ii.png"
+      ],
+      "ms_image": null,
+      "syllabus": null
+    }
+  ],
+  "marks": 0,
+  "answer": null,
+  "image": [
+    "images/0610_s20_qp_32_question6_sub_a.png",
+    "images/0610_s20_qp_32_question6_sub_b.png",
+    "images/0610_s20_qp_32_question6_sub_c.png",
+    "images/0610_s20_qp_32_question_6_sub_d_subsub_i.png",
+    "images/0610_s20_qp_32_question_6_sub_d_subsub_ii.png"
+  ],
+  "ms_image": null,
+  "syllabus": null
+},
+{
+  "_id": {
+    "$oid": "692951e68d940b878ee80959"
+  },
+  "number": 7,
+  "text": "7 Researchers investigated the effects of using a fertiliser on the number of leaves grown by plants.  The fertiliser contained nitrate and magnesium ions.  Plants in group 1 were grown in soil with fertiliser.  Plants in group 2 were grown in soil without fertiliser.  The results are shown in Fig. 7.1. days after planting average number of leaves per plant 1020304050 10 0 20 30 40 50 60 70 80 key: group 1 group 2 Fig. 7.1  ",
+  "subquestions": [
+    {
+      "number": "a",
+      "text": "(a) Describe the results shown in Fig. 7.1.  ...................................................................................................................................................  ...................................................................................................................................................  ...................................................................................................................................................  ...................................................................................................................................................  ...................................................................................................................................................  ...................................................................................................................................................  ............................................................................................................................................. [3]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question7_sub_a.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "6.1",
+        "title": "6.1 Photosynthesis",
+        "content": [
+          "PhotosynthesisCore1 Describe photosynthesis as the process by which plants synthesise carbohydrates from raw materials using energy from light",
+          "State the word equation for photosynthesis as:  carbon dioxide + water → glucose + oxygen  in the presence of light and chlorophyll",
+          "State that chlorophyll is a green pigment that is found in chloroplasts",
+          "State that chlorophyll transfers energy from light into energy in chemicals, for the synthesis of carbohydratesSupplement10 State the balanced chemical equation for photosynthesis as: 6CO2 + 6H2O → C6H12O6 + 6O2continued6.1 Photosynthesis continuedCore",
+          "Outline the subsequent use and storage of the carbohydrates made in photosynthesis, limited to:",
+          " starch as an energy store",
+          " cellulose to build cell walls",
+          " glucose used in respiration to provide energy",
+          " sucrose for transport in the phloem",
+          " nectar to attract insects for pollination ",
+          "Explain the importance of:",
+          " nitrate ions for making amino acids",
+          " magnesium ions for making chlorophyll",
+          "Investigate the need for chlorophyll, light and carbon dioxide for photosynthesis, using appropriate controls",
+          "Investigate and describe the effects of varying light intensity, carbon dioxide concentration and temperature on the rate of photosynthesis",
+          "Investigate and describe the effect of light and dark conditions on gas exchange in an aquatic plant using hydrogencarbonate indicator solutionSupplement11 Identify and explain the limiting factors of photosynthesis in different environmental conditions"
+        ]
+      }
+    },
+    {
+      "number": "b",
+      "text": "(b) A student wrote a series of statements to explain why an increase in nitrate and magnesium  ions increased the number of leaves. Not all of the statements are correct.    A – Magnesium is required for the synthesis of chlorophyll.    B – Nitrate ions are a component of carbohydrates.    C – Chlorophyll is required for photosynthesis.    D – Proteins are needed for growth.    E – Plants make their own food by the process of respiration.    F – Respiration produces glucose.   State the letters of the correct statements.  ............................................................................................................................................. [3]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question7_sub_b.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "6.1",
+        "title": "6.1 Photosynthesis",
+        "content": [
+          "PhotosynthesisCore1 Describe photosynthesis as the process by which plants synthesise carbohydrates from raw materials using energy from light",
+          "State the word equation for photosynthesis as:  carbon dioxide + water → glucose + oxygen  in the presence of light and chlorophyll",
+          "State that chlorophyll is a green pigment that is found in chloroplasts",
+          "State that chlorophyll transfers energy from light into energy in chemicals, for the synthesis of carbohydratesSupplement10 State the balanced chemical equation for photosynthesis as: 6CO2 + 6H2O → C6H12O6 + 6O2continued6.1 Photosynthesis continuedCore",
+          "Outline the subsequent use and storage of the carbohydrates made in photosynthesis, limited to:",
+          " starch as an energy store",
+          " cellulose to build cell walls",
+          " glucose used in respiration to provide energy",
+          " sucrose for transport in the phloem",
+          " nectar to attract insects for pollination ",
+          "Explain the importance of:",
+          " nitrate ions for making amino acids",
+          " magnesium ions for making chlorophyll",
+          "Investigate the need for chlorophyll, light and carbon dioxide for photosynthesis, using appropriate controls",
+          "Investigate and describe the effects of varying light intensity, carbon dioxide concentration and temperature on the rate of photosynthesis",
+          "Investigate and describe the effect of light and dark conditions on gas exchange in an aquatic plant using hydrogencarbonate indicator solutionSupplement11 Identify and explain the limiting factors of photosynthesis in different environmental conditions"
+        ]
+      }
+    },
+    {
+      "number": "c",
+      "text": "(c) State the principal source of energy for plants.  ............................................................................................................................................. [1]  [Total: 7]",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question7_sub_c.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "6.1",
+        "title": "6.1 Photosynthesis",
+        "content": [
+          "PhotosynthesisCore1 Describe photosynthesis as the process by which plants synthesise carbohydrates from raw materials using energy from light",
+          "State the word equation for photosynthesis as:  carbon dioxide + water → glucose + oxygen  in the presence of light and chlorophyll",
+          "State that chlorophyll is a green pigment that is found in chloroplasts",
+          "State that chlorophyll transfers energy from light into energy in chemicals, for the synthesis of carbohydratesSupplement10 State the balanced chemical equation for photosynthesis as: 6CO2 + 6H2O → C6H12O6 + 6O2continued6.1 Photosynthesis continuedCore",
+          "Outline the subsequent use and storage of the carbohydrates made in photosynthesis, limited to:",
+          " starch as an energy store",
+          " cellulose to build cell walls",
+          " glucose used in respiration to provide energy",
+          " sucrose for transport in the phloem",
+          " nectar to attract insects for pollination ",
+          "Explain the importance of:",
+          " nitrate ions for making amino acids",
+          " magnesium ions for making chlorophyll",
+          "Investigate the need for chlorophyll, light and carbon dioxide for photosynthesis, using appropriate controls",
+          "Investigate and describe the effects of varying light intensity, carbon dioxide concentration and temperature on the rate of photosynthesis",
+          "Investigate and describe the effect of light and dark conditions on gas exchange in an aquatic plant using hydrogencarbonate indicator solutionSupplement11 Identify and explain the limiting factors of photosynthesis in different environmental conditions"
+        ]
+      }
+    }
+  ],
+  "marks": 0,
+  "answer": null,
+  "image": [
+    "images/0610_s20_qp_32_question7_sub_a.png",
+    "images/0610_s20_qp_32_question7_sub_b.png",
+    "images/0610_s20_qp_32_question7_sub_c.png"
+  ],
+  "ms_image": null,
+  "syllabus": null
+},
+{
+  "_id": {
+    "$oid": "692951e68d940b878ee8095a"
+  },
+  "number": 8,
+  "text": "8 ",
+  "subquestions": [
+    {
+      "number": "a",
+      "text": "(a) Table 8.1 shows the mass of different materials recycled in one country in 2012 and 2017. Table 8.1 year material recycled / tonnes cardboardpapermetalplastic 2012193 091222 45541 48844 262 2017245 345144 41624 87423 498   ",
+      "subsubquestions": [
+        {
+          "number": "i",
+          "text": "(i) Describe the data in Table 8.1.  ...........................................................................................................................................  ...........................................................................................................................................  ...........................................................................................................................................  ...........................................................................................................................................  ...........................................................................................................................................  ...........................................................................................................................................  ..................................................................................................................................... [3]   ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_8_sub_a_subsub_i.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "20.1",
+            "title": "20.1 Food supply",
+            "content": [
+              "Food supplyCore1 Describe how humans have increased food production, limited to: ",
+              "  agricultural machinery to use larger areas of land and improve efciency",
+              " chemical fertilisers to improve yields ",
+              " insecticides to improve quality and yield ",
+              " herbicides to reduce competition with weeds",
+              "  selective breeding to improve production by crop plants and livestock",
+              "Describe the advantages and disadvantages of large-scale monocultures of crop plants",
+              "Describe the advantages and disadvantages of intensive livestock productionSupplement"
+            ]
+          }
+        },
+        {
+          "number": "ii",
+          "text": "(ii) Calculate the percentage change in mass of plastic recycled between 2012 and 2017.   ............................................................ %  [2]  ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_8_sub_a_subsub_ii.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "20.1",
+            "title": "20.1 Food supply",
+            "content": [
+              "Food supplyCore1 Describe how humans have increased food production, limited to: ",
+              "  agricultural machinery to use larger areas of land and improve efciency",
+              " chemical fertilisers to improve yields ",
+              " insecticides to improve quality and yield ",
+              " herbicides to reduce competition with weeds",
+              "  selective breeding to improve production by crop plants and livestock",
+              "Describe the advantages and disadvantages of large-scale monocultures of crop plants",
+              "Describe the advantages and disadvantages of intensive livestock productionSupplement"
+            ]
+          }
+        }
+      ],
+      "answer": null,
+      "marks": 0,
+      "image": [
+        "images/0610_s20_qp_32_question_8_sub_a_subsub_i.png",
+        "images/0610_s20_qp_32_question_8_sub_a_subsub_ii.png"
+      ],
+      "ms_image": null,
+      "syllabus": null
+    },
+    {
+      "number": "b",
+      "text": "(b) Discarded rubbish is one source of pollution.   Adding excess fertiliser to soil is another source of pollution.   ",
+      "subsubquestions": [
+        {
+          "number": "i",
+          "text": "(i) State two other types of substances used in agriculture that can pollute land and water. 1  ........................................................................................................................................ 2  ........................................................................................................................................ [2]   ",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_8_sub_b_subsub_i.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "20.3",
+            "title": "20.3 Pollution",
+            "content": [
+              "Describe the effects of untreated sewage and excess fertiliser on aquatic ecosystems",
+              "Describe the effects of non-biodegradable plastics, in both aquatic and terrestrial ecosystems",
+              "Describe the sources and effects of pollution of the air by methane and carbon dioxide, limited to: the enhanced greenhouse effect and climate changeSupplement",
+              "Explain the process of eutrophication of water, limited to:  •increased availability of nitrate and other ions  •increased growth of producers •increased decomposition after death of producers  •increased aerobic respiration by decomposers  •reduction in dissolved oxygen •death of organisms requiring dissolved oxygen in water"
+            ]
+          }
+        },
+        {
+          "number": "ii",
+          "text": "(ii) State the names of two gases that pollute air and are linked to climate change. 1  ........................................................................................................................................ 2  ........................................................................................................................................ [2]  [Total: 9]",
+          "marks": 0,
+          "answer": null,
+          "image": "images/0610_s20_qp_32_question_8_sub_b_subsub_ii.png",
+          "ms_image": null,
+          "syllabus": {
+            "number": "20.3",
+            "title": "20.3 Pollution",
+            "content": [
+              "Describe the effects of untreated sewage and excess fertiliser on aquatic ecosystems",
+              "Describe the effects of non-biodegradable plastics, in both aquatic and terrestrial ecosystems",
+              "Describe the sources and effects of pollution of the air by methane and carbon dioxide, limited to: the enhanced greenhouse effect and climate changeSupplement",
+              "Explain the process of eutrophication of water, limited to:  •increased availability of nitrate and other ions  •increased growth of producers •increased decomposition after death of producers  •increased aerobic respiration by decomposers  •reduction in dissolved oxygen •death of organisms requiring dissolved oxygen in water"
+            ]
+          }
+        }
+      ],
+      "answer": null,
+      "marks": 0,
+      "image": [
+        "images/0610_s20_qp_32_question_8_sub_b_subsub_i.png",
+        "images/0610_s20_qp_32_question_8_sub_b_subsub_ii.png"
+      ],
+      "ms_image": null,
+      "syllabus": null
+    }
+  ],
+  "marks": 0,
+  "answer": null,
+  "image": [
+    "images/0610_s20_qp_32_question_8_sub_a_subsub_i.png",
+    "images/0610_s20_qp_32_question_8_sub_a_subsub_ii.png",
+    "images/0610_s20_qp_32_question_8_sub_b_subsub_i.png",
+    "images/0610_s20_qp_32_question_8_sub_b_subsub_ii.png"
+  ],
+  "ms_image": null,
+  "syllabus": null
+},
+{
+  "_id": {
+    "$oid": "692951e68d940b878ee8095b"
+  },
+  "number": 9,
+  "text": "9 ",
+  "subquestions": [
+    {
+      "number": "a",
+      "text": "(a) Fig. 9.1 is a flow chart showing the pathway of a reflex action. stimulus .............................................. sensory neurone .............................................. motor neurone .............................................. response Fig. 9.1   Complete the missing parts of the reflex action pathway in Fig. 9.1. [3]  ",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question9_sub_a.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "14.1",
+        "title": "14.1 Coordination and response",
+        "content": [
+          "Coordination and responseCore1 State that electrical impulses travel along neurones",
+          "Describe the mammalian nervous system in terms of:",
+          "  the central nervous system ",
+          " consisting of the brain and the spinal cord",
+          "  the peripheral nervous system ",
+          " consisting of the nerves outside of the brain and spinal cord",
+          "Describe the role of the nervous system as coordination and regulation of body functions",
+          "Identify in diagrams and images sensory, relay and motor neurones ",
+          "Describe a simple reex arc in terms of: receptor, sensory neurone, relay neurone, motor neurone and effector",
+          "Describe a reex action as a means of automatically and rapidly integrating and coordinating stimuli with the responses of effectors (muscles and glands)",
+          "Describe a synapse as a junction between two neuronesSupplement",
+          "Describe the structure of a synapse, including the presence of vesicles containing neurotransmitter molecules, the synaptic gap and receptor proteins",
+          "Describe the events at a synapse as: ",
+          "  an impulse stimulates the release of neurotransmitter molecules from vesicles into the synaptic gap",
+          "  the neurotransmitter molecules diffuse across the gap",
+          "  neurotransmitter molecules bind with receptor proteins on the next neurone",
+          "  an impulse is then stimulated in the next neurone",
+          " State that synapses ensure that impulses travel in one direction only"
+        ]
+      }
+    },
+    {
+      "number": "b",
+      "text": "(b) The box on the left contains the beginning of a sentence.   The boxes on the right show some endings of sentences.   Draw lines to make three correct sentences about reflex actions.    are automatic.    are slow.    coordinate stimuli with responses.   Reflex actions    do not involve synapses.    involve the central nervous system.    occur only in plants.  [3]  [Total: 6]",
+      "subsubquestions": null,
+      "answer": null,
+      "marks": 0,
+      "image": "images/0610_s20_qp_32_question9_sub_b.png",
+      "ms_image": null,
+      "syllabus": {
+        "number": "14.1",
+        "title": "14.1 Coordination and response",
+        "content": [
+          "Coordination and responseCore1 State that electrical impulses travel along neurones",
+          "Describe the mammalian nervous system in terms of:",
+          "  the central nervous system ",
+          " consisting of the brain and the spinal cord",
+          "  the peripheral nervous system ",
+          " consisting of the nerves outside of the brain and spinal cord",
+          "Describe the role of the nervous system as coordination and regulation of body functions",
+          "Identify in diagrams and images sensory, relay and motor neurones ",
+          "Describe a simple reex arc in terms of: receptor, sensory neurone, relay neurone, motor neurone and effector",
+          "Describe a reex action as a means of automatically and rapidly integrating and coordinating stimuli with the responses of effectors (muscles and glands)",
+          "Describe a synapse as a junction between two neuronesSupplement",
+          "Describe the structure of a synapse, including the presence of vesicles containing neurotransmitter molecules, the synaptic gap and receptor proteins",
+          "Describe the events at a synapse as: ",
+          "  an impulse stimulates the release of neurotransmitter molecules from vesicles into the synaptic gap",
+          "  the neurotransmitter molecules diffuse across the gap",
+          "  neurotransmitter molecules bind with receptor proteins on the next neurone",
+          "  an impulse is then stimulated in the next neurone",
+          " State that synapses ensure that impulses travel in one direction only"
+        ]
+      }
+    }
+  ],
+  "marks": 0,
+  "answer": null,
+  "image": [
+    "images/0610_s20_qp_32_question9_sub_a.png",
+    "images/0610_s20_qp_32_question9_sub_b.png"
+  ],
+  "ms_image": null,
+  "syllabus": null
+}]
