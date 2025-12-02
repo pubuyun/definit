@@ -91,6 +91,11 @@ database = client[subject]
 with pdfplumber.open(syllabus_path) as pdf:
     syllabuses = SyllabusParser(pdf, syllabus_page_range).parse_syllabus()
 
+database["syllabus"].delete_many({})
+for syllabus in syllabuses:
+    syllabus_dict = convert_obj(syllabus)
+    database["syllabus"].insert_one(syllabus_dict)
+print(f"Inserted {len(syllabuses)} syllabus items.")
 classifier = LLMClassifier(syllabuses=syllabuses, api_key=API_KEY, api_url=API_URL)
 
 error_list = []
