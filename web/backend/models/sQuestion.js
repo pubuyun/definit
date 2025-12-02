@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const syllabusSchema = require("./Syllabus");
-const sQuestionSchema = require("./sQuestion");
+const ssQuestionSchema = require("./ssQuestion");
 
-const QuestionSchema = new mongoose.Schema({
+const sQuestionSchema = new mongoose.Schema({
     number: {
         type: String,
         required: true,
@@ -11,8 +11,8 @@ const QuestionSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    subquestions: {
-        type: [sQuestionSchema],
+    subsubquestions: {
+        type: [ssQuestionSchema],
     },
     marks: {
         type: Number,
@@ -31,4 +31,4 @@ const QuestionSchema = new mongoose.Schema({
     },
 });
 
-module.exports = QuestionSchema;
+module.exports = sQuestionSchema;
