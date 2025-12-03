@@ -7,7 +7,6 @@ require("dotenv").config();
 
 const app = express();
 
-// Import routes
 const questionRoutes = require("./routes/questions");
 const databaseService = require("./services/databaseService");
 
@@ -17,10 +16,9 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-// Rate limiting
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
+    windowMs: 15 * 60 * 1000,
+    max: 100,
     message: "Too many requests from this IP, please try again later.",
 });
 app.use(limiter);
@@ -29,55 +27,74 @@ async function setupDatabaseServices() {
     const adminDb = mongoose.connection.db.admin();
     const result = await adminDb.listDatabases();
     const databaseNames = result.databases.map((db) => db.name);
+    // igcse-biology-0610, etc.
+    const dbServices = {};
+    for (const dbName of databaseNames) {
+        const match = dbName.match(/.+\-.+\-(\d+)/);
+        if (match) {
+            const subjectCode = match[1];
+            dbServices[subjectCode] = new databaseService(dbName);
+            await new Promise((resolve) => {
+                dbServices[subjectCode].connection.once("open", resolve);
+            });
+            await dbServices[subjectCode].init();
+            app.use(
+                `/api/${subjectCode}`,
+                questionRoutes(dbServices[subjectCode])
+            );
+            console.log(
+                `Registered subject code: ${subjectCode} (database: ${dbName}, routes at /api/${subjectCode})`
+            );
+        }
+    }
+    return dbServices;
+}
+
+function initializeApi() {
+    // Health check endpoint
+    app.get("/api/health", (req, res) => {
+        res.json({
+            status: "OK",
+            timestamp: new Date().toISOString(),
+            database:
+                mongoose.connection.readyState === 1
+                    ? "Connected"
+                    : "Disconnected",
+        });
+    });
+
+    // Error handling middleware
+    app.use((error, req, res, next) => {
+        console.error("Error:", error);
+        res.status(error.status || 500).json({
+            error: {
+                message: error.message || "Internal Server Error",
+                status: error.status || 500,
+            },
+        });
+    });
+
+    // 404 handler
+    app.use((req, res) => {
+        res.status(404).json({
+            error: {
+                message: "Route not found",
+                status: 404,
+            },
+        });
+    });
 }
 
 // MongoDB connection
-mongoose
-    .connect(process.env.MONGO_URI)
-    .then(() => {
-        console.log("Connected to MongoDB");
-    })
-    .catch((error) => {
-        console.error("MongoDB connection error:", error);
-        process.exit(1);
-    });
-
-// Routes
-
-// Health check endpoint
-app.get("/api/health", (req, res) => {
-    res.json({
-        status: "OK",
-        timestamp: new Date().toISOString(),
-        database:
-            mongoose.connection.readyState === 1 ? "Connected" : "Disconnected",
-    });
-});
-
-// Error handling middleware
-app.use((error, req, res, next) => {
-    console.error("Error:", error);
-    res.status(error.status || 500).json({
-        error: {
-            message: error.message || "Internal Server Error",
-            status: error.status || 500,
-        },
-    });
-});
-
-// 404 handler
-app.use((req, res) => {
-    res.status(404).json({
-        error: {
-            message: "Route not found",
-            status: 404,
-        },
-    });
+mongoose.connect(process.env.MONGO_URI).then(async () => {
+    console.log("Connected to MongoDB");
+    app.locals.dbServices = await setupDatabaseServices();
+    initializeApi();
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
 
 module.exports = app;
