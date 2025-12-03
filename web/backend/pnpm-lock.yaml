@@ -29,6 +29,9 @@ importers:
       mongoose:
         specifier: 9.0.0
         version: 9.0.0
+      mongoose-fuzzy-searching:
+        specifier: ^2.0.2
+        version: 2.0.2(mongoose@9.0.0)
     devDependencies:
       nodemon:
         specifier: ^3.0.1
@@ -332,6 +335,11 @@ packages:
         optional: true
       socks:
         optional: true
+
+  mongoose-fuzzy-searching@2.0.2:
+    resolution: {integrity: sha512-Hbmx59VWJjQJDNdoyQ8bdECaqpis0pKoliWzf5eILzFs2KO7laUJpaQWJySN9OvdQS/gM9fURMSzQVQoLeZ3DA==}
+    peerDependencies:
+      mongoose: 5.10.x
 
   mongoose@9.0.0:
     resolution: {integrity: sha512-J6wTGC8/hSFpy9K6kPbKDnBNoUcX4iOGCasUrRzlSKdwdVNxdscLA4oHKOQwJlHqh/TxDNg+Uzg6koCyCKP0wA==}
@@ -806,6 +814,10 @@ snapshots:
       '@mongodb-js/saslprep': 1.3.1
       bson: 7.0.0
       mongodb-connection-string-url: 7.0.0
+
+  mongoose-fuzzy-searching@2.0.2(mongoose@9.0.0):
+    dependencies:
+      mongoose: 9.0.0
 
   mongoose@9.0.0:
     dependencies:

@@ -25,7 +25,11 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-function setupDatabaseServices() {}
+async function setupDatabaseServices() {
+    const adminDb = mongoose.connection.db.admin();
+    const result = await adminDb.listDatabases();
+    const databaseNames = result.databases.map((db) => db.name);
+}
 
 // MongoDB connection
 mongoose
