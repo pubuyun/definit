@@ -23,7 +23,7 @@ class SubSubQuestion:
         self.answer = answer
         self.image = image
         self.ms_image = ms_image
-        self.syllabus = syllabus
+        self.syllabus = syllabus if syllabus is not None else []
 
     def __str__(self):
         return self.text
@@ -50,7 +50,7 @@ class SubQuestion:
         self.marks = marks
         self.image = image
         self.ms_image = ms_image
-        self.syllabus = syllabus
+        self.syllabus = syllabus if syllabus is not None else []
 
     def __str__(self):
         return self.text + (f"\n{self.subsubquestions}" if self.subsubquestions else "")
@@ -77,7 +77,7 @@ class Question:
         self.answer = answer
         self.image = image
         self.ms_image = ms_image
-        self.syllabus = syllabus
+        self.syllabus = syllabus if syllabus is not None else []
 
     def __str__(self):
         return f"({self.number}): {self.text}" + (

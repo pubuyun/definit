@@ -196,7 +196,11 @@ class LLMClassifier:
 
         # If no subquestion, assign directly to question
         if not subquestion_number:
-            matching_question.syllabus = syllabus
+            matching_question.syllabus = (
+                syllabus
+                if isinstance(matching_question, MultipleChoiceQuestion)
+                else [syllabus]
+            )
             return True
 
         # Find matching subquestion
@@ -214,7 +218,8 @@ class LLMClassifier:
 
         # If no subsubquestion, assign to subquestion
         if not subsubquestion_number:
-            matching_subquestion.syllabus = syllabus
+            matching_subquestion.syllabus = [syllabus]
+            matching_question.syllabus.append(syllabus)
             return True
 
         # Find and assign to matching subsubquestion
@@ -227,7 +232,9 @@ class LLMClassifier:
             None,
         )
         if matching_subsubquestion:
-            matching_subsubquestion.syllabus = syllabus
+            matching_subsubquestion.syllabus = [syllabus]
+            matching_subquestion.syllabus.append(syllabus)
+            matching_question.syllabus.append(syllabus)
             return True
         return False
 

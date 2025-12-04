@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const syllabusSchema = require("./Syllabus");
 
 const MCQuestionSchema = new mongoose.Schema({
     number: {
@@ -27,7 +26,11 @@ const MCQuestionSchema = new mongoose.Schema({
         type: String,
     },
     syllabus: {
-        type: syllabusSchema,
+        type: [Object],
+    },
+    paper_name: {
+        type: String,
+        required: true,
     },
 });
 

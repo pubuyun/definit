@@ -32,6 +32,10 @@ CONFIGS = {
 client = MongoClient(MONGO_URI)
 
 
+def map_syllabus_to_id(syllabuses: List[Syllabus]) -> dict:
+    return list(map(lambda x: {"id": x.id, "number": x.number}, syllabuses))
+
+
 def convert_obj(obj: Optional[object]) -> Optional[dict]:
     # convert hierarchical object to dict
     if obj is None:
@@ -52,7 +56,6 @@ def parse(
     classifier: LLMClassifier, question_paper: str, markscheme: str, issq: bool
 ) -> List[Question] | List[MultipleChoiceQuestion]:
     with pdfplumber.open(question_paper) as qppdf:
-        issq = "Multiple Choice" not in qppdf.pages[0].extract_text()
         if issq:
             sq_parser = QuestionPaperParser(
                 qppdf, image_prefix=os.path.basename(question_paper)[:-4]
@@ -94,9 +97,15 @@ with pdfplumber.open(syllabus_path) as pdf:
 database["syllabus"].delete_many({})
 for syllabus in syllabuses:
     syllabus_dict = convert_obj(syllabus)
-    database["syllabus"].insert_one(syllabus_dict)
+    result = database["syllabus"].insert_one(syllabus_dict)
+    syllabus.id = result.inserted_id
 print(f"Inserted {len(syllabuses)} syllabus items.")
 classifier = LLMClassifier(syllabuses=syllabuses, api_key=API_KEY, api_url=API_URL)
+
+question_collection = database["questions"]
+squestion_collection = database["sub_questions"]
+ssquestion_collection = database["sub_sub_questions"]
+mc_question_collection = database["mc_questions"]
 
 error_list = []
 for f in os.listdir("papers/igcse-biology-0610"):
@@ -115,19 +124,53 @@ for f in os.listdir("papers/igcse-biology-0610"):
         with pdfplumber.open(question_paper, pages=[1]) as qppdf:
             issq = "Multiple Choice" not in qppdf.pages[0].extract_text()
 
-        collection_name = os.path.basename(question_paper)[:-4] + (
-            "_sq" if issq else "_mcq"
-        )
-        if database[collection_name].count_documents({}) > 0:
+        paper_name = os.path.basename(question_paper)[:-4]
+
+        # if database[collection_name].count_documents({}) > 0:
+        #     print("Already processed", question_paper)
+        #     continue
+        if database["questions"].count_documents({"paper_name": paper_name}) > 0:
             print("Already processed", question_paper)
             continue
 
         questions = parse(classifier, question_paper, markscheme, issq)
 
-        collection = database[collection_name]
         for question in questions:
-            question_dict = convert_obj(question)
-            collection.insert_one(question_dict)
+            # add paper name to each question
+            question.paper_name = paper_name
+            if issq:
+                # remove subquestions and subsubquestions before inserting, save them separately
+                squestions = question.sub_questions
+                question.sub_questions = []
+                question.syllabus = map_syllabus_to_id(question.syllabus)
+                question_dict = convert_obj(question)
+                question_res = question_collection.insert_one(question_dict)
+                for squestion in squestions:
+                    squestion.paper_name = paper_name
+                    squestion.parent_id = question_res.inserted_id
+                    squestion.parent_number = question.question_number
+                    squestion.syllabus = map_syllabus_to_id(squestion.syllabus)
+                    ssquestions = squestion.sub_sub_questions
+                    squestion.sub_sub_questions = []
+                    squestion_dict = convert_obj(squestion)
+                    squestion_res = squestion_collection.insert_one(squestion_dict)
+                    for ssquestion in ssquestions:
+                        ssquestion.paper_name = paper_name
+                        ssquestion.parent_id = squestion_res.inserted_id
+                        ssquestion.parent_number = squestion.question_number
+                        ssquestion.syllabus = map_syllabus_to_id(ssquestion.syllabus)
+                        ssquestion_dict = convert_obj(ssquestion)
+                        ssquestion_collection.insert_one(ssquestion_dict)
+            else:
+                question.paper_name = paper_name
+                question.syllabus = map_syllabus_to_id(question.syllabus)
+                question_dict = convert_obj(question)
+                mc_question_collection.insert_one(question_dict)
+
+        # collection = database[collection_name]
+        # for question in questions:
+        #     question_dict = convert_obj(question)
+        #     collection.insert_one(question_dict)
     except Exception as e:
         print("Error processing", question_paper, ":", str(e))
         error_list.append((question_paper, str(e)))

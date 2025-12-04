@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const syllabusSchema = require("./Syllabus");
-const ssQuestionSchema = require("./ssQuestion");
 
 const sQuestionSchema = new mongoose.Schema({
     number: {
@@ -10,10 +9,6 @@ const sQuestionSchema = new mongoose.Schema({
     },
     text: {
         type: String,
-        required: true,
-    },
-    subsubquestions: {
-        type: [ssQuestionSchema],
         required: true,
     },
     marks: {
@@ -29,7 +24,19 @@ const sQuestionSchema = new mongoose.Schema({
         type: [String],
     },
     syllabus: {
-        type: syllabusSchema,
+        type: [Object],
+    },
+    paper_name: {
+        type: String,
+        required: true,
+    },
+    parent_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+    },
+    parent_number: {
+        type: Number,
+        required: true,
     },
 });
 

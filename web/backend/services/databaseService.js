@@ -17,50 +17,55 @@ class DatabaseService {
     }
     async init() {
         console.log(`Connected to database: ${this.name}`);
+
         this.syllabusModel = this.connection.model(
             "syllabus",
             syllabusSchema,
             "syllabus"
         );
-        this.modelsByPaper = {};
-        this.paperNames = await this.connection.db
-            .listCollections()
-            .toArray()
-            .then((collections) => {
-                return collections
-                    .map((col) => col.name)
-                    .filter((name) => name !== "syllabus");
-            });
-        for (const paper of this.paperNames) {
-            if (paper.endsWith("mcq")) {
-                this.modelsByPaper[paper] = {
-                    mcQuestions: this.connection.model(
-                        paper + "mcq",
-                        MCQuestionSchema,
-                        paper
-                    ),
-                };
-            } else {
-                this.modelsByPaper[paper] = {
-                    questions: this.connection.model(
-                        paper + "q",
-                        QuestionSchema,
-                        paper
-                    ),
-                    sQuestions: this.connection.model(
-                        paper + "sq",
-                        sQuestionSchema,
-                        paper
-                    ),
-                    ssQuestions: this.connection.model(
-                        paper + "ssq",
-                        ssQuestionSchema,
-                        paper
-                    ),
-                };
-            }
-        }
+
+        this.questionsModel = this.connection.model(
+            "questions",
+            QuestionSchema,
+            "questions"
+        );
+
+        this.sQuestionsModel = this.connection.model(
+            "sub_questions",
+            sQuestionSchema,
+            "sub_questions"
+        );
+
+        this.ssQuestionsModel = this.connection.model(
+            "sub_sub_questions",
+            ssQuestionSchema,
+            "sub_sub_questions"
+        );
+
+        this.mcQuestionsModel = this.connection.model(
+            "mc_questions",
+            MCQuestionSchema,
+            "mc_questions"
+        );
+
+        this.paperNames = await this.getPaperNamesFromCollections();
         this.initialized = true;
+    }
+
+    async getPaperNamesFromCollections() {
+        const paperNames = new Set();
+
+        const questionPapers = await this.connection
+            .collection("questions")
+            .distinct("paper_name");
+        const mcQuestionPapers = await this.connection
+            .collection("mc_questions")
+            .distinct("paper_name");
+
+        questionPapers.forEach((name) => paperNames.add(name));
+        mcQuestionPapers.forEach((name) => paperNames.add(name));
+
+        return Array.from(paperNames);
     }
     getConnection() {
         return this.connection;
@@ -76,17 +81,25 @@ class DatabaseService {
     }
     async findInAllPapers(query) {
         const results = [];
-        for (const paper of this.paperNames) {
-            for (modelKey of Object.keys(this.modelsByPaper[paper])) {
-                const model = this.modelsByPaper[paper][modelKey];
+        const models = [
+            { model: this.questionsModel, type: "questions" },
+            { model: this.sQuestionsModel, type: "sQuestions" },
+            { model: this.ssQuestionsModel, type: "ssQuestions" },
+            { model: this.mcQuestionsModel, type: "mcQuestions" },
+        ];
+
+        for (const { model, type } of models) {
+            try {
                 const doc = await model.findOne(query).exec();
                 if (doc) {
                     results.push({
-                        paper,
-                        type: modelKey,
+                        paper: doc.paper_name || "unknown",
+                        type: type,
                         data: doc,
                     });
                 }
+            } catch (error) {
+                console.error(`Error searching ${type}:`, error);
             }
         }
         return results;
@@ -108,90 +121,97 @@ class DatabaseService {
         }
     ) {
         const results = [];
-        const papersToSearch =
-            query.paperName.length > 0
-                ? query.paperName.filter((paper) =>
-                      this.paperNames.includes(paper)
-                  )
-                : this.paperNames;
+
+        // Map type names to model instances
+        const typeModelMap = {
+            questions: this.questionsModel,
+            mcQuestions: this.mcQuestionsModel,
+            sQuestions: this.sQuestionsModel,
+            ssQuestions: this.ssQuestionsModel,
+        };
+
         const typesToSearch =
             query.type.length > 0
                 ? query.type.filter((type) =>
-                      [
-                          "questions",
-                          "mcQuestions",
-                          "sQuestions",
-                          "ssQuestions",
-                      ].includes(type)
+                      Object.keys(typeModelMap).includes(type)
                   )
-                : ["questions", "mcQuestions", "sQuestions", "ssQuestions"];
+                : Object.keys(typeModelMap);
+
         const skip = (pagination.page - 1) * pagination.limit;
         let collected = 0;
-        let needToSkip = skip;
+        let totalCount = 0;
 
-        for (const paper of papersToSearch) {
-            for (const modelKey of typesToSearch) {
-                if (!(modelKey in this.modelsByPaper[paper])) continue;
-                const model = this.modelsByPaper[paper][modelKey];
-                const searchQuery = {
-                    ...(query.syllabusNum.length > 0 && {
-                        "syllabus.number": { $in: query.syllabusNum },
-                    }),
-                    ...(query.text && {
-                        $text: { $search: query.text },
-                    }),
-                };
-                console.log("Searching", paper, modelKey, searchQuery);
+        for (const modelKey of typesToSearch) {
+            if (collected >= pagination.limit) break;
 
-                try {
-                    const count = await model.countDocuments(searchQuery);
-                    console.log(
-                        `Found ${count} documents in ${paper}.${modelKey}`
-                    );
-                    if (needToSkip >= count) {
-                        needToSkip -= count;
-                        continue;
-                    }
+            const model = typeModelMap[modelKey];
 
-                    let queryBuilder = model.find(searchQuery);
+            // Build search query
+            const searchQuery = {
+                ...(query.paperName.length > 0 && {
+                    paper_name: { $in: query.paperName },
+                }),
+                ...(query.syllabusNum.length > 0 && {
+                    "syllabus.number": { $in: query.syllabusNum },
+                }),
+                ...(query.text && {
+                    $text: { $search: query.text },
+                }),
+            };
 
-                    if (pagination.sortBy)
-                        queryBuilder = queryBuilder.sort({
-                            [pagination.sortBy]: pagination.sortOrder,
-                        });
+            console.log("Searching", modelKey, searchQuery);
 
-                    if (needToSkip > 0) {
-                        queryBuilder = queryBuilder.skip(needToSkip);
-                        needToSkip = 0;
-                    }
+            try {
+                const count = await model.countDocuments(searchQuery);
+                console.log(`Found ${count} documents in ${modelKey}`);
+                totalCount += count;
 
-                    const docs = await queryBuilder
-                        .limit(pagination.limit - collected)
-                        .exec();
+                // Calculate skip for this collection
+                let skipForThisCollection = Math.max(0, skip - collected);
 
-                    results.push(...docs);
-                    collected += docs.length;
-
-                    if (collected >= pagination.limit) {
-                        break;
-                    }
-                } catch (error) {
-                    console.error(
-                        `Error querying ${paper}.${modelKey}:`,
-                        error
-                    );
+                if (skipForThisCollection >= count) {
+                    // Skip this entire collection
                     continue;
                 }
 
-                if (collected >= pagination.limit) break;
-            }
+                let queryBuilder = model.find(searchQuery);
 
-            if (collected >= pagination.limit) break;
+                if (pagination.sortBy) {
+                    queryBuilder = queryBuilder.sort({
+                        [pagination.sortBy]: pagination.sortOrder,
+                    });
+                }
+
+                if (skipForThisCollection > 0) {
+                    queryBuilder = queryBuilder.skip(skipForThisCollection);
+                }
+
+                const limit = pagination.limit - collected;
+                const docs = await queryBuilder.limit(limit).exec();
+
+                results.push(...docs);
+                collected += docs.length;
+            } catch (error) {
+                console.error(`Error querying ${modelKey}:`, error);
+                continue;
+            }
         }
 
         return {
-            data: results.slice(0, pagination.limit),
-            total: results.length,
+            data: results,
+            total: totalCount,
+        };
+    }
+    async getQuestionsByPaper(paperName) {
+        const questions = await this.questionsModel.find({
+            paper_name: paperName,
+        });
+        const mcQuestions = await this.mcQuestionsModel.find({
+            paper_name: paperName,
+        });
+
+        return {
+            questions: questions.length > 0 ? questions : mcQuestions,
         };
     }
 }
