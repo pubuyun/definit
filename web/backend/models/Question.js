@@ -4,7 +4,7 @@ const sQuestionSchema = require("./sQuestion");
 
 const QuestionSchema = new mongoose.Schema({
     number: {
-        type: String,
+        type: Number,
         required: true,
     },
     text: {
@@ -13,6 +13,7 @@ const QuestionSchema = new mongoose.Schema({
     },
     subquestions: {
         type: [sQuestionSchema],
+        required: true,
     },
     marks: {
         type: Number,

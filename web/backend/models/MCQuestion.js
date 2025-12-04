@@ -10,6 +10,10 @@ const MCQuestionSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    options: {
+        type: [String],
+        required: true,
+    },
     marks: {
         type: Number,
     },
