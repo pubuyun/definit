@@ -195,12 +195,8 @@ class LLMClassifier:
             return False
 
         # If no subquestion, assign directly to question
-        if not subquestion_number:
-            matching_question.syllabus = (
-                syllabus
-                if isinstance(matching_question, MultipleChoiceQuestion)
-                else [syllabus]
-            )
+        if not subquestion_number or not matching_question.subquestions:
+            matching_question.syllabus = [syllabus]
             return True
 
         # Find matching subquestion
@@ -217,7 +213,7 @@ class LLMClassifier:
             return False
 
         # If no subsubquestion, assign to subquestion
-        if not subsubquestion_number:
+        if not subsubquestion_number or not matching_subquestion.subsubquestions:
             matching_subquestion.syllabus = [syllabus]
             matching_question.syllabus.append(syllabus)
             return True

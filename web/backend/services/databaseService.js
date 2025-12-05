@@ -83,9 +83,9 @@ class DatabaseService {
         const results = [];
         const models = [
             { model: this.questionsModel, type: "questions" },
-            { model: this.sQuestionsModel, type: "sQuestions" },
-            { model: this.ssQuestionsModel, type: "ssQuestions" },
-            { model: this.mcQuestionsModel, type: "mcQuestions" },
+            { model: this.sQuestionsModel, type: "squestions" },
+            { model: this.ssQuestionsModel, type: "ssquestions" },
+            { model: this.mcQuestionsModel, type: "mcquestions" },
         ];
 
         for (const { model, type } of models) {
@@ -125,9 +125,9 @@ class DatabaseService {
         // Map type names to model instances
         const typeModelMap = {
             questions: this.questionsModel,
-            mcQuestions: this.mcQuestionsModel,
-            sQuestions: this.sQuestionsModel,
-            ssQuestions: this.ssQuestionsModel,
+            mcquestions: this.mcQuestionsModel,
+            squestions: this.sQuestionsModel,
+            ssquestions: this.ssQuestionsModel,
         };
 
         const typesToSearch =
@@ -146,13 +146,16 @@ class DatabaseService {
 
             const model = typeModelMap[modelKey];
 
-            // Build search query
             const searchQuery = {
                 ...(query.paperName.length > 0 && {
                     paper_name: { $in: query.paperName },
                 }),
                 ...(query.syllabusNum.length > 0 && {
-                    "syllabus.number": { $in: query.syllabusNum },
+                    syllabus: {
+                        $elemMatch: {
+                            number: { $in: query.syllabusNum },
+                        },
+                    },
                 }),
                 ...(query.text && {
                     $text: { $search: query.text },
@@ -166,11 +169,8 @@ class DatabaseService {
                 console.log(`Found ${count} documents in ${modelKey}`);
                 totalCount += count;
 
-                // Calculate skip for this collection
                 let skipForThisCollection = Math.max(0, skip - collected);
-
                 if (skipForThisCollection >= count) {
-                    // Skip this entire collection
                     continue;
                 }
 

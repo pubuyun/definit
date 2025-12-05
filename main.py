@@ -108,6 +108,17 @@ ssquestion_collection = database["sub_sub_questions"]
 mc_question_collection = database["mc_questions"]
 
 error_list = []
+reprocess = [
+    "0610_s20_qp_31",
+    "0610_s22_qp_23",
+    "0610_s24_qp_13",
+    "0610_w18_qp_33",
+    "0610_w19_qp_13",
+    "0610_w20_qp_13",
+    "0610_w21_qp_33",
+    "0610_w21_qp_62",
+    "0610_w22_qp_51",
+]
 for f in os.listdir("papers/igcse-biology-0610"):
     try:
         if "qp" not in f:
@@ -129,38 +140,60 @@ for f in os.listdir("papers/igcse-biology-0610"):
         # if database[collection_name].count_documents({}) > 0:
         #     print("Already processed", question_paper)
         #     continue
-        if database["questions"].count_documents({"paper_name": paper_name}) > 0:
+        if paper_name not in reprocess and (
+            question_collection.count_documents({"paper_name": paper_name}) > 0
+            or mc_question_collection.count_documents({"paper_name": paper_name}) > 0
+        ):
             print("Already processed", question_paper)
             continue
 
         questions = parse(classifier, question_paper, markscheme, issq)
 
         for question in questions:
-            # add paper name to each question
             question.paper_name = paper_name
             if issq:
-                # remove subquestions and subsubquestions before inserting, save them separately
-                squestions = question.sub_questions
-                question.sub_questions = []
+                squestions = question.subquestions
                 question.syllabus = map_syllabus_to_id(question.syllabus)
+                question.subquestions = []
                 question_dict = convert_obj(question)
                 question_res = question_collection.insert_one(question_dict)
+                subquestion_ids = []
                 for squestion in squestions:
                     squestion.paper_name = paper_name
                     squestion.parent_id = question_res.inserted_id
-                    squestion.parent_number = question.question_number
+                    squestion.parent_number = question.number
                     squestion.syllabus = map_syllabus_to_id(squestion.syllabus)
-                    ssquestions = squestion.sub_sub_questions
-                    squestion.sub_sub_questions = []
+
+                    ssquestions = squestion.subsubquestions
+                    squestion.subsubquestions = []
                     squestion_dict = convert_obj(squestion)
                     squestion_res = squestion_collection.insert_one(squestion_dict)
+
+                    subsubquestion_ids = []
                     for ssquestion in ssquestions:
                         ssquestion.paper_name = paper_name
                         ssquestion.parent_id = squestion_res.inserted_id
-                        ssquestion.parent_number = squestion.question_number
+                        ssquestion.parent_number = squestion.number
                         ssquestion.syllabus = map_syllabus_to_id(ssquestion.syllabus)
                         ssquestion_dict = convert_obj(ssquestion)
-                        ssquestion_collection.insert_one(ssquestion_dict)
+                        ssquestion_result = ssquestion_collection.insert_one(
+                            ssquestion_dict
+                        )
+                        subsubquestion_ids.append(ssquestion_result.inserted_id)
+
+                    if subsubquestion_ids:
+                        squestion_collection.update_one(
+                            {"_id": squestion_res.inserted_id},
+                            {"$set": {"subsubquestions": subsubquestion_ids}},
+                        )
+
+                    subquestion_ids.append(squestion_res.inserted_id)
+
+                if subquestion_ids:
+                    question_collection.update_one(
+                        {"_id": question_res.inserted_id},
+                        {"$set": {"subquestions": subquestion_ids}},
+                    )
             else:
                 question.paper_name = paper_name
                 question.syllabus = map_syllabus_to_id(question.syllabus)

@@ -45,7 +45,7 @@ class SubQuestion:
     ):
         self.number = number  # a, b, c...
         self.text = text
-        self.subsubquestions = subsubquestions
+        self.subsubquestions = subsubquestions if subsubquestions is not None else []
         self.answer = answer
         self.marks = marks
         self.image = image
@@ -58,7 +58,6 @@ class SubQuestion:
 
 @dataclass
 class Question:
-
     def __init__(
         self,
         number: int,
@@ -72,7 +71,7 @@ class Question:
     ):
         self.number = number
         self.text = text
-        self.subquestions = subquestions
+        self.subquestions = subquestions if subquestions is not None else []
         self.marks = marks
         self.answer = answer
         self.image = image
@@ -96,13 +95,15 @@ class MultipleChoiceQuestion:
         answer: Optional[str] = None,
         image: Optional[str] = None,
         ms_image: Optional[str] = None,
-        syllabus: Optional[Syllabus] = None,  # syllabus of the question
+        syllabus: Optional[List[Syllabus]] = None,  # syllabus of the question
     ):
         self.number = number
         self.text = text
         self.options = options
         self.answer = answer
         self.image = image
+        self.ms_image = ms_image
+        self.syllabus = syllabus if syllabus is not None else []
 
     def __str__(self):
         return f"({self.number}): {self.text}" + (
