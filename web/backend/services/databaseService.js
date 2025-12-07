@@ -70,7 +70,7 @@ class DatabaseService {
     getConnection() {
         return this.connection;
     }
-    getSyllabuses() {
+    getSyllabus() {
         return this.syllabusModel.find({}).exec();
     }
     getPaperNames() {

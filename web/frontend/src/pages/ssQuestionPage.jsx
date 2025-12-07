@@ -1,16 +1,16 @@
 import React from "react";
 import { useParams } from "react-router";
 
-const QuestionPage = () => {
+const SSQuestionPage = () => {
     const { syllabusId, id } = useParams();
 
     return (
         <div>
-            <h1>Question Page</h1>
+            <h1>SS Question Page</h1>
             <p>Syllabus ID: {syllabusId}</p>
             <p>Question ID: {id}</p>
         </div>
     );
 };
 
-export default QuestionPage;
+export default SSQuestionPage;

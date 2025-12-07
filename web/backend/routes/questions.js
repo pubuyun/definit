@@ -2,13 +2,19 @@ const express = require("express");
 
 module.exports = function (databaseService) {
     const router = express.Router();
-    router.get("/syllabuses", async (req, res) => {
-        console.log("Fetching syllabuses");
-        const syllabuses = await databaseService.getSyllabuses();
+    router.get("/syllabus", async (req, res) => {
+        console.log("Fetching syllabus");
+        const syllabus = await databaseService.getSyllabus();
         res.json({
             success: true,
-            data: syllabuses,
+            data: syllabus,
         });
+    });
+
+    router.get("/papers", async (req, res) => {
+        console.log("Fetching paper names");
+        const paperNames = databaseService.getPaperNames();
+        res.json(paperNames);
     });
 
     router.get("/questions/id/:id", async (req, res) => {

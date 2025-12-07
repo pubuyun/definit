@@ -29,6 +29,7 @@ async function setupDatabaseServices() {
     const databaseNames = result.databases.map((db) => db.name);
     // igcse-biology-0610, etc.
     const dbServices = {};
+    const dbNames = {};
     for (const dbName of databaseNames) {
         const match = dbName.match(/.+\-.+\-(\d+)/);
         if (match) {
@@ -42,15 +43,27 @@ async function setupDatabaseServices() {
                 `/api/${subjectCode}`,
                 questionRoutes(dbServices[subjectCode])
             );
+            dbNames[subjectCode] = dbName;
             console.log(
                 `Registered subject code: ${subjectCode} (database: ${dbName}, routes at /api/${subjectCode})`
             );
         }
     }
-    return dbServices;
+    return { dbServices, dbNames };
 }
 
 function initializeApi() {
+    // Endpoint to get available syllabuses
+    app.get("/api/syllabuses", (req, res) => {
+        const syllabuses = Object.keys(app.locals.dbServices).map((code) => {
+            return {
+                subjectCode: code,
+                databaseName: app.locals.dbNames[code],
+            };
+        });
+        res.json(syllabuses);
+    });
+
     // Health check endpoint
     app.get("/api/health", (req, res) => {
         res.json({
@@ -88,7 +101,9 @@ function initializeApi() {
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI).then(async () => {
     console.log("Connected to MongoDB");
-    app.locals.dbServices = await setupDatabaseServices();
+    const { dbServices, dbNames } = await setupDatabaseServices();
+    app.locals.dbServices = dbServices;
+    app.locals.dbNames = dbNames;
     initializeApi();
 });
 
