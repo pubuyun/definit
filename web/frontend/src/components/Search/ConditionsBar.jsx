@@ -14,7 +14,7 @@ const ConditionsLineStyle = {
 };
 
 const getPaperYears = (paperList) => {
-    if (paperList.length === 0) return null;
+    if (!paperList.length) return null;
     let earliest = Infinity;
     let latest = -Infinity;
     paperList.forEach((paper) => {
@@ -46,6 +46,7 @@ const filterPapersByYear = (paperList, startYear, endYear) => {
 };
 
 const ConditionsBar = ({ subjectCode, onChange }) => {
+    subjectCode = "0610";
     const [paperList, setPaperList] = React.useState([]);
     const [syllabusList, setSyllabusList] = React.useState([]);
     const [textQuery, setTextQuery] = React.useState("");
@@ -72,27 +73,29 @@ const ConditionsBar = ({ subjectCode, onChange }) => {
     }, [subjectCode]);
 
     const availableYears = useMemo(() => {
+        console.log("paperList", getPaperYears(paperList));
         return getPaperYears(paperList);
     }, [paperList]);
 
     const filteredPapers = useMemo(() => {
-        if (selectedStartYear && selectedEndYear) {
+        if (selectedStartYear != -Infinity || selectedEndYear != Infinity) {
             return filterPapersByYear(
                 paperList,
                 selectedStartYear,
                 selectedEndYear
             );
         }
-        return paperList;
+        return [];
     }, [paperList, selectedStartYear, selectedEndYear]);
 
     useEffect(() => {
         if (onChange) {
+            //  query = { paperName: [], type: [], syllabusNum: [], text: "" },
             onChange({
+                paperName: filteredPapers,
+                type: selectedQuestionTypes,
+                syllabusNum: selectedSyllabuses,
                 text: textQuery,
-                questionTypes: selectedQuestionTypes,
-                papers: filteredPapers,
-                syllabuses: selectedSyllabuses,
             });
         }
     }, [
@@ -166,11 +169,11 @@ const ConditionsBar = ({ subjectCode, onChange }) => {
                         <Box sx={{ display: "flex", gap: "0.25rem" }}>
                             {selected.map((selectedOption) => (
                                 <Chip
-                                    key={selectedOption}
+                                    key={selectedOption.value}
                                     variant="soft"
                                     color="primary"
                                 >
-                                    {String(selectedOption)}
+                                    {selectedOption.label}
                                 </Chip>
                             ))}
                         </Box>

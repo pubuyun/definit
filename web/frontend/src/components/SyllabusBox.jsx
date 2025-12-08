@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router";
 import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
@@ -56,8 +55,3 @@ export default function SyllabusBox({ code, subjectDesc }) {
         </Link>
     );
 }
-
-SyllabusBox.propTypes = {
-    code: PropTypes.string.isRequired,
-    subjectDesc: PropTypes.string.isRequired,
-};
