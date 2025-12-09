@@ -1,19 +1,20 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useCallback } from "react";
+import { useParams } from "react-router";
 import ConditionsBar from "../components/Search/ConditionsBar";
 import QuestionBox from "../components/Search/QuestionBox";
 import Box from "@mui/joy/Box";
 
 const SyllabusMain = () => {
     const { syllabusId } = useParams();
+    // const syllabusId = "0610"; // For testing purposes
     const [conditions, setConditions] = React.useState({});
     const [results, setResults] = React.useState([]);
 
-    const onConditionsChange = (conditions) => {
-        console.log("Search conditions changed:", conditions);
-        setConditions(conditions);
-    };
-
+    const onConditionsChange = useCallback((newConditions) => {
+        // if (newConditions == conditions) return;
+        console.log("Search conditions changed:", newConditions);
+        setConditions(newConditions);
+    }, []);
     React.useEffect(() => {
         console.log(
             "Fetching questions with conditions:",
@@ -31,7 +32,10 @@ const SyllabusMain = () => {
             }
         )
             .then((res) => res.json())
-            .then((data) => setResults(data));
+            .then((data) => setResults(data.data || []))
+            .then(() => {
+                console.log("Fetched results:", results);
+            });
     }, [conditions, syllabusId]);
 
     return (

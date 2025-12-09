@@ -28,8 +28,17 @@ const descSx = {
 };
 
 export default function QuestionBox({ question }) {
+    let questionType = "ssquestion";
+    if (question.subquestions !== undefined) {
+        questionType = "question";
+    } else if (question.options !== undefined) {
+        questionType = "mcquestion";
+    } else if (question.subsubquestions !== undefined) {
+        questionType = "squestion";
+    }
+
     return (
-        <Link to={`questions/${question._id}`}>
+        <Link to={`${questionType}/${question._id}`}>
             <Box sx={containerSx} role="group" aria-label={`${question.code}`}>
                 <Typography level="body3" sx={descSx}>
                     {question.text}

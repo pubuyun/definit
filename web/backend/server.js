@@ -9,6 +9,7 @@ const app = express();
 
 const questionRoutes = require("./routes/questions");
 const databaseService = require("./services/databaseService");
+const imageService = require("./services/imageService");
 
 // Middleware
 app.use(helmet());
@@ -16,12 +17,12 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 100,
-    message: "Too many requests from this IP, please try again later.",
-});
-app.use(limiter);
+// const limiter = rateLimit({
+//     windowMs: 15 * 60 * 1000,
+//     max: 100,
+//     message: "Too many requests from this IP, please try again later.",
+// });
+// app.use(limiter);
 
 async function setupDatabaseServices() {
     const adminDb = mongoose.connection.db.admin();
@@ -50,6 +51,21 @@ async function setupDatabaseServices() {
         }
     }
     return { dbServices, dbNames };
+}
+
+async function setupImageService() {
+    const imgService = new imageService();
+    app.get("/api/image", async (req, res, next) => {
+        const imageName = req.query.image;
+        try {
+            const imageUrl = await imgService.getImageUrl(imageName);
+            console.log("Generated image URL:", imageUrl);
+            res.json({ imageUrl });
+        } catch (error) {
+            return next(error);
+        }
+    });
+    return imageService;
 }
 
 function initializeApi() {
@@ -102,8 +118,10 @@ function initializeApi() {
 mongoose.connect(process.env.MONGO_URI).then(async () => {
     console.log("Connected to MongoDB");
     const { dbServices, dbNames } = await setupDatabaseServices();
+    const imageServiceInstance = await setupImageService();
     app.locals.dbServices = dbServices;
     app.locals.dbNames = dbNames;
+    app.locals.imageService = imageServiceInstance;
     initializeApi();
 });
 

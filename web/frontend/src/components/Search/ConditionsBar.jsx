@@ -46,7 +46,6 @@ const filterPapersByYear = (paperList, startYear, endYear) => {
 };
 
 const ConditionsBar = ({ subjectCode, onChange }) => {
-    subjectCode = "0610";
     const [paperList, setPaperList] = React.useState([]);
     const [syllabusList, setSyllabusList] = React.useState([]);
     const [textQuery, setTextQuery] = React.useState("");
@@ -112,7 +111,7 @@ const ConditionsBar = ({ subjectCode, onChange }) => {
                 <Input
                     placeholder="Search questions..."
                     value={textQuery}
-                    onChange={(e, newValue) => setTextQuery(newValue)}
+                    onChange={(e) => setTextQuery(e.target.value)}
                     endDecorator={
                         <IconButton>
                             <SearchIcon />

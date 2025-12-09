@@ -14,7 +14,8 @@ createRoot(document.getElementById("root")).render(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />} />
-                <Route path="/:syllabusId" element={<SyllabusMain />}>
+                <Route path="/:syllabusId">
+                    <Route index element={<SyllabusMain />} />
                     <Route path="question/:id" element={<QuestionPage />} />
                     <Route path="squestion/:id" element={<SQuestionPage />} />
                     <Route path="ssquestion/:id" element={<SSQuestionPage />} />
