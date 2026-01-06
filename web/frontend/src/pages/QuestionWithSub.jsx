@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router";
+import SubQuestionCard from "../components/Question/SubQuestionCard";
 
 const QuestionWithSub = (question) => {
     const { syllabusId } = useParams();
@@ -12,10 +13,7 @@ const QuestionWithSub = (question) => {
     return (
         <div>
             {childrenIds?.map((subId) => (
-                <div key={subId}>
-                    <h3>Subquestion ID: {subId}</h3>
-                    {/* Here you can render the subquestion component, e.g., <QuestionPage id={subId} /> */}
-                </div>
+                <SubQuestionCard key={subId} id={subId}></SubQuestionCard>
             ))}
         </div>
     );

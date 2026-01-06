@@ -24,9 +24,12 @@ const QuestionMain = () => {
             console.log("Question:", Question);
         }
     }, [Question]);
+    let hasChildren = false;
+    if (Question) {
+        hasChildren = Question.subquestions || Question.subsubquestions;
+        hasChildren = hasChildren && hasChildren.length > 0;
+    }
 
-    const hasChildren =
-        Question && (Question.subquestions || Question.subsubquestions);
     return hasChildren ? (
         <QuestionWithSub {...Question} />
     ) : (

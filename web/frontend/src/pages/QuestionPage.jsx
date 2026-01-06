@@ -38,14 +38,14 @@ const QuestionPage = (question) => {
             <Typography level="h4" gutterBottom>
                 Question
             </Typography>
-            <img src={image} alt="Multiple Choice question" />
+            <img src={image} alt={question?.text} />
             <Accordion>
                 <AccordionSummary>Answer</AccordionSummary>
                 <AccordionDetails>
-                    <img
-                        src={answerImage}
-                        alt={question ? question.answer : "Answer"}
-                    />
+                    <img src={answerImage} alt={"Answer Image Not Found"} />
+                    <Typography level="body1" sx={{ whiteSpace: "pre-wrap" }}>
+                        {question.answer}
+                    </Typography>
                 </AccordionDetails>
             </Accordion>
         </>
